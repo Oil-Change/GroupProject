@@ -34,39 +34,33 @@ class Register extends Component {
             email:this.state.email
 
         }
-        axios.put('/api/register', body)
+        axios.put('/api/user', body)
         .then(response => {
             this.props.updateUser(response.data)
+            //push to store
             this.props.history.push('/#')
         })
         .catch(error => {
             console.log(error)
         })
-        //push to store
         
     }
     render() {
         return (
             <div>
                 <header>Registration</header>
-                <div>
-                <form>
-                <input type='text' placeholder='First Name' onChange={this.handleChange} name='firstName'></input>
+                <div className="carForm-container">
+                    <form>
+                        <input type='text' placeholder='First Name' onChange={this.handleChange} name='firstName'/>
+                        <input type='text'  placeholder='Last Name' onChange={this.handleChange} name='lastName'/>
+                        <input type='text'  placeholder='Street' onChange={this.handleChange} name='street'/>
+                        <input type='text'  placeholder='City' onChange={this.handleChange} name='city'/>
+                        <input type='text'  placeholder='State' onChange={this.handleChange} name='state'/>
+                        <input type='text'  placeholder='Zip Code' onChange={this.handleChange} name='zip'/>
+                        <input type='email'  placeholder='Email' onChange={this.handleChange} name='email'/>
 
-                <input type='text'  placeholder='Last Name' onChange={this.handleChange} name='lastName'></input>
-
-                <input type='text'  placeholder='Street' onChange={this.handleChange} name='street'></input>
-
-                <input type='text'  placeholder='City' onChange={this.handleChange} name='city'></input>
-
-                <input type='text'  placeholder='State' onChange={this.handleChange} name='state'></input>
-
-                <input type='text'  placeholder='Zip Code' onChange={this.handleChange} name='zip'></input>
-
-                <input type='email'  placeholder='Email' onChange={this.handleChange} name='email'></input>
-
-                <button onClick={this.submit}>Submit</button>
-                </form>
+                        <button onClick={this.submit}>Next</button>
+                    </form>
                 </div>
             </div>
         )
