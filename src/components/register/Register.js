@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {updateUser} from '../../redux/reducer'
 
-export default class Register extends Component {
+class Register extends Component {
     constructor(){
         super()
         this.state={
@@ -23,13 +24,32 @@ export default class Register extends Component {
     }
 
     submit = () => {
-        axios.put('/api/register')// need to get api URL
+        const body = {
+            firstName:this.state.firstName,
+            lastName:this.state.lastName,
+            street:this.state.street,
+            city:this.state.city,
+            state:this.state.state,
+            zip:this.state.zip,
+            email:this.state.email
+
+        }
+        axios.put('/api/register', body)
+        .then(response => {
+            this.props.updateUser(response.data)
+            this.props.history.push('/#')
+        })
+        .catch(error => {
+            console.log(error)
+        })
         //push to store
         
     }
     render() {
         return (
             <div>
+                <header>Registration</header>
+                <div>
                 <form>
                 <input type='text' placeholder='First Name' onChange={this.handleChange} name='firstName'></input>
 
@@ -45,12 +65,16 @@ export default class Register extends Component {
 
                 <input type='email'  placeholder='Email' onChange={this.handleChange} name='email'></input>
 
-                <Link>
-                <button>Submit</button> 
-                </Link>
-                {/* Link on button to route of next component */}
+                <button onClick={this.submit}>Submit</button>
                 </form>
+                </div>
             </div>
         )
     }
 }
+
+function mapStateToProps(state){
+    return state
+}
+
+export default connect(mapStateToProps, {updateUser})(Register)
