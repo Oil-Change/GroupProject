@@ -21,7 +21,6 @@
     "react-stripe-checkout": "^2.6.3",
     "socket.io": "^2.3.0",
     "stripe": "^7.9.1"
-
   },
   "scripts": {
     "start": "react-scripts start",
