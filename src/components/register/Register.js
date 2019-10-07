@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {updateUser} from '../../redux/reducer'
 
 export default class Register extends Component {
     constructor(){
@@ -23,7 +25,20 @@ export default class Register extends Component {
     }
 
     submit = () => {
-        axios.put('/api/register')// need to get api URL
+        const body = {
+            firstName:this.state,.firstName,
+            lastName:this.state.lastName,
+            street:this.state.street,
+            city:this.state.city,
+            state:this.state.state,
+            zip:this.state.zip,
+            email:this.state.email
+
+        }
+        axios.put('/api/register', body)
+        .then(response => {
+
+        })
         //push to store
         
     }
