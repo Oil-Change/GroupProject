@@ -10,10 +10,14 @@ const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env;
 const PORT = SERVER_PORT;
 
 // import controllers
+const userCtrl = require('./controllers/userController');
+const messageCtrl = require('./controllers/messageController');
+const carCtrl = require('./controllers/carController');
+const appointmentCtrl = require('./controllers/appointmentController');
 
 app.use(express.json());
 
-// session set up
+// session set 
 app.use(session({
     secret: SESSION_SECRET,
     resave: false,
