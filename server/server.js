@@ -13,7 +13,7 @@ const PORT = SERVER_PORT;
 
 app.use(express.json());
 
-// session set up
+// session set 
 app.use(session({
     secret: SESSION_SECRET,
     resave: false,
