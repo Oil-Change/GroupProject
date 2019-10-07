@@ -20,6 +20,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.2.0",
     "react-stripe-checkout": "^2.6.3",
+    "redux": "^4.0.4",
     "socket.io": "^2.3.0",
     "stripe": "^7.9.1"
   },
@@ -45,5 +46,13 @@
     ]
   },
   "main": "server/server.js",
-  "proxy": "http://localhost:5555"
+  "proxy": "http://localhost:5555",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "src/"
+    ]
+  }
 }
