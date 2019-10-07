@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 
 export default class LandingPage extends Component {
+    constructor(){
+        super()
+    }
     render() {
         return (
             <div classname="landing-container">
@@ -9,7 +12,7 @@ export default class LandingPage extends Component {
                 <div className="image-container">
                     <img src="#"/>
                 </div>
-                <button onClick={() => props.history.push(`/#`)}
+                <button onClick={() => this.props.history.push(`/#`)}
                 className="to-twillio-btn">LET'S GO!</button>
             </div>
         )
