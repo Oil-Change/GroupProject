@@ -47,5 +47,10 @@
   "proxy": "http://localhost:5555",
   "devDependencies": {
     "jest": "^24.9.0"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "src/"
+    ]
   }
 }
