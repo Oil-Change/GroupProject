@@ -1,10 +1,11 @@
 require('dotenv').config();
 
-const express = require('express');
-const app = express();
-
 const massive = require('massive');
 const session = require('express-session');
+const express = require('express');
+const socket = require('socket.io')
+
+const app = express();
 
 const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env;
 const PORT = SERVER_PORT;
@@ -14,6 +15,7 @@ const userCtrl = require('./controllers/userController');
 const messageCtrl = require('./controllers/messageController');
 const carCtrl = require('./controllers/carController');
 const appointmentCtrl = require('./controllers/appointmentController');
+const stripeCtrl = require('./controllers/stripeController');
 
 app.use(express.json());
 
@@ -38,6 +40,52 @@ massive(CONNECTION_STRING).then(db => {
 // Authenication MiddleWare
 
 // Additional Endpoints
+// userCtrl
+app.post('/api/user/create', userCtrl.createUser)
+app.put('/api/user/update', userCtrl.updateUser)
+// app.get('/')
 
-// Listening for the Server Port
-app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));
+// stripCtrl Endpoint
+app.post('/api/payment', stripeCtrl.pay)
+
+// carCtrl
+app.post('/api/car/create', carCtrl.createCar)
+app.get('/api/car/:id', carCtrl.getCar)
+
+// appointmentCtrl
+app.post('/api/appointment/create', appointmentCtrl.createAppointment)
+app.get('/api/appointment/all', appointmentCtrl.getTodaysAppointments)
+app.get('/api/appointment', appointmentCtrl.getAppointment)
+app.put('/api/appointment/pick_up/:id', appointmentCtrl.updatePickUp)
+app.put('/api/appointment/drop_off/:id', appointmentCtrl.updateDropOff)
+
+const io = socket(
+    // App Listening
+    app.listen(SERVER_PORT, () => {
+        console.log(`Server is Running on ${PORT}!`)
+    })
+    )
+
+// Sockets
+io.on('connection', socket => {
+    console.log('User Connected')
+    socket.on('join room', async data => {
+        const {room_id} = data
+        const db = app.get('db')
+        console.log('Room Joined')
+        let existingRoom = await db.message.check_chat_room(room_id)
+        let messages = await db.message.chat_messages_history(room_id)
+        socket.join(room_id)
+        io.to(room_id).emit('room joined', messages)
+    })
+    socket.on('message sent', async data => {
+        const {room_id, message, user_name, is_admin} = data
+        const db = app.get('db')
+        await db.message.create_chat_messages(room_id, message, user_name, is_admin)
+        let messages = await db.message.chat_messages_history(room_id)
+        io.to(room_id).emit('message dispatched', messages)
+    })
+    socket.on('disconnect', () => {
+        console.log('User Disconnected')
+    })    
+})
