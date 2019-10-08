@@ -41,8 +41,14 @@ massive(CONNECTION_STRING).then(db => {
 // userCtrl
 app.post('/api/user/create', userCtrl.createUser)
 app.put('/api/user/update', userCtrl.updateUser)
-// app.get('/')
 
+// carCtrl
+app.post('/api/car/create', carCtrl.createCar)
+app.get('/api/car/:id', carCtrl.getCar)
+
+// appointmentCtrl
+app.post('/api/user/create', appointmentCtrl.createUser)
+app.put('/api/user/update', appointmentCtrl.updateUser)
 
 // Listening for the Server Port
 app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));
