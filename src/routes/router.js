@@ -9,7 +9,7 @@ import Register from '../components/register/Register';
 import Payment from '../components/payment/Payment'
 import Messages from '../components/message/Message'
 import Admin from '../components/admin/Admin'
-import User from '../components/admin/User'
+import UserInfo from '../components/admin/UserInfo'
 import CarInformation from '../components/carInformation/CarInformation'
 
 //Router
@@ -24,6 +24,6 @@ export default (
         <Route path="/messages/:id" component={Messages}/>
         {/* admin */}
         <Route path="/admin" component={Admin}/>
-        <Route path="/admin/user/:id" component={User}/>
+        <Route path="/admin/user/:id" component={UserInfo}/>
     </Switch>
 )
