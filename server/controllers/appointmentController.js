@@ -27,7 +27,7 @@ const getAppointment = async (req, res) => {
     res.status(200).send(getAppointment);
 };
 
-const getTodaysAppointments = (req, res) => {
+const getTodaysAppointments = async (req, res) => {
     // console.log(`Getting Today's Appointments`);
     // console.log('');
     const db = req.app.get('db');
