@@ -13,4 +13,4 @@ export default class UserInfo extends Component {
             </div>
         )
     }
-}
+} 
