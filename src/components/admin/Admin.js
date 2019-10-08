@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import UserInfo from '../userInfo/UserInfo'
+import UserInfo from './UserInfo'
 
 export default class Admin extends Component {
     constructor(){
@@ -12,7 +12,7 @@ export default class Admin extends Component {
     }
 
     componentDidMount(){
-        this.getAppointments
+        this.getAppointments()
     }
 
     getAppointments = () => {
