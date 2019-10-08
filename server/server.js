@@ -6,8 +6,6 @@ const app = express();
 const massive = require('massive');
 const session = require('express-session');
 
-const socket = require('socket.io')
-
 const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env;
 const PORT = SERVER_PORT;
 
@@ -16,16 +14,8 @@ const userCtrl = require('./controllers/userController');
 const messageCtrl = require('./controllers/messageController');
 const carCtrl = require('./controllers/carController');
 const appointmentCtrl = require('./controllers/appointmentController');
-const stripeCtrl = require('./controllers/stripeController');
 
 app.use(express.json());
-
-const io = socket(
-    // App Listening
-    app.listen(SERVER_PORT, () => {
-        console.log(`Server is Running on ${PORT}!`)
-    })
-    )
 
 // session set 
 app.use(session({
@@ -55,6 +45,17 @@ app.put('/api/user/update', userCtrl.updateUser)
 
 // stripCtrl Endpoint
 app.post('/api/payment', stripeCtrl.pay)
+
+// carCtrl
+app.post('/api/car/create', carCtrl.createCar)
+app.get('/api/car/:id', carCtrl.getCar)
+
+// appointmentCtrl
+app.post('/api/appointment/create', appointmentCtrl.createAppointment)
+app.get('/api/appointment/all', appointmentCtrl.getTodaysAppointments)
+app.get('/api/appointment', appointmentCtrl.getAppointment)
+app.put('/api/appointment/pick_up/:id', appointmentCtrl.updatePickUp)
+app.put('/api/appointment/drop_off/:id', appointmentCtrl.updateDropOff)
 
 // Sockets
 io.on('connection', socket => {
