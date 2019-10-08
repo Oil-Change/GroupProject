@@ -56,10 +56,6 @@ app.put('/api/user/update', userCtrl.updateUser)
 // stripCtrl Endpoint
 app.post('/api/payment', stripeCtrl.pay)
 
-
-
-
-
 io.on('connection', socket => {
     console.log('User Connected')
     socket.on('join room', async data => {
