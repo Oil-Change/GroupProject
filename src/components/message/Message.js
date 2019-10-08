@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import axios from 'axios'
+import io from 'socket.io-client'
 class Message extends Component {
+
     constructor(){
         super()
 
