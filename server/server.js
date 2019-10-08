@@ -47,8 +47,11 @@ app.post('/api/car/create', carCtrl.createCar)
 app.get('/api/car/:id', carCtrl.getCar)
 
 // appointmentCtrl
-app.post('/api/user/create', appointmentCtrl.createUser)
-app.put('/api/user/update', appointmentCtrl.updateUser)
+app.post('/api/appointment/create', appointmentCtrl.createAppointment)
+app.get('/api/appointment/all', appointmentCtrl.getTodaysAppointments)
+app.get('/api/appointment', appointmentCtrl.getAppointment)
+app.put('/api/appointment/pick_up/:id', appointmentCtrl.updatePickUp)
+app.put('/api/appointment/drop_off/:id', appointmentCtrl.updateDropOff)
 
 // Listening for the Server Port
 app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));
