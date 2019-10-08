@@ -29,7 +29,7 @@ module.exports = {
             amount: req.body,
             currency: 'usd',
             source: 'tok_visa',
-            receipt_email: user_email,
+            receipt_email: req.body,
         });
     }
 }
