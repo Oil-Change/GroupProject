@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import Message from '../message/Message'
 
 class InstructionsPage extends Component {
     render() {
@@ -16,7 +15,7 @@ class InstructionsPage extends Component {
                     <li>5. The driver can drop the keys off directly to you or stash them in the same location they picked them up.(Discuss options with driver)</li>
                 </ul>
                 
-                <Message id={this.props.appointment.id}/>
+                <button><ing></ing></button>
 
             </div>
         )
