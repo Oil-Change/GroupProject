@@ -1,16 +1,11 @@
 require('dotenv').config();
 
-const express = require('express');
-const app = express();
-const io = socket(
-    // App Listening
-    app.listen(SERVER_PORT, () => {
-        console.log(`Server is Running on ${PORT}!`)
-    })
-    )
-
 const massive = require('massive');
 const session = require('express-session');
+const express = require('express');
+const socket = require('socket.io')
+
+const app = express();
 
 const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env;
 const PORT = SERVER_PORT;
@@ -62,6 +57,13 @@ app.get('/api/appointment/all', appointmentCtrl.getTodaysAppointments)
 app.get('/api/appointment', appointmentCtrl.getAppointment)
 app.put('/api/appointment/pick_up/:id', appointmentCtrl.updatePickUp)
 app.put('/api/appointment/drop_off/:id', appointmentCtrl.updateDropOff)
+
+const io = socket(
+    // App Listening
+    app.listen(SERVER_PORT, () => {
+        console.log(`Server is Running on ${PORT}!`)
+    })
+    )
 
 // Sockets
 io.on('connection', socket => {
