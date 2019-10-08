@@ -63,6 +63,7 @@ app.get('/api/appointment/today', appointmentCtrl.getTodaysAppointments)
 app.get('/api/appointment', appointmentCtrl.getAppointment)
 app.put('/api/appointment/pick_up/:id', appointmentCtrl.updatePickUp)
 app.put('/api/appointment/drop_off/:id', appointmentCtrl.updateDropOff)
+app.put('/api/appointment/charged/:id', appointmentCtrl.updateChargeDate)
 
 const io = socket(
     // App Listening
