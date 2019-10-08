@@ -3,12 +3,14 @@ const initalState = {
     phone: 0,
     user: {},
     car: {},
+    appointment: {}
 };
 
 // Action Types
 const UPDATE_PHONE = 'UDPATE_PHONE';
 const UPDATE_USER = "UPDATE_USER";
 const UPDATE_CAR = "UPDATE_CAR";
+const UPDATE_APPT = "UPDATE_APPT";
 
 
 // Action Builders
@@ -21,15 +23,22 @@ export function phoneUpdate(phoneNumber) {
 
 export function userUpdate(user) {
     return {
-        type: UPDATE_PHONE,
+        type: UPDATE_USER,
         payload: user
     }
 };
 
 export function carUpdate(car) {
     return {
-        type: UPDATE_PHONE,
+        type: UPDATE_CAR,
         payload: car
+    }
+};
+
+export function appointmentUpdate(appt) {
+    return {
+        type: UPDATE_APPT,
+        payload: appt
     }
 };
 
@@ -45,6 +54,9 @@ export default function reducer(state = initialState, action) {
         case UPDATE_CAR:
             const car = action.payload
             return { ...state, car }
+        case UPDATE_APPT:
+            const car = action.payload
+            return { ...state, appt }    
         default:
             return state
     };
