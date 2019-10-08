@@ -20,7 +20,7 @@ export default (
         <Route path="/car" component={SignUp}/>
         <Route path="/payment" component={Payment}/>
         <Route path="/instructions" component={InstructionsPage}/>
-        <Route path="/messages" component={Messages}/>
+        <Route path="/messages/:id" component={Messages}/>
         {/* admin */}
         <Route path="/admin" component={Admin}/>
         <Route path="/admin/user/:id" component={User}/>
