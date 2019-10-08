@@ -5,7 +5,11 @@ export default class Message extends Component {
         super()
 
         this.state = {
-            
+            id: null,
+            roomId: null,
+            message: '',
+            userName: '',
+            isAdmin: null
         }
     }
 
