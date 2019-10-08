@@ -1,17 +1,19 @@
 import 'date-fns'
 import axios from 'axios'
+import { connect } from 'react-redux'
+import { updateAppointment } from '../../redux/reducer'
 import React, {Component} from 'react'
-import Grid from '@material-ui/core/Grid'
+import {Grid} from '@material-ui/core'
 import DateFnsUtils from '@date-io/date-fns'
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-} from '@material-ui/pickers'
+import {MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker} from '@material-ui/pickers'
 
-export default class Calendar extends Component {
+class Calendar extends Component {
     constructor(){
+      super()
+
+      this.state = {
         selectedDate: null
+      }
     }
 
      handleDateChange = date => {
@@ -21,8 +23,7 @@ export default class Calendar extends Component {
     }
 
     createAppt = () => {
-        const appointment = this.state.selectedDate
-        appointmentUpdate
+        this.props.appointmentUpdate(this.state.selectedDate)
         // axios.post('/api/appointment', appointment)
         // .then(response => {
 
@@ -30,7 +31,9 @@ export default class Calendar extends Component {
     }
 
     getTodaysAppointmentCount = async () => {
+      console.log('before: getTodayAPpt')
       const appts = await axios.get('/api/appointment/today')
+      console.log('here: getTodayAPpt')
       return appts.data.length
     }
 
@@ -42,7 +45,9 @@ export default class Calendar extends Component {
       //disable past days
       if(date < today) return true
       //disable 'full' days
-      if(this.getTodaysAppointmentCount === 40) return true
+      if(this.getTodaysAppointmentCount() >= 40) return true
+      //otherwise do not diable this day
+      return false
     }
 
     render() {
@@ -51,14 +56,14 @@ export default class Calendar extends Component {
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <Grid container justify="space-around">
             <KeyboardDatePicker
-              shouldDisableDate={disableDates}
+              shouldDisableDate={this.disableDates}
               disableToolbar
               variant="inline"
               format="MM/dd/yyyy"
               margin="normal"
               id="date-picker-inline"
               label="Date picker inline"
-              value={selectedDate}
+              value={this.state.selectedDate}
               onChange={this.handleDateChange}
               KeyboardButtonProps={{
                 'aria-label': 'change date',
@@ -71,3 +76,9 @@ export default class Calendar extends Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return state
+}
+
+export default connect(mapStateToProps, {updateAppointment})(Calendar)

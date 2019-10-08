@@ -39,14 +39,14 @@ class CarInformation extends Component {
         axios.post(`/api/car/${userID}`, body)
             .then(response => {
                 this.props.updateCar(response.data)
-                this.props.history.push('/#')
+                this.props.history.push('/calendar')
             })
             .catch(error => {
                 console.log(error)
             })
         //push to store
-
     }
+
     render() {
         return (
             <div>
