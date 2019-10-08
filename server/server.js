@@ -15,7 +15,7 @@ const userCtrl = require('./controllers/userController');
 const messageCtrl = require('./controllers/messageController');
 const carCtrl = require('./controllers/carController');
 const appointmentCtrl = require('./controllers/appointmentController');
-const stripCtrl = require('./controllers/stripeController');
+const stripeCtrl = require('./controllers/stripeController');
 
 app.use(express.json());
 
@@ -46,7 +46,8 @@ app.put('/api/user/update', userCtrl.updateUser)
 // app.get('/')
 
 // stripCtrl Endpoint
-app.post('/api/payment', stripeCtrl.pay)
+app.post('/api/payment', stripeCtrl.pay);
+app.post('/api/receipt', stripeCtrl.receipt);
 
 // carCtrl
 app.post('/api/car/create', carCtrl.createCar)
@@ -54,7 +55,8 @@ app.get('/api/car/:id', carCtrl.getCar)
 
 // appointmentCtrl
 app.post('/api/appointment/create', appointmentCtrl.createAppointment)
-app.get('/api/appointment/all', appointmentCtrl.getTodaysAppointments)
+app.get('/api/appointment/all', appointmentCtrl.getAllAppointments)
+app.get('/api/appointment/today', appointmentCtrl.getTodaysAppointments)
 app.get('/api/appointment', appointmentCtrl.getAppointment)
 app.put('/api/appointment/pick_up/:id', appointmentCtrl.updatePickUp)
 app.put('/api/appointment/drop_off/:id', appointmentCtrl.updateDropOff)
