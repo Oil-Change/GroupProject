@@ -14,28 +14,28 @@ const UPDATE_APPT = "UPDATE_APPT";
 
 
 // Action Builders
-export function phoneUpdate(phoneNumber) {
+export function updatePhone(phoneNumber) {
     return {
         type: UPDATE_PHONE,
         payload: phoneNumber
     }
 };
 
-export function userUpdate(user) {
+export function updateUser(user) {
     return {
         type: UPDATE_USER,
         payload: user
     }
 };
 
-export function carUpdate(car) {
+export function updateCar(car) {
     return {
         type: UPDATE_CAR,
         payload: car
     }
 };
 
-export function appointmentUpdate(appt) {
+export function updateAppointment(appt) {
     return {
         type: UPDATE_APPT,
         payload: appt

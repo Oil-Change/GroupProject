@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { userUpdate } from '../../redux/reducer'
+import { updateUser } from '../../redux/reducer'
 
 class Register extends Component {
     constructor() {
@@ -71,4 +71,4 @@ function mapStateToProps(state) {
     return state
 }
 
-export default connect(mapStateToProps, { updateUser: userUpdate })(Register)
+export default connect(mapStateToProps, { updateUser })(Register)
