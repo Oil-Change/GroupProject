@@ -15,7 +15,7 @@ const userCtrl = require('./controllers/userController');
 const messageCtrl = require('./controllers/messageController');
 const carCtrl = require('./controllers/carController');
 const appointmentCtrl = require('./controllers/appointmentController');
-const stripCtrl = require('./controllers/stripeController');
+const stripeCtrl = require('./controllers/stripeController');
 
 app.use(express.json());
 
