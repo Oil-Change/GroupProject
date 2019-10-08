@@ -56,28 +56,24 @@ app.put('/api/user/update', userCtrl.updateUser)
 // stripCtrl Endpoint
 app.post('/api/payment', stripeCtrl.pay)
 
-
-
-
-
+// Sockets
 io.on('connection', socket => {
     console.log('User Connected')
     socket.on('join room', async data => {
-        const {room} = data
+        const {room_id} = data
         const db = app.get('db')
         console.log('Room Joined')
-        let existingRoom = await db.chat.check_chat_room({id: room})
-        !existingRoom.length ? db.chat.create_chat_rooms({id: room}) : null
-        let messages = await db.messages.chat_messages_history({id: room})
-        socket.join(room)
-        io.to(room).emit('room joined', messages)
+        let existingRoom = await db.message.check_chat_room(room_id)
+        let messages = await db.message.chat_messages_history(room_id)
+        socket.join(room_id)
+        io.to(room_id).emit('room joined', messages)
     })
     socket.on('message sent', async data => {
-        const {room, message} = data
+        const {room_id, message, user_name, is_admin} = data
         const db = app.get('db')
-        await db.messages.create_chat_messages({id: room, message})
-        let messages = await db.messages.chat_messages_history({id: room})
-        io.to(data.room).emit('message dispatched', messages)
+        await db.message.create_chat_messages(room_id, message, user_name, is_admin)
+        let messages = await db.message.chat_messages_history(room_id)
+        io.to(room_id).emit('message dispatched', messages)
     })
     socket.on('disconnect', () => {
         console.log('User Disconnected')
