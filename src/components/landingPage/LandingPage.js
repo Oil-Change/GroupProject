@@ -12,7 +12,7 @@ export default class LandingPage extends Component {
                 <div className="image-container">
                     <img src="#"/>
                 </div>
-                <button onClick={() => this.props.history.push(`/#`)}
+                <button onClick={() => this.props.history.push(`/login`)}
                 className="to-twillio-btn">LET'S GO!</button>
             </div>
         )

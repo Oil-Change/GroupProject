@@ -39,12 +39,12 @@ const getAllAppointments = async (req, res) => {
 
 
 const getTodaysAppointments = async (req, res) => {
-    // console.log(`Getting Today's Appointments`);
-    // console.log('');
+    console.log(`Getting Today's Appointments`);
+    console.log('');
     const db = req.app.get('db');
     const getTodaysAppointment = await db.appointment.get_todays_appointments();
-    // console.log('getTodaysAppointment: ', getTodaysAppointment);
-    // console.log('');
+    console.log('getTodaysAppointment: ', getTodaysAppointment);
+    console.log('');
     res.status(200).send(getTodaysAppointment);
 };
 

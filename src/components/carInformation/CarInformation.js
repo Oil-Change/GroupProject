@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { carUpdate } from '../../redux/reducer'
+import { updateCar } from '../../redux/reducer'
 
 class CarInformation extends Component {
     constructor() {
@@ -38,15 +38,15 @@ class CarInformation extends Component {
         }
         axios.post(`/api/car/${userID}`, body)
             .then(response => {
-                this.props.updateUser(response.data)
-                this.props.history.push('/#')
+                this.props.updateCar(response.data)
+                this.props.history.push('/calendar')
             })
             .catch(error => {
                 console.log(error)
             })
         //push to store
-
     }
+
     render() {
         return (
             <div>
@@ -73,4 +73,4 @@ function mapStateToProps(state) {
     return state
 }
 
-export default connect(mapStateToProps, { updateCar: carUpdate })(CarInformation)
+export default connect(mapStateToProps, {updateCar})(CarInformation)
