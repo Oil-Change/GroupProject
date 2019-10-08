@@ -10,10 +10,10 @@ const createAppointment = async (req, res) => {
     // console.log('appointment: ', appointment);
     // console.log('');
     const db = req.app.get('db');
-    const appointmentCreated = await db.appointment.add_appointment([id, cid, appointment, price, charge_date]);
+    const createdAppointment = await db.appointment.add_appointment([id, cid, appointment, price, charge_date]);
     // console.log('appointmentCreated: ', appointmentCreated);
     // console.log('');
-    res.status(200).send(appointmentCreated[0]);
+    res.status(200).send(createdAppointment[0]);
 };
 
 const getAppointment = async (req, res) => {
@@ -21,20 +21,20 @@ const getAppointment = async (req, res) => {
     // console.log('');
     const db = req.app.get('db');
     const { id } = req.body;
-    const getAppointment = await db.appointment.get_appointment([id]);
+    const appointment = await db.appointment.get_appointment([id]);
     // console.log('getAppointment: ', getAppointment);
     // console.log('');
-    res.status(200).send(getAppointment);
+    res.status(200).send(appointment);
 };
 
 const getAllAppointments = async (req, res) => {
     // console.log(`Getting Apointments`);
     // console.log('');
     const db = req.app.get('db');
-    const getAppointments = await db.appointment.get_appointments();
+    const appointments = await db.appointment.get_appointments();
     // console.log('getAppointment: ', getAppointment);
     // console.log('');
-    res.status(200).send(getAppointments);
+    res.status(200).send(appointments);
 };
 
 
@@ -42,10 +42,10 @@ const getTodaysAppointments = async (req, res) => {
     console.log(`Getting Today's Appointments`);
     console.log('');
     const db = req.app.get('db');
-    const getTodaysAppointment = await db.appointment.get_todays_appointments();
-    console.log('getTodaysAppointment: ', getTodaysAppointment);
+    const todaysAppointments = await db.appointment.get_todays_appointments();
+    console.log('getTodaysAppointment: ', todaysAppointments);
     console.log('');
-    res.status(200).send(getTodaysAppointment);
+    res.status(200).send(todaysAppointments);
 };
 
 const updatePickUp = async (req, res) => {
