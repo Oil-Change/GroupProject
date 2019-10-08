@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import {connect} from 'react-redux'
-import {updateCar} from '../../redux/reducer'
+import { connect } from 'react-redux'
+import { carUpdate } from '../../redux/reducer'
 
 class CarInformation extends Component {
-    constructor(){
+    constructor() {
         super()
         this.state = {
             make: '',
@@ -37,15 +37,15 @@ class CarInformation extends Component {
 
         }
         axios.post(`/api/car/${userID}`, body)
-        .then(response => {
-            this.props.updateUser(response.data)
-            this.props.history.push('/#')
-        })
-        .catch(error => {
-            console.log(error)
-        })
+            .then(response => {
+                this.props.updateUser(response.data)
+                this.props.history.push('/#')
+            })
+            .catch(error => {
+                console.log(error)
+            })
         //push to store
-        
+
     }
     render() {
         return (
@@ -53,13 +53,13 @@ class CarInformation extends Component {
                 <header>Car Info</header>
                 <div className="carForm-container">
                     <form>
-                        <input type='text' placeholder='Make' onChange={this.handleChange} name='make'/>
-                        <input type='text'  placeholder='Model' onChange={this.handleChange} name='model'/>
-                        <input type='text'  placeholder='Trim' onChange={this.handleChange} name='trim'/>
-                        <input type='text'  placeholder='Year' onChange={this.handleChange} name='year'/>
-                        <input type='text'  placeholder='Color' onChange={this.handleChange} name='color'/>
-                        <input type='text'  placeholder='License' onChange={this.handleChange} name='licensePlate'/>
-                        <input type='text'  placeholder='Mileage' onChange={this.handleChange} name='mileage'/>
+                        <input type='text' placeholder='Make' onChange={this.handleChange} name='make' />
+                        <input type='text' placeholder='Model' onChange={this.handleChange} name='model' />
+                        <input type='text' placeholder='Trim' onChange={this.handleChange} name='trim' />
+                        <input type='text' placeholder='Year' onChange={this.handleChange} name='year' />
+                        <input type='text' placeholder='Color' onChange={this.handleChange} name='color' />
+                        <input type='text' placeholder='License' onChange={this.handleChange} name='licensePlate' />
+                        <input type='text' placeholder='Mileage' onChange={this.handleChange} name='mileage' />
 
                         <button onClick={this.submit}>Next</button>
                     </form>
@@ -69,8 +69,8 @@ class CarInformation extends Component {
     }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return state
 }
 
-export default connect(mapStateToProps, {updateCar})(CarInformation)
+export default connect(mapStateToProps, { updateCar: carUpdate })(CarInformation)

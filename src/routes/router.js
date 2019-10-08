@@ -6,8 +6,11 @@ import LandingPage from '../components/landingPage/LandingPage';
 import InstructionsPage from '../components/instructionsPage/InstructionsPage'
 import Login from '../components/login/Login'
 import Register from '../components/register/Register';
-import Stripe from '../components/payment/Stripe'
+import Payment from '../components/payment/Payment'
 import Messages from '../components/message/Message'
+import Admin from '../components/admin/Admin'
+import User from '../components/admin/User'
+import CarInformation from '../components/carInformation/CarInformation'
 
 //Router
 export default (
@@ -15,9 +18,12 @@ export default (
         <Route exact path="/" component={LandingPage}/>
         <Route path="/login" component={Login}/>
         <Route path="/register" component={Register}/>
-        <Route path="/car" component={SignUp}/>
-        <Route path="/payment" component={Stripe}/>
+        <Route path="/car" component={CarInformation}/>
+        <Route path="/payment" component={Payment}/>
         <Route path="/instructions" component={InstructionsPage}/>
         <Route path="/messages" component={Messages}/>
+        {/* admin */}
+        <Route path="/admin" component={Admin}/>
+        <Route path="/admin/user/:id" component={User}/>
     </Switch>
 )
