@@ -38,6 +38,11 @@ massive(CONNECTION_STRING).then(db => {
 // Authenication MiddleWare
 
 // Additional Endpoints
+// userCtrl
+app.post('/api/user/create', userCtrl.createUser)
+app.put('/api/user/update', userCtrl.updateUser)
+// app.get('/')
+
 
 // Listening for the Server Port
 app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));
