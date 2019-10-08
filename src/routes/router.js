@@ -6,7 +6,7 @@ import LandingPage from '../components/landingPage/LandingPage';
 import InstructionsPage from '../components/instructionsPage/InstructionsPage'
 import Login from '../components/login/Login'
 import Register from '../components/register/Register';
-import Stripe from '../components/stripe/Stripe'
+import Stripe from '../components/payment/Stripe'
 import Messages from '../components/message/Message'
 
 //Router

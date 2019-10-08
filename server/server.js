@@ -4,8 +4,11 @@ const massive = require('massive');
 const session = require('express-session');
 const express = require('express');
 const socket = require('socket.io')
+const cors = require('cors');
 
 const app = express();
+
+app.use(cors());
 
 const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env;
 const PORT = SERVER_PORT;
