@@ -41,6 +41,10 @@ massive(CONNECTION_STRING).then(db => {
 // userCtrl
 app.post('/api/user/create', userCtrl.createUser)
 app.put('/api/user/update', userCtrl.updateUser)
+// app.get('/')
+
+// stripCtrl Endpoint
+app.post('/api/payment', stripeCtrl.pay)
 
 // carCtrl
 app.post('/api/car/create', carCtrl.createCar)
@@ -53,5 +57,26 @@ app.get('/api/appointment', appointmentCtrl.getAppointment)
 app.put('/api/appointment/pick_up/:id', appointmentCtrl.updatePickUp)
 app.put('/api/appointment/drop_off/:id', appointmentCtrl.updateDropOff)
 
-// Listening for the Server Port
-app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));
+// Sockets
+io.on('connection', socket => {
+    console.log('User Connected')
+    socket.on('join room', async data => {
+        const {room_id} = data
+        const db = app.get('db')
+        console.log('Room Joined')
+        let existingRoom = await db.message.check_chat_room(room_id)
+        let messages = await db.message.chat_messages_history(room_id)
+        socket.join(room_id)
+        io.to(room_id).emit('room joined', messages)
+    })
+    socket.on('message sent', async data => {
+        const {room_id, message, user_name, is_admin} = data
+        const db = app.get('db')
+        await db.message.create_chat_messages(room_id, message, user_name, is_admin)
+        let messages = await db.message.chat_messages_history(room_id)
+        io.to(room_id).emit('message dispatched', messages)
+    })
+    socket.on('disconnect', () => {
+        console.log('User Disconnected')
+    })    
+})
