@@ -6,6 +6,8 @@ const app = express();
 const massive = require('massive');
 const session = require('express-session');
 
+const socket = require('socket.io')
+
 const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env;
 const PORT = SERVER_PORT;
 
@@ -17,6 +19,13 @@ const appointmentCtrl = require('./controllers/appointmentController');
 const stripeCtrl = require('./controllers/stripeController');
 
 app.use(express.json());
+
+const io = socket(
+    // App Listening
+    app.listen(SERVER_PORT, () => {
+        console.log(`Server is Running on ${PORT}!`)
+    })
+    )
 
 // session set 
 app.use(session({
@@ -46,5 +55,30 @@ app.put('/api/user/update', userCtrl.updateUser)
 // stripCtrl
 app.post('/api/payment', stripeCtrl.pay)
 
-// Listening for the Server Port
-app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));
+
+
+
+
+io.on('connection', socket => {
+    console.log('User Connected')
+    socket.on('join room', async data => {
+        const {room} = data
+        const db = app.get('db')
+        console.log('Room Joined')
+        let existingRoom = await db.chat.check_chat_room({id: room})
+        !existingRoom.length ? db.chat.create_chat_rooms({id: room}) : null
+        let messages = await db.messages.chat_messages_history({id: room})
+        socket.join(room)
+        io.to(room).emit('room joined', messages)
+    })
+    socket.on('message sent', async data => {
+        const {room, message} = data
+        const db = app.get('db')
+        await db.messages.create_chat_messages({id: room, message})
+        let messages = await db.messages.chat_messages_history({id: room})
+        io.to(data.room).emit('message dispatched', messages)
+    })
+    socket.on('disconnect', () => {
+        console.log('User Disconnected')
+    })    
+})
