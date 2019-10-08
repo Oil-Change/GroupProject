@@ -53,7 +53,7 @@ const updatePickUp = async (req, res) => {
     req.status(200).send(updatePickUp);
 };
 
-const updateDropOff = (req, res) => {
+const updateDropOff = async (req, res) => {
     // console.log(`Updating Drop Off`);
     // console.log('');
     const db = req.app.get('db');
