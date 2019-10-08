@@ -5,7 +5,7 @@ import { updateAppointment } from '../../redux/reducer'
 import React, {Component} from 'react'
 import {Grid} from '@material-ui/core'
 import DateFnsUtils from '@date-io/date-fns'
-import {MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker} from '@material-ui/pickers'
+import {MuiPickersUtilsProvider, KeyboardDatePicker} from '@material-ui/pickers'
 
 class Calendar extends Component {
     constructor(){
@@ -30,11 +30,12 @@ class Calendar extends Component {
         // })
     }
 
-    getTodaysAppointmentCount = async () => {
+    getTodaysAppointmentCount = () => {
       console.log('before: getTodayAPpt')
-      const appts = await axios.get('/api/appointment/today')
-      console.log('here: getTodayAPpt')
-      return appts.data.length
+      axios.get('/api/appointment/today').then((res) => {
+        console.log('here: getTodayAPpt')
+        return res.data.length
+      })
     }
 
     disableDates(date){
@@ -50,7 +51,7 @@ class Calendar extends Component {
       return false
     }
 
-    render() {
+  render() {
     return (
       <div>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
