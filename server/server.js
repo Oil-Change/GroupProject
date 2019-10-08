@@ -38,10 +38,13 @@ massive(CONNECTION_STRING).then(db => {
 
 // Authenication MiddleWare
 
-// Stripe Endpoints
+// Additional Endpoints
+// userCtrl
+app.post('/api/user/create', userCtrl.createUser)
+app.put('/api/user/update', userCtrl.updateUser)
+// app.get('/')
+// stripCtrl
 app.post('/api/payment', stripeCtrl.pay)
-
-// Sockets Endpoints
 
 // Listening for the Server Port
 app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));
