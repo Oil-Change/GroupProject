@@ -2,6 +2,12 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
+const io = socket(
+    // App Listening
+    app.listen(SERVER_PORT, () => {
+        console.log(`Server is Running on ${PORT}!`)
+    })
+    )
 
 const massive = require('massive');
 const session = require('express-session');
