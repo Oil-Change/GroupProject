@@ -10,6 +10,7 @@ import Payment from '../components/payment/Payment'
 import Messages from '../components/message/Message'
 import Admin from '../components/admin/Admin'
 import User from '../components/admin/User'
+import CarInformation from '../components/carInformation/CarInformation'
 
 //Router
 export default (
@@ -17,7 +18,7 @@ export default (
         <Route exact path="/" component={LandingPage}/>
         <Route path="/login" component={Login}/>
         <Route path="/register" component={Register}/>
-        <Route path="/car" component={SignUp}/>
+        <Route path="/car" component={CarInformation}/>
         <Route path="/payment" component={Payment}/>
         <Route path="/instructions" component={InstructionsPage}/>
         <Route path="/messages/:id" component={Messages}/>
