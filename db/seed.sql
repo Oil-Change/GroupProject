@@ -40,6 +40,5 @@ CREATE TABLE "messages" (
   "room_id" INTEGER REFERENCES appointments(id),
   "message" TEXT,
   "user_name" VARCHAR(100),
-  "appointment_id" INTEGER,
   "is_admin" BOOLEAN
 );
