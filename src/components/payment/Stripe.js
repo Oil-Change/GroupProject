@@ -51,8 +51,7 @@ class Subscription extends Component {
                             closed={this.onClosed} 
                             allowRememberMe 
                             billingAddress={false}
-                            zipCode={false}
-                        >
+                            zipCode={false}>
                             <button>Checkout</button>
                         </StripeCheckout>
                     </div>
