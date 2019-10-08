@@ -55,7 +55,7 @@ export default function reducer(state = initialState, action) {
             const car = action.payload
             return { ...state, car }
         case UPDATE_APPT:
-            const car = action.payload
+            const appt = action.payload
             return { ...state, appt }    
         default:
             return state
