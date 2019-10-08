@@ -14,6 +14,7 @@ const userCtrl = require('./controllers/userController');
 const messageCtrl = require('./controllers/messageController');
 const carCtrl = require('./controllers/carController');
 const appointmentCtrl = require('./controllers/appointmentController');
+const stripeCtrl = require('./controllers/stripeController');
 
 app.use(express.json());
 
@@ -37,7 +38,10 @@ massive(CONNECTION_STRING).then(db => {
 
 // Authenication MiddleWare
 
-// Additional Endpoints
+// Stripe Endpoints
+app.post('/api/payment', stripeCtrl.pay)
+
+// Sockets Endpoints
 
 // Listening for the Server Port
 app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));
