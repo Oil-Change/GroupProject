@@ -27,6 +27,17 @@ const getAppointment = async (req, res) => {
     res.status(200).send(getAppointment);
 };
 
+const getAllAppointments = async (req, res) => {
+    // console.log(`Getting Apointments`);
+    // console.log('');
+    const db = req.app.get('db');
+    const getAppointments = await db.appointment.get_appointments();
+    // console.log('getAppointment: ', getAppointment);
+    // console.log('');
+    res.status(200).send(getAppointments);
+};
+
+
 const getTodaysAppointments = async (req, res) => {
     // console.log(`Getting Today's Appointments`);
     // console.log('');
@@ -72,6 +83,7 @@ const updateDropOff = async (req, res) => {
 module.exports = {
     createAppointment,
     getAppointment,
+    getAllAppointments,
     getTodaysAppointments,
     updatePickUp,
     updateDropOff
