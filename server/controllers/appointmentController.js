@@ -83,6 +83,7 @@ const updateDropOff = async (req, res) => {
 module.exports = {
     createAppointment,
     getAppointment,
+    getAllAppointments,
     getTodaysAppointments,
     updatePickUp,
     updateDropOff
