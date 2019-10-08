@@ -1,5 +1,5 @@
 CREATE TABLE "users" (
-  "phone_number" INTEGER PRIMARY KEY,
+  "phone_number" TEXT PRIMARY KEY,
   "first_name" VARCHAR(40),
   "last_name" VARCHAR(40),
   "street" VARCHAR(200),
@@ -12,7 +12,7 @@ CREATE TABLE "users" (
 
 CREATE TABLE "cars" (
   "id" SERIAL PRIMARY KEY,
-  "user_id" INTEGER REFERENCES users(phone_number),
+  "user_id" TEXT REFERENCES users(phone_number),
   "license_plate" VARCHAR(20),
   "make" VARCHAR(20),
   "model" VARCHAR(30),
@@ -24,7 +24,7 @@ CREATE TABLE "cars" (
 
 CREATE TABLE "appointments" (
   "id" SERIAL PRIMARY KEY,
-  "user_id" INTEGER REFERENCES users(phone_number),
+  "user_id" TEXT REFERENCES users(phone_number),
   "car_id" INTEGER REFERENCES cars(id),
   "appointment" DATE,
   "pick_up_time" DATE,
