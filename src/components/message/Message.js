@@ -19,7 +19,7 @@ class Message extends Component {
         }
     }
     componentDidMount () {
-
+        this.getAppt()
         this.getUser()
         this.socket = io();
         this.socket.on('room joined', data => {
@@ -30,6 +30,11 @@ class Message extends Component {
           this.updateMessages(data);
         })
         this.joinRoom()
+        
+        this.setState({
+            userName:this.props.user.first_name,
+            isAdmin:this.props.user.isAdmin
+        })
     }
 
     componentWillUnmount() {
@@ -39,12 +44,12 @@ class Message extends Component {
         
         this.socket.emit('message sent', {
           message: this.state.input,
-          roomId: this.state.room,
-          userName:this.state.userName,
+          roomId: this.state.appointment.id,
+          userName:this.props.userName,
           isAdmin: this.state.isAdmin
         })
         this.setState({
-          input: ''
+          message: ''
         })
       }
     updateMessages = (messages) => {
@@ -58,14 +63,17 @@ class Message extends Component {
           })
         
       }
+      getAppt = () => {
+        const id = this.props.match.params
+        axios.get('/api/appointment',id)
+        .then(response =>{
+            this.setState({
+                appointment:response.data
+            })
+        })
+      }
       getUser = () => {
-          const apptId = this.props.match.params
-          axios.get('/api/appointment')
-          .then(response =>{
-              this.setState({
-                  appointment:response.data
-              })
-          })
+          
           const id = this.state.appointment.user_id
         axios.get('/api/user', id)
         
@@ -96,7 +104,7 @@ class Message extends Component {
                   input: e.target.value
                 })
               }} />
-              <button>Send</button>
+              <button onClick={this.sendMessage}>Send</button>
                 
             </div>
         )
