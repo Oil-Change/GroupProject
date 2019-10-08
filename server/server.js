@@ -52,9 +52,13 @@ app.post('/api/user/create', userCtrl.createUser)
 app.put('/api/user/update', userCtrl.updateUser)
 // app.get('/')
 
+
+
+
+
+
 io.on('connection', socket => {
     console.log('User Connected')
-
     socket.on('join room', async data => {
         const {room} = data
         const db = app.get('db')
