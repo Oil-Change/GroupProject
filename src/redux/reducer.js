@@ -1,4 +1,4 @@
-// setting inital state
+// Setting Inital State
 const initialState = {
     phone: 0,
     user: {},
@@ -11,7 +11,6 @@ const UPDATE_PHONE = 'UDPATE_PHONE';
 const UPDATE_USER = "UPDATE_USER";
 const UPDATE_CAR = "UPDATE_CAR";
 const UPDATE_APPT = "UPDATE_APPT";
-
 
 // Action Builders
 export function updatePhone(phoneNumber) {
@@ -36,7 +35,7 @@ export function updateCar(car) {
 };
 
 export function updateAppointment(appointment) {
-
+    console.log("here", appointment)
     return {
         type: UPDATE_APPT,
         payload: appointment
@@ -47,8 +46,8 @@ export function updateAppointment(appointment) {
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case UPDATE_PHONE:
-            const phoneNumber = action.payload;
-            return { ...state, phoneNumber };
+            const phone = action.payload;
+            return { ...state, phone };
         case UPDATE_USER:
             const user = action.payload
             return { ...state, user }
@@ -56,8 +55,9 @@ export default function reducer(state = initialState, action) {
             const car = action.payload
             return { ...state, car }
         case UPDATE_APPT:
-                const appointment = action.payload
-                return { ...state, appointment }
+            console.log("app set", action.payload)
+            // const appointment = action.payload
+            return { ...state, appointment: action.payload }
         default:
             return state
     };

@@ -48,6 +48,17 @@ const getTodaysAppointments = async (req, res) => {
     res.status(200).send(todaysAppointments);
 };
 
+const getAppointments = async (req, res) => {
+    console.log(`Getting day's Appointments`);
+    const { month, year } = req.body
+    console.log("req-date", date);
+    const db = req.app.get('db');
+    const daysAppointments = await db.appointment.get_dates_appointments(month, year);
+    console.log('daysAppointments: ', daysAppointments);
+    console.log('');
+    res.status(200).send(daysAppointments);
+};
+
 const updatePickUp = async (req, res) => {
     // console.log(`Updating Pick Up`);
     // console.log('');
@@ -101,6 +112,7 @@ module.exports = {
     getAppointment,
     getAllAppointments,
     getTodaysAppointments,
+    getAppointments,
     updatePickUp,
     updateDropOff,
     updateChargeDate

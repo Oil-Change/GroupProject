@@ -16,6 +16,14 @@ class Calendar extends Component {
       }
     }
 
+    // componentDidMount(){
+    //   this.openDatePicker()
+    // }
+
+    // openDatePicker(){
+    //   this.refs.dp.openDialog()
+    // }
+
     handleDateChange = date => {
       this.setState({
         selectedDate: date
@@ -32,11 +40,13 @@ class Calendar extends Component {
       this.props.history.push('/payment')
     }
 
-    getTodaysAppointmentCount = () => {
+    getAppointmentCount = (date) => {
       console.log('before: getTodayAPpt')
-      axios.get('/api/appointment/today').then((res) => {
-        console.log('here: getTodayAPpt')
-        return res.data.length
+      console.log('date', date.getMonth(), date.getFullYear())
+      axios.get('/api/appointment/date', {month: date.getMonth()+1, year: date.getFullYear()}).then((res) => {
+        console.log('here: getTodayAppt')
+        console.log(res.data)
+        return res.data
       })
     }
 
@@ -54,6 +64,7 @@ class Calendar extends Component {
     }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <header>
