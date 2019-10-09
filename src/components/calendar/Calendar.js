@@ -46,14 +46,14 @@ class Calendar extends Component {
       //disable past days
       if(date < today) return true
       //disable 'full' days
-      if(this.getTodaysAppointmentCount() >= 40) return true
+      // if(this.getTodaysAppointmentCount() >= 40) return true
       //otherwise do not diable this day
       return false
     }
 
   render() {
     return (
-      <div>
+      <div className="appointment-container">
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <Grid container justify="space-around">
             <KeyboardDatePicker
@@ -72,7 +72,7 @@ class Calendar extends Component {
             />
           </Grid>
         </MuiPickersUtilsProvider>
-        <button onClick={this.createAppt}>Next</button>
+        <button className="next-btn" onClick={this.createAppt}>Next</button>
       </div>
     )
   }

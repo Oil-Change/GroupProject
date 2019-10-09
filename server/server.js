@@ -45,7 +45,7 @@ massive(CONNECTION_STRING).then(db => {
 // Additional Endpoints
 // userCtrl
 app.post('/api/user/create', userCtrl.createUser)
-app.put('/api/user/update', userCtrl.updateUser)
+app.put('/api/user', userCtrl.updateUser)
 // app.get('/')
 
 // stripCtrl Endpoint
