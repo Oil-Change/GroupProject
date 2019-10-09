@@ -53,7 +53,7 @@ app.post('/api/payment', stripeCtrl.pay);
 app.post('/api/receipt', stripeCtrl.receipt);
 
 // carCtrl
-app.post('/api/car/create', carCtrl.createCar)
+app.post('/api/car/:id', carCtrl.createCar)
 app.get('/api/car/:id', carCtrl.getCar)
 
 // appointmentCtrl

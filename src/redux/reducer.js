@@ -3,7 +3,7 @@ const initialState = {
     phone: 0,
     user: {},
     car: {},
-    appointment: null
+    appointment: []
 };
 
 // Action Types
@@ -35,10 +35,11 @@ export function updateCar(car) {
     }
 };
 
-export function updateAppointment(appt) {
+export function updateAppointment(appointment) {
+
     return {
         type: UPDATE_APPT,
-        payload: appt
+        payload: appointment
     }
 };
 
@@ -55,10 +56,9 @@ export default function reducer(state = initialState, action) {
             const car = action.payload
             return { ...state, car }
         case UPDATE_APPT:
-            const appt = action.payload
-            return { ...state, appointment: appt }    
+                const appointment = action.payload
+                return { ...state, appointment }
         default:
             return state
     };
 };
-

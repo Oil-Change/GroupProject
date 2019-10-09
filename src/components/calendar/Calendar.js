@@ -16,18 +16,20 @@ class Calendar extends Component {
       }
     }
 
-     handleDateChange = date => {
-        this.setState({
-          selectedDate: date
-        })
+    handleDateChange = date => {
+      this.setState({
+        selectedDate: date
+      })
     }
 
     createAppt = () => {
-        this.props.appointmentUpdate(this.state.selectedDate)
-        // axios.post('/api/appointment', appointment)
-        // .then(response => {
+      console.log(this.state.selectedDate)
+      this.props.updateAppointment(this.state.selectedDate)
 
-        // })
+      console.log(this.props.user)
+      console.log(this.props.car)
+      console.log(this.props)
+      this.props.history.push('/payment')
     }
 
     getTodaysAppointmentCount = () => {
