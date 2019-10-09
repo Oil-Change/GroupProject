@@ -23,7 +23,8 @@ class Register extends Component {
         })
     }
 
-    submit = () => {
+    submit = (e) => {
+        e.preventDefault()
         const body = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
@@ -32,13 +33,13 @@ class Register extends Component {
             state: this.state.state,
             zip: this.state.zip,
             email: this.state.email
-
         }
-        axios.put('/api/user', body)
+        axios.put(`/api/user`, body)
             .then(response => {
+                console.log(response.data)
                 this.props.updateUser(response.data)
                 //push to store
-                this.props.history.push('/#')
+                this.props.history.push('/car')
             })
             .catch(error => {
                 console.log(error)

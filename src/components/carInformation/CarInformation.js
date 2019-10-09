@@ -23,8 +23,10 @@ class CarInformation extends Component {
         })
     }
 
-    submit = () => {
-        let userID = this.props.user.id
+    submit = (e) => {
+        e.preventDefault()
+        let phoneNumber = this.props.user.phone_number
+        console.log(phoneNumber)
 
         const body = {
             make: this.state.make,
@@ -36,10 +38,10 @@ class CarInformation extends Component {
             mileage: this.state.mileage
 
         }
-        axios.post(`/api/car/${userID}`, body)
+        axios.post(`/api/car/${phoneNumber}`, body)
             .then(response => {
                 this.props.updateCar(response.data)
-                this.props.history.push('/calendar')
+                this.props.history.push('/appointment')
             })
             .catch(error => {
                 console.log(error)

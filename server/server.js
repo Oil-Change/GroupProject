@@ -45,7 +45,7 @@ massive(CONNECTION_STRING).then(db => {
 // Additional Endpoints
 // userCtrl
 app.post('/api/user/create', userCtrl.createUser)
-app.put('/api/user/update', userCtrl.updateUser)
+app.put('/api/user', userCtrl.updateUser)
 // app.get('/')
 
 // stripCtrl Endpoint
@@ -53,7 +53,7 @@ app.post('/api/payment', stripeCtrl.pay);
 app.post('/api/receipt', stripeCtrl.receipt);
 
 // carCtrl
-app.post('/api/car/create', carCtrl.createCar)
+app.post('/api/car/:id', carCtrl.createCar)
 app.get('/api/car/:id', carCtrl.getCar)
 
 // appointmentCtrl
