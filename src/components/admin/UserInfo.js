@@ -1,15 +1,45 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 export default class UserInfo extends Component {
+    constructor() {
+        super()
+    }
+
+    message = () => {
+        let { id } = this.props.appointment
+        this.props.history.push(`/messages/${id}`)
+    }
+
+    pickUp = () => {
+        console.log('Pick UP')
+        let { id } = this.props.appointment
+        let pickUpTime = new Date();
+        let pickUp = true;
+        axios.put(`/api/appointment/pick_up/${id}`, { pickUp, pickUpTime }).then(res => {
+            console.log('Updating Pick Up');
+        }).catch(err => alert('Pick Up did not update'));
+    };
+
+    dropOff = () => {
+        console.log('Drop Off')
+        let { id } = this.props.appointment;
+        let dropOffTime = new Date();
+        let dropOff = true;
+        axios.put(`/api/appointment/drop_off/${id}`, { dropOff, dropOffTime }).then(res => {
+            console.log('Updaing Drop Off');
+        }).catch(err => alert('Drop Off did not update'));
+    };
+
     render() {
         return (
             <div>
-                <h3>{this.props.users.firstName}{this.props.users.lastName}</h3>
-                <p>{this.props.cars.year}{this.props.cars.make}{this.props.cars.model}{this.props.cars.color}</p>
+                <h3>{this.props.appointment.first_name} {this.props.appointment.last_name}</h3>
+                <p>{this.props.appointment.year} {this.props.appointment.make} {this.props.appointment.model} {this.props.appointment.color}</p>
 
-                <button>Message</button>
-                <button>Pick Up</button>
-                <button>Drop Off</button>
+                <button onClick={this.message}>Message</button>
+                <button onClick={this.pickUp}>Pick Up</button>
+                <button onClick={this.dropOff}>Drop Off</button>
             </div>
         )
     }

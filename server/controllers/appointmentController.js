@@ -91,6 +91,22 @@ const updateDropOff = async (req, res) => {
     req.status(200).send(updateDropOff);
 };
 
+const updateChargeDate = async (req, res) => {
+    // console.log(`Updating Charged Date`);
+    // console.log('');
+    const db = req.app.get('db');
+    const { id } = req.params;
+    // console.log('id: ', id);
+    // console.log('');
+    const { price, charge_date } = req.body;
+    // console.log('charge_date: ', charge_date);
+    // console.log('');
+    const updateChargedDate = await db.appointment.update_charged_date([id, price, charge_date])
+    // console.log('updateChargedDate: ', updateChargedDate);
+    // console.log('');
+    req.status(200).send(updateChargedDate);
+};
+
 module.exports = {
     createAppointment,
     getAppointment,
@@ -98,5 +114,6 @@ module.exports = {
     getTodaysAppointments,
     getAppointments,
     updatePickUp,
-    updateDropOff
+    updateDropOff,
+    updateChargeDate
 };
