@@ -45,7 +45,7 @@ massive(CONNECTION_STRING).then(db => {
 // Additional Endpoints
 // userCtrl
 app.post('/api/user/create', userCtrl.createUser)
-app.put('/api/user/update', userCtrl.updateUser)
+app.put('/api/user', userCtrl.updateUser)
 // app.get('/')
 
 // stripCtrl Endpoint
@@ -53,7 +53,7 @@ app.post('/api/payment', stripeCtrl.pay);
 app.post('/api/receipt', stripeCtrl.receipt);
 
 // carCtrl
-app.post('/api/car/create', carCtrl.createCar)
+app.post('/api/car/:id', carCtrl.createCar)
 app.get('/api/car/:id', carCtrl.getCar)
 
 // appointmentCtrl
@@ -85,9 +85,9 @@ io.on('connection', socket => {
         io.to(room_id).emit('room joined', messages)
     })
     socket.on('message sent', async data => {
-        const {room_id, message, user_name, is_admin} = data
+        const {room_id, message, user_name, is_admin, timestamp} = data
         const db = app.get('db')
-        await db.message.create_chat_messages(room_id, message, user_name, is_admin)
+        await db.message.create_chat_messages(room_id, message, user_name, is_admin,timestamp)
         let messages = await db.message.chat_messages_history(room_id)
         io.to(room_id).emit('message dispatched', messages)
     })

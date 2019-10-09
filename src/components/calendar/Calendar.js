@@ -16,18 +16,20 @@ class Calendar extends Component {
       }
     }
 
-     handleDateChange = date => {
-        this.setState({
-          selectedDate: date
-        })
+    handleDateChange = date => {
+      this.setState({
+        selectedDate: date
+      })
     }
 
     createAppt = () => {
-        this.props.appointmentUpdate(this.state.selectedDate)
-        // axios.post('/api/appointment', appointment)
-        // .then(response => {
+      console.log(this.state.selectedDate)
+      this.props.updateAppointment(this.state.selectedDate)
 
-        // })
+      console.log(this.props.user)
+      console.log(this.props.car)
+      console.log(this.props)
+      this.props.history.push('/payment')
     }
 
     getTodaysAppointmentCount = () => {
@@ -46,7 +48,7 @@ class Calendar extends Component {
       //disable past days
       if(date < today) return true
       //disable 'full' days
-      if(this.getTodaysAppointmentCount() >= 40) return true
+      // if(this.getTodaysAppointmentCount() >= 40) return true
       //otherwise do not diable this day
       return false
     }
@@ -54,6 +56,11 @@ class Calendar extends Component {
   render() {
     return (
       <div>
+        <header>
+            <button>Back</button>
+            <h1>Calendar</h1>
+                    
+        </header>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <Grid container justify="space-around">
             <KeyboardDatePicker
@@ -72,7 +79,7 @@ class Calendar extends Component {
             />
           </Grid>
         </MuiPickersUtilsProvider>
-        <button onClick={this.createAppt}>Next</button>
+        <button className="next-btn" onClick={this.createAppt}>Next</button>
       </div>
     )
   }
