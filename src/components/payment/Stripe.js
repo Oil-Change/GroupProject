@@ -32,29 +32,29 @@ class Subscription extends Component {
 
     charge = (req, res) => {
         const id = req.params;
-        axios.put(`/api/appointment/charged/${id}`).then(res => {
-
+        axios.put(`/api/appointment/charged/${id}`, { id }).then(res => {
+            
         }).catch(err => alert('Unable to Complete Transaction'));
     }
 
     render() {
         return (
-                <div>
-                    <div >
+            <div>
+                <div >
                     <div className='stripe-constainer'>
                         <StripeCheckout
-                            name='Oil Change Charge' 
+                            name='Oil Change Charge'
                             image={imageUrl}
-                            description='Charging $60.00 for Oil Change' 
-                            stripeKey={process.env.REACT_APP_STRIPE_KEY} 
+                            description='Charging $60.00 for Oil Change'
+                            stripeKey={process.env.REACT_APP_STRIPE_KEY}
                             token={this.onToken}
                             amount={this.state.amount}
                             currency="USD"
                             panelLabel="Submit Payment"
-                            locale="en" 
-                            opened={this.onOpened} 
-                            closed={this.onClosed} 
-                            allowRememberMe 
+                            locale="en"
+                            opened={this.onOpened}
+                            closed={this.onClosed}
+                            allowRememberMe
                             billingAddress={false}
                             zipCode={false}>
                             <button className='stripe-checkout-button'>Checkout</button>
