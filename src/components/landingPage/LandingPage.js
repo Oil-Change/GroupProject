@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class LandingPage extends Component {
     render() {
 
-        const img = require('../../assets/20306.png')
+        const img = require('../../assets/20306 copy.png')
         return (
             <div className="landing-container">
                 <h1 className="welcome">WELCOME</h1>
