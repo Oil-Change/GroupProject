@@ -6,15 +6,22 @@ import React, {Component} from 'react'
 import {Grid} from '@material-ui/core'
 import DateFnsUtils from '@date-io/date-fns'
 import {MuiPickersUtilsProvider, KeyboardDatePicker} from '@material-ui/pickers'
+import { Calendar } from '@material-ui/pickers/views/Calendar/Calendar';
 
-class Calendar extends Component {
+class CalendarPage extends Component {
     constructor(){
       super()
 
       this.state = {
-        selectedDate: null
+        selectedDate: null,
+        picker: null
       }
     }
+
+    // componentDidMount(){
+    //   console.log(this.state.picker)
+    //   // this.picker.togglePicker()
+    // }
 
     handleDateChange = date => {
       this.setState({
@@ -32,11 +39,13 @@ class Calendar extends Component {
       this.props.history.push('/payment')
     }
 
-    getTodaysAppointmentCount = () => {
+    getAppointmentCount = (date) => {
       console.log('before: getTodayAPpt')
-      axios.get('/api/appointment/today').then((res) => {
+      console.log('date', date)
+      axios.get('/api/appointment/date', {date}).then((res) => {
         console.log('here: getTodayAPpt')
-        return res.data.length
+        console.log(res.data)
+        return res.data
       })
     }
 
@@ -48,23 +57,28 @@ class Calendar extends Component {
       //disable past days
       if(date < today) return true
       //disable 'full' days
-      // if(this.getTodaysAppointmentCount() >= 40) return true
+
+      // if(this.getAppointmentCount(date) >= 40) return true
       //otherwise do not diable this day
       return false
     }
 
   render() {
+    // console.dir(this.state.picker)
+    // console.log(this.state.selectedDate)
+    // console.log("data?",this.getAppointmentCount(this.state.selectedDate))
     return (
       <div>
         <header>
             <button>Back</button>
-            <h1>Calendar</h1>
-                    
+            <h1>Calendar</h1> 
         </header>
+        {/* <Calendar/> */}
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <Grid container justify="space-around">
             <KeyboardDatePicker
               shouldDisableDate={this.disableDates}
+              // ref={node => this.setState({picker: node})}
               disableToolbar
               variant="inline"
               format="MM/dd/yyyy"
@@ -89,4 +103,4 @@ function mapStateToProps(state) {
   return state
 }
 
-export default connect(mapStateToProps, {updateAppointment})(Calendar)
+export default connect(mapStateToProps, {updateAppointment})(CalendarPage)
