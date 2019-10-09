@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
 class Subscription extends Component {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
             amount: 6000
         }
@@ -23,25 +24,29 @@ class Subscription extends Component {
         let { amount } = this.state
         amount /= 100
         console.log(amount)
-        token.card = void 0
+        token.card = void 0;
+        let chargedDate = new Date();
+        let price = amount;
+        // let { id } = req.params;
+        // let { email } = this.props.user.email;
         axios.post('/api/payment', { token, amount: this.state.amount * 100 }).then(res => {
             console.log(res)
             alert(`Congratulations you paid this ${amount}!`)
-        })
-    }
-
-    charge = (req, res) => {
-        const id = req.params;
-        axios.put(`/api/appointment/charged/${id}`, { id }).then(res => {
-            
-        }).catch(err => alert('Unable to Complete Transaction'));
+            this.props.history.push('/instructions');
+        });
+        // axios.post('/api/receipt', { email }).then(res => {
+        //     alert('Receipt sent to your email');
+        // });
+        // axios.put(`/api/appointment/charged/${id}`, { price, chargedDate }).then(res => {
+        //     this.props.history.push('/instructions');
+        // }).catch(err => alert('Payment not accepted!'));
     }
 
     render() {
         return (
             <div>
-                <div >
-                    <div className='stripe-constainer'>
+                <div>
+                    <div className='stripe-container'>
                         <StripeCheckout
                             name='Oil Change Charge'
                             image={imageUrl}
@@ -66,7 +71,7 @@ class Subscription extends Component {
     }
 }
 
-export default Subscription;
+export default withRouter(Subscription);
 
 const imageUrl = 'https://th.thgim.com/opinion/op-ed/article19253786.ece/alternates/FREE_660/Th11-Paper%20money'
 
