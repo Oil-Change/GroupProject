@@ -6,21 +6,22 @@ import React, {Component} from 'react'
 import {Grid} from '@material-ui/core'
 import DateFnsUtils from '@date-io/date-fns'
 import {MuiPickersUtilsProvider, KeyboardDatePicker} from '@material-ui/pickers'
-import { Calendar } from '@material-ui/pickers/views/Calendar/Calendar';
 
-class CalendarPage extends Component {
+class Calendar extends Component {
     constructor(){
       super()
 
       this.state = {
-        selectedDate: null,
-        picker: null
+        selectedDate: null
       }
     }
 
     // componentDidMount(){
-    //   console.log(this.state.picker)
-    //   // this.picker.togglePicker()
+    //   this.openDatePicker()
+    // }
+
+    // openDatePicker(){
+    //   this.refs.dp.openDialog()
     // }
 
     handleDateChange = date => {
@@ -36,7 +37,7 @@ class CalendarPage extends Component {
       console.log(this.props.user)
       console.log(this.props.car)
       console.log(this.props)
-      this.props.history.push('/payment')
+      // this.props.history.push('/payment')
     }
 
     getAppointmentCount = (date) => {
@@ -57,28 +58,24 @@ class CalendarPage extends Component {
       //disable past days
       if(date < today) return true
       //disable 'full' days
-
-      // if(this.getAppointmentCount(date) >= 40) return true
+      // if(this.getTodaysAppointmentCount() >= 40) return true
       //otherwise do not diable this day
       return false
     }
 
   render() {
-    // console.dir(this.state.picker)
-    // console.log(this.state.selectedDate)
-    // console.log("data?",this.getAppointmentCount(this.state.selectedDate))
+    console.log(this.props)
     return (
       <div>
         <header>
             <button>Back</button>
-            <h1>Calendar</h1> 
+            <h1>Calendar</h1>
+                    
         </header>
-        {/* <Calendar/> */}
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <Grid container justify="space-around">
             <KeyboardDatePicker
               shouldDisableDate={this.disableDates}
-              // ref={node => this.setState({picker: node})}
               disableToolbar
               variant="inline"
               format="MM/dd/yyyy"
@@ -103,4 +100,4 @@ function mapStateToProps(state) {
   return state
 }
 
-export default connect(mapStateToProps, {updateAppointment})(CalendarPage)
+export default connect(mapStateToProps, {updateAppointment})(Calendar)

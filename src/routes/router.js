@@ -11,7 +11,7 @@ import Messages from '../components/message/Message'
 import Admin from '../components/admin/Admin'
 import UserInfo from '../components/admin/UserInfo'
 import CarInformation from '../components/carInformation/CarInformation'
-import CalendarPage from '../components/calendar/CalendarPage'
+import Calendar from '../components/calendar/Calendar'
 
 //Router
 export default (
@@ -20,7 +20,7 @@ export default (
         <Route path="/login" component={Login}/>
         <Route path="/register" component={Register}/>
         <Route path="/car" component={CarInformation}/>
-        <Route path="/appointment" component={CalendarPage}/>
+        <Route path="/appointment" component={Calendar}/>
         <Route path="/payment" component={Payment}/>
         <Route path="/instructions" component={InstructionsPage}/>
         <Route path="/messages/:id" component={Messages}/>
