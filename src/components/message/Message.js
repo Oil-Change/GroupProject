@@ -13,6 +13,7 @@ class Message extends Component {
             message: '',
             userName: '',
             isAdmin: null,
+            timestamp: '',
             messages:[],
             user: [],
             appointment:[]
@@ -40,13 +41,27 @@ class Message extends Component {
     componentWillUnmount() {
         this.socket.disconnect();
       }
+      gettime = () => {
+        const date = new Date().getDate()
+        const month = new Date().getMonth() + 1
+        const hours = new Date().getHours()
+        const min = new Date().getMinutes()
+        const time = hours + ':' + min + ' ' + month + '/' + date
+        this.setState({
+            timestamp:time
+        })
+      }
       sendMessage = () => {
+
+        
+        
         
         this.socket.emit('message sent', {
           message: this.state.input,
           roomId: this.state.appointment.id,
           userName:this.props.userName,
-          isAdmin: this.state.isAdmin
+          isAdmin: this.state.isAdmin,
+          timestamp:this.state.timestamp
         })
         this.setState({
           message: ''
@@ -87,7 +102,11 @@ class Message extends Component {
     render() {
         return (
             <div>
-                <header>Messages</header>
+                <header>
+                    <button>Back</button>
+                    <h1>Messages</h1>
+                    
+                </header>
 
                 <div>
                     <h1>{this.state.user.first_name}</h1> <h1>{this.state.user.last_name}</h1>

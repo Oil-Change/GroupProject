@@ -5,7 +5,11 @@ class InstructionsPage extends Component {
     render() {
         return (
             <div>
-                <header>Instructions</header>
+                <header>
+                    <button>Back</button>
+                    <h1>Instructions</h1>
+                    
+                </header>
 
                 <ul>
                     <li>1. Have your car available for pick up from 7-11am.</li>

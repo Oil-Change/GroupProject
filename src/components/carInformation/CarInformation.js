@@ -50,7 +50,11 @@ class CarInformation extends Component {
     render() {
         return (
             <div>
-                <header>Car Info</header>
+                <header>
+                    <button>Back</button>
+                    <h1>Car Info</h1>
+                    
+                </header>
                 <div className="carForm-container">
                     <form>
                         <input type='text' placeholder='Make' onChange={this.handleChange} name='make' />
