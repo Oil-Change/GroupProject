@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { updateUser } from '../../redux/reducer'
+import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 
 class Register extends Component {
     constructor() {
@@ -46,21 +47,27 @@ class Register extends Component {
 
     }
     render() {
+        const back = require('../../assets/back.png')
         return (
             <div>
                 <header>
-                    <button>Back</button>
-                    <h1>Register</h1>
-                    
+                    <div><button className='Header-Btn'><img src={back}></img></button></div>
+                    <div className='header-title'><div className='circle-container'><AccountCircleIcon id='AccountColor'/><h1>Account Info</h1></div></div>
+                    <div className='header-right'></div>
                 </header>
+
+                        {/* need some text  */}
+
                 <div className="carForm-container">
                     <form>
-                        <input type='text' placeholder='First Name' onChange={this.handleChange} name='firstName' />
-                        <input type='text' placeholder='Last Name' onChange={this.handleChange} name='lastName' />
+                        <input type='text' placeholder='First name' onChange={this.handleChange} name='firstName' />
+                        <input type='text' placeholder='Last name' onChange={this.handleChange} name='lastName' />
                         <input type='text' placeholder='Street' onChange={this.handleChange} name='street' />
                         <input type='text' placeholder='City' onChange={this.handleChange} name='city' />
-                        <input type='text' placeholder='State' onChange={this.handleChange} name='state' />
-                        <input type='text' placeholder='Zip Code' onChange={this.handleChange} name='zip' />
+                        <div>
+                        <input type='text' placeholder='State' onChange={this.handleChange} name='state' className='small-input'/>
+                        <input type='text' placeholder='Zip code' onChange={this.handleChange} name='zip'className='small-input'/>
+                        </div>
                         <input type='email' placeholder='Email' onChange={this.handleChange} name='email' />
 
                         <button onClick={this.submit}>Next</button>
