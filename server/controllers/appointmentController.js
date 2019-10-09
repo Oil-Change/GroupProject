@@ -49,19 +49,19 @@ const getTodaysAppointments = async (req, res) => {
 };
 
 const updatePickUp = async (req, res) => {
-    console.log(`Updating Pick Up`);
-    console.log('');
+    // console.log(`Updating Pick Up`);
+    // console.log('');
     const db = req.app.get('db');
     const { id } = req.params;
     // console.log('id: ', id);
     // console.log('');
     const { pickUpTime, pickUp } = req.body;
-    // console.log('dropOffTime: ', dropOffTime);
+    // console.log('pickUpTime: ', pickUpTime);
     // console.log('');
     const updatePickUp = await db.appointment.update_pick_up([id, pickUpTime, pickUp])
-    // console.log('updateDropOff: ', updateDropOff);
+    // console.log('updatePickUp: ', updatePickUp);
     // console.log('');
-    req.status(200).send(updatePickUp);
+    res.status(200).send(updatePickUp);
 };
 
 const updateDropOff = async (req, res) => {
@@ -77,7 +77,7 @@ const updateDropOff = async (req, res) => {
     const updateDropOff = await db.appointment.update_drop_off([id, dropOffTime, dropOff])
     // console.log('updateDropOff: ', updateDropOff);
     // console.log('');
-    req.status(200).send(updateDropOff);
+    res.status(200).send(updateDropOff);
 };
 
 const updateChargeDate = async (req, res) => {
