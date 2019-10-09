@@ -46,7 +46,7 @@ massive(CONNECTION_STRING).then(db => {
 // userCtrl
 app.post('/api/user/create', userCtrl.createUser)
 app.put('/api/user', userCtrl.updateUser)
-// app.get('/')
+app.get('/api/user', userCtrl.getUser)
 
 // stripCtrl Endpoint
 app.post('/api/payment', stripeCtrl.pay);
