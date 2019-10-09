@@ -7,16 +7,29 @@ export default class UserInfo extends Component {
     }
 
     message = () => {
-
+        let { id } = this.props.appointment
+        this.props.history.push(`/messages/${id}`)
     }
 
     pickUp = () => {
-        // /api/appointment/pick_up/:id
-    }
+        console.log('Pick UP')
+        let { id } = this.props.appointment
+        let pickUpTime = new Date();
+        let pickUp = true;
+        axios.put(`/api/appointment/pick_up/${id}`, { pickUp, pickUpTime }).then(res => {
+            console.log('Updating Pick Up');
+        }).catch(err => alert('Pick Up did not update'));
+    };
 
     dropOff = () => {
-        // /api/appointment/drop_off/:id
-    }
+        console.log('Drop Off')
+        let { id } = this.props.appointment;
+        let dropOffTime = new Date();
+        let dropOff = true;
+        axios.put(`/api/appointment/drop_off/${id}`, { dropOff, dropOffTime }).then(res => {
+            console.log('Updaing Drop Off');
+        }).catch(err => alert('Drop Off did not update'));
+    };
 
     render() {
         return (
