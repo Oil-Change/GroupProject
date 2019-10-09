@@ -26,10 +26,11 @@ module.exports = {
     },
     receipt: async () => {
         const charge = await stripe.charges.create({
-            amount: req.body,
+            amount: 60,
             currency: 'usd',
             source: 'tok_visa',
             receipt_email: req.body,
         });
+        return res.status(200).send(charge)
     }
 }

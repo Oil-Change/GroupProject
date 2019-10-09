@@ -46,7 +46,7 @@ massive(CONNECTION_STRING).then(db => {
 // userCtrl
 app.post('/api/user/create', userCtrl.createUser)
 app.put('/api/user', userCtrl.updateUser)
-// app.get('/')
+app.get('/api/user/:id', userCtrl.getUser)
 
 // stripCtrl Endpoint
 app.post('/api/payment', stripeCtrl.pay);
@@ -63,6 +63,7 @@ app.get('/api/appointment/today', appointmentCtrl.getTodaysAppointments)
 app.get('/api/appointment', appointmentCtrl.getAppointment)
 app.put('/api/appointment/pick_up/:id', appointmentCtrl.updatePickUp)
 app.put('/api/appointment/drop_off/:id', appointmentCtrl.updateDropOff)
+app.put('/api/appointment/charged/:id', appointmentCtrl.updateChargeDate)
 
 const io = socket(
     // App Listening
