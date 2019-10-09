@@ -84,9 +84,9 @@ io.on('connection', socket => {
         io.to(room_id).emit('room joined', messages)
     })
     socket.on('message sent', async data => {
-        const {room_id, message, user_name, is_admin} = data
+        const {room_id, message, user_name, is_admin, timestamp} = data
         const db = app.get('db')
-        await db.message.create_chat_messages(room_id, message, user_name, is_admin)
+        await db.message.create_chat_messages(room_id, message, user_name, is_admin,timestamp)
         let messages = await db.message.chat_messages_history(room_id)
         io.to(room_id).emit('message dispatched', messages)
     })

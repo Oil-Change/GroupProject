@@ -48,7 +48,11 @@ class Register extends Component {
     render() {
         return (
             <div>
-                <header>Registration</header>
+                <header>
+                    <button>Back</button>
+                    <h1>Register</h1>
+                    
+                </header>
                 <div className="carForm-container">
                     <form>
                         <input type='text' placeholder='First Name' onChange={this.handleChange} name='firstName' />

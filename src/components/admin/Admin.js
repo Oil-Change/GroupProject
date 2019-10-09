@@ -35,7 +35,11 @@ export default class Admin extends Component {
         })
         return (
             <div>
-                <header>Dashboard</header>
+                <header>
+                    <button>Back</button>
+                    <h1>Dashboard</h1>
+                    
+                </header>
 
                 {mappedAppointments}
             </div>
