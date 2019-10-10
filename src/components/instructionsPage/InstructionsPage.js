@@ -13,7 +13,6 @@ class InstructionsPage extends Component {
                 <div className="ins-form-container">
                     <div className="ins-container">
 
-
                 <ol>
                     <li>Have your car available for pick up from 7-11am.</li>
                     <li>Either be home or have your keys hidden in a previously designated location with your driver.</li>
