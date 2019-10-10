@@ -63,14 +63,21 @@ class Calendar extends Component {
       return false
     }
 
+    back = (e) => {
+      e.preventDefault()
+      this.props.history.push('/car')
+    }
+
   render() {
+    const back = require('../../assets/back.png')
+
     console.log(this.props)
     return (
       <div>
         <header>
-            <button>Back</button>
-            <h1>Calendar</h1>
-                    
+          <div><button className='Header-Btn' onClick={this.back}><img alt='none' src={back}></img></button></div>
+          <div className='header-title'><div className='circle-container'><h1>Calendar</h1></div></div>
+          <div className='header-right'></div>
         </header>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <Grid container justify="space-around">
