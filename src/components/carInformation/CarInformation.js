@@ -63,7 +63,7 @@ class CarInformation extends Component {
                     <div className='header-title'><div className='circle-container'><h1>Car Information</h1></div></div>
                     <div className='header-right'></div>
                 </header>
-                <div className="carForm-container">
+                <div className="form-container">
                     <form>
                         <input type='text' placeholder='Make' onChange={this.handleChange} name='make' />
                         <input type='text' placeholder='Model' onChange={this.handleChange} name='model' />
