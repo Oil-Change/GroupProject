@@ -1,6 +1,6 @@
 // Setting Inital State
 const initialState = {
-    phone: 0,
+    phone_number: 0,
     user: {},
     car: {},
     appointment: []
@@ -46,8 +46,8 @@ export function updateAppointment(appointment) {
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case UPDATE_PHONE:
-            const phone = action.payload;
-            return { ...state, phone };
+            const phone_number = action.payload;
+            return { ...state, phone_number };
         case UPDATE_USER:
             const user = action.payload
             return { ...state, user }

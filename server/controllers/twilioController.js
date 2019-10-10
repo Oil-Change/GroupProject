@@ -11,20 +11,19 @@ const client = new twilio(ACCOUNT_SID, AUTH_TOKEN);
 const sendCode = (req, res) => {
 
     //_GET Variables
-    const { user } = req.body;
+    const { phone_number, code } = req.body;
 
     //Send Text
     client.messages.create({
-        body: `Your verification code is ${num}`,
-        to: user.phone_number,  // Text this number
+        body: `Your verification code is ${code}`,
+        to: phone_number,  // Text this number
         from: '+18582174901' // From a valid Twilio number
     }).then((message) => console.log(message.body))
 }
 
 const pickUp = (req, res) => {
     //_GET Variables
-    const { user, pickUpTime } = req.body
-
+    const { user } = req.body
 
     //Send Text
     client.messages.create({
@@ -36,7 +35,7 @@ const pickUp = (req, res) => {
 
 dropOff = (req, res) => {
     //_GET Variables
-    const { user, dropOffTime } = req.body
+    const { user } = req.body
 
     //Send Text
     client.messages.create({

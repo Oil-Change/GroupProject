@@ -42,16 +42,6 @@ module.exports = {
         await db.user.update_user_code([phone_number, code])
         return res.status(200).send("set")
     },
-    getCode: (req, res) => {
-        const { id } = req.params
-        const db = req.app.get('db')
-        db.user.get_code([id])
-            .then((response) => res.status(200).send(response))
-            .catch(err => {
-                res.status(500).send({ errorMessage: 'Unable to Get User!' })
-                console.log(err)
-            })
-    },
     removeCode: async (req, res) => {
         const { phone_number } = req.body
         const db = req.app.get('db')

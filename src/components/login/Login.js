@@ -4,6 +4,7 @@ import { updatePhone } from '../../redux/reducer'
 import axios from 'axios';
 
 class Login extends Component {
+
     updateRedux = (e) => {
         this.props.updatePhone(e)
     }
@@ -13,12 +14,19 @@ class Login extends Component {
         this.props.history.push('/')
     }
 
-    codeVerfiy = () => {
-        var min = 10000
-        var max = 99999
-        var num = Math.floor(Math.random() * (max - min + 1)) + min
+    codeSend = async () => {
+        let min = 10000
+        let max = 99999
+        let code = Math.floor(Math.random() * (max - min + 1)) + min
+        
+        await axios.post('/twilio/send-verify', {code, phone_number: this.props.phone_number})
 
-        axios.post('/api/user/code/1', {})
+        await axios.post('/api/user/code/1', {code, phone_number: this.props.phone_number})
+
+    }
+
+    codeVerify = async (code) => {
+        const dbCode = await axios.get('/auth/user/code/2', {code, phone_number: this.props.phone_number})
     }
 
     render() {
