@@ -24,9 +24,19 @@
     width: 100%;
     display: flex;
     justify-content: center;
+
+    span{
+        width: 100px;
+        height: 100px;
+        border-radius: 50;
+        color: red;
+        box-shadow:0 0 5px #dad5d5;
+        
+    }
     img{
         width: 100%;
     }
+    
 }
 .to-twillio-btn{
     background:$buttonColor;
