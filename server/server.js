@@ -41,14 +41,16 @@ massive(CONNECTION_STRING).then(db => {
 
 // Authenication MiddleWare
 
-// Additional Endpoints
 //Twilio text messages
-app.post('/twilio/send-verify', twilioCtrl.updateTempPass)
+app.post('/twilio/send-verify', twilioCtrl.sendCode)
 app.post('/twilio/send-pickUp', twilioCtrl.pickUp)
 app.post('/twilio/send-dropOff', twilioCtrl.dropOff)
 
 // userCtrl
 app.post('/api/user/create', userCtrl.createUser)
+app.post('/api/user/code/1', userCtrl.updateCode)
+app.get('/api/user/code/2', userCtrl.getCode)
+app.post('/api/user/code/3', userCtrl.removeCode)
 app.put('/api/user', userCtrl.updateUser)
 app.get('/api/user/:id', userCtrl.getUser)
 

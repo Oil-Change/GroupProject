@@ -1,15 +1,26 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updatePhone } from '../../redux/reducer'
+import axios from 'axios';
 
 class Login extends Component {
     updateRedux = (e) => {
         this.props.updatePhone(e)
     }
+
     back = (e) => {
         e.preventDefault()
         this.props.history.push('/')
     }
+
+    codeVerfiy = () => {
+        var min = 10000
+        var max = 99999
+        var num = Math.floor(Math.random() * (max - min + 1)) + min
+
+        axios.post('/api/user/code/1', {})
+    }
+
     render() {
         const back = require('../../assets/back.png')
         return (
