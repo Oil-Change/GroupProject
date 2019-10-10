@@ -12,12 +12,14 @@
     font-family: $poppins;
     font-size: 40px;
     text-align: center;
+    padding-bottom: 5%;
     
 }
 
 .greeting-text{
     font-family: $lato;
     font-size: 20px;
+    padding-left: 2%;
 
 }
 .image-container{
@@ -38,11 +40,13 @@
     }
     
 }
-.to-twillio-btn{
-    background:$buttonColor;
-    width: 200px;
-    height: 50px;
-    border-radius: 5px;
-    font-family: $lato;
-    font-size: 18px;
+.next-btn{
+    background:white;
+        width: 200px;
+        height: 50px;
+        border-radius: 5px;
+        border: 2px solid $bg;
+        font-family: $lato;
+        font-size: 18px;
+        color: $bg;
 }

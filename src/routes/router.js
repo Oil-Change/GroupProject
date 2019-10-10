@@ -21,7 +21,7 @@ export default (
         <Route path="/register" component={Register}/>
         <Route path="/car" component={CarInformation}/>
         <Route path="/appointment" component={Calendar}/>
-        <Route path="/payment" component={Payment}/>
+        <Route path="/payment" component={Payment}/> 
         <Route path="/instructions" component={InstructionsPage}/>
         <Route path="/messages/:id" component={Message}/>
         {/* admin */}

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { updateUser } from '../../redux/reducer'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 
+
 class Register extends Component {
     constructor() {
         super()
@@ -123,7 +124,7 @@ class Register extends Component {
 
                         {/* need some text  */}
 
-                <div className="carForm-container">
+                <div className="form-container">
                     <form>
                         {this.state.error ? 
                             <div className="error-box">Some of the information is incorrect in the form</div> 
