@@ -22,7 +22,7 @@ class InstructionsPage extends Component {
                     <li>The driver can drop the keys off directly to you or stash them in the same location they picked them up.(Discuss options with driver)</li>
                 </ol>
                 
-                <button className="ins-message"><img></img></button>
+                <button className="ins-message"><ing></ing></button>
                 </div>
                 </div>
             </div>
