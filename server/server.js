@@ -15,7 +15,6 @@ const PORT = SERVER_PORT;
 
 // import controllers
 const userCtrl = require('./controllers/userController');
-const messageCtrl = require('./controllers/messageController');
 const carCtrl = require('./controllers/carController');
 const appointmentCtrl = require('./controllers/appointmentController');
 const stripeCtrl = require('./controllers/stripeController');
