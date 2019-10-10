@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import UserInfo from './UserInfo'
+import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 
 export default class Admin extends Component {
     constructor() {
@@ -26,8 +27,13 @@ export default class Admin extends Component {
                 console.log(err)
             })
     }
+    back = (e) => {
+        e.preventDefault()
+        this.props.history.push('/login')
+    }
 
     render() {
+        
         const mappedAppointments = this.state.appointments.map((appointment, i) => {
             return (
                 <UserInfo key={i} appointment={appointment} /> 
@@ -39,8 +45,9 @@ export default class Admin extends Component {
         return (
             <div>
                 <header>
-                    <button>Back</button>
-                    <h1>Dashboard</h1>
+                    <div className="left"></div>
+                    <div className='header-title'><div className='circle-container'><AccountCircleIcon id='AccountColor'/><h1>Account Info</h1></div></div>
+                    <div className='header-right'></div>
                 </header>
 
                 {mappedAppointments}

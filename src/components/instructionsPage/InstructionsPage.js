@@ -6,10 +6,12 @@ class InstructionsPage extends Component {
         return (
             <div>
                 <header>
+                    <div className="left-hdr"></div>
                     <div className='header-title'><div className='circle-container'><h1>Instructions</h1></div></div>
                     <div className='header-right'></div>
                 </header>
-
+                <div className="ins-form-container">
+                    <div className="ins-container">
                 <ul>
                     <li>1. Have your car available for pick up from 7-11am.</li>
                     <li>2. Either be home or have your keys hidden in a previously designated location with your driver.</li>
@@ -18,8 +20,9 @@ class InstructionsPage extends Component {
                     <li>5. The driver can drop the keys off directly to you or stash them in the same location they picked them up.(Discuss options with driver)</li>
                 </ul>
                 
-                <button><ing></ing></button>
-
+                <button className="ins-message"><img></img></button>
+                </div>
+                </div>
             </div>
         )
     }

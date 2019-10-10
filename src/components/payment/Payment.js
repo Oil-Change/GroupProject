@@ -15,10 +15,14 @@ export default class Payment extends Component {
                     <div className='header-title'><div className='circle-container'><h1>Payment</h1></div></div>
                     <div className='header-right'></div>
                 </header>
+                <div className="pay-form-container">
+                    <div className="inv-container">
                 <h1>Invoice</h1>
                 <h2>Oil Change: $60.00</h2>
                 <Stripe />
                 {/* onClick={this.props.history.push('/instructions')}  */}
+                </div>
+                </div>
             </div>
         )
     };
