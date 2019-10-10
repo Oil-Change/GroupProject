@@ -115,7 +115,9 @@ input, select {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 100vh;
+  height: 99vh;
+  background: #fbbb06;
+  padding: 5% 0 10% 0;
 }
 
 .welcome {
@@ -139,19 +141,12 @@ input, select {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-}
-
-.image-container span {
-  width: 100px;
-  height: 100px;
-  border-radius: 50;
-  color: red;
-  -webkit-box-shadow: 0 0 5px #dad5d5;
-          box-shadow: 0 0 5px #dad5d5;
+  border-top: 1px solid #fbbb06;
 }
 
 .image-container img {
   width: 100%;
+  z-index: 1;
 }
 
 .next-btn {
@@ -163,6 +158,29 @@ input, select {
   font-family: "Lato", sans-serif;
   font-size: 18px;
   color: #fbbb06;
+}
+
+.bot-section {
+  background: white;
+  height: 87vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.bot-section p {
+  margin-top: 10%;
+}
+
+.bot-section button {
+  margin-top: 20%;
 }
 
 header {
