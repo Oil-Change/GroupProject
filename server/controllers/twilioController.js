@@ -1,33 +1,59 @@
-PhoneVerification.prototype.requestPhoneVerification = function (phone_number, country_code, via, callback) {
+require('dotenv').config();
+const twilio = require('twilio'); 
 
-    this._request("post", "/protected/json/phones/verification/start", {
-            "api_key": this.apiKey,
-            "phone_number": phone_number,
-            "via": via,
-            "country_code": country_code,
-            "code_length": 4
-        },
-        callback
-    );
-};
+const { ACCOUNT_SID, AUTH_TOKEN } = process.env;
 
-/**
- * Verify a phone number
- *
- * @param {!string} phone_number
- * @param {!string} country_code
- * @param {!string} token
- * @param {!function} callback
- */
-PhoneVerification.prototype.verifyPhoneToken = function (phone_number, country_code, token, callback) {
+//twilio requirements -- Texting API 
+const client = new twilio(ACCOUNT_SID, AUTH_TOKEN);
 
-    console.log('in verify phone');
-    this._request("get", "/protected/json/phones/verification/check", {
-            "api_key": this.apiKey,
-            "verification_code": token,
-            "phone_number": phone_number,
-            "country_code": country_code
-        },
-        callback
-    );
-};
+
+//Twilio 
+const updateTempPass = (req, res) => {
+
+    //_GET Variables
+    const { user } = req.body;
+
+    let min = 10000
+    let max = 99999
+    let num = Math.floor(Math.random() * (max - min + 1)) + min
+
+
+    //Send Text
+    client.messages.create({
+        body: `Your verification code is ${num}`,
+        to: user.phone_number,  // Text this number
+        from: '+18582174901' // From a valid Twilio number
+    }).then((message) => console.log(message.body))
+}
+
+const pickUp = (req, res) => {
+    //_GET Variables
+    const { user, pickUpTime } = req.body
+
+
+    //Send Text
+    client.messages.create({
+        body: `Your car was picked up.`,
+        to: user.phone_number,  // Text this number
+        from: '+18582174901' // From a valid Twilio number
+    }).then((message) => console.log(message.body))
+}
+
+dropOff = (req, res) => {
+    //_GET Variables
+    const { user, dropOffTime } = req.body
+
+
+    //Send Text
+    client.messages.create({
+        body: `Success! Your car was picked up.` ,
+        to: user.phone_number,  // Text this number
+        from: '+18582174901' // From a valid Twilio number
+    }).then((message) => console.log(message.body))
+}
+
+module.exports = {
+    updateTempPass,
+    pickUp,
+    dropOff
+}
