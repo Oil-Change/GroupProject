@@ -47,12 +47,18 @@ class Register extends Component {
             })
 
     }
+
+    back = (e) => {
+        e.preventDefault()
+        this.props.history.push('/login')
+    }
+
     render() {
         const back = require('../../assets/back.png')
         return (
             <div>
                 <header>
-                    <div><button className='Header-Btn'><img src={back}></img></button></div>
+                    <div><button className='Header-Btn' onClick={this.back}><img alt='none' src={back}></img></button></div>
                     <div className='header-title'><div className='circle-container'><AccountCircleIcon id='AccountColor'/><h1>Account Info</h1></div></div>
                     <div className='header-right'></div>
                 </header>

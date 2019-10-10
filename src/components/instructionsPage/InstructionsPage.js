@@ -6,9 +6,8 @@ class InstructionsPage extends Component {
         return (
             <div>
                 <header>
-                    <button>Back</button>
-                    <h1>Instructions</h1>
-                    
+                    <div className='header-title'><div className='circle-container'><h1>Instructions</h1></div></div>
+                    <div className='header-right'></div>
                 </header>
 
                 <ul>
