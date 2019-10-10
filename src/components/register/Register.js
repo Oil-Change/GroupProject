@@ -35,6 +35,11 @@ class Register extends Component {
 
     submit = (e) => {
         e.preventDefault()
+        
+        //are there errors?
+        this.validateData()
+        if(this.state.error) return
+
         const body = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
