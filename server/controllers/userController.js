@@ -1,8 +1,8 @@
 module.exports = {
     getUser: (req, res) => {
         const { id } = req.params
-
-        req.app.get('db').user.get_user([id])
+        const db = req.app.get('db')
+        db.user.get_user([id])
             .then((response) => res.status(200).send(response))
             .catch(err => {
                 res.status(500).send({ errorMessage: 'Unable to Get User!' })
@@ -12,7 +12,8 @@ module.exports = {
     createUser: (req, res) => {
         const { phone_number } = req.body
 
-        req.app.get('db').user.create_user([phone_number])
+        const db = req.app.get('db')
+        db.user.create_user([phone_number])
             .then((response) => res.status(200).send(response))
             .catch(err => {
                 res.status(500).send({ errorMessage: 'Unable to Create User!' })
@@ -25,8 +26,8 @@ module.exports = {
         const phone_number = '4352325367'
         //req.session.user.phone_number
         console.log(phone_number, firstName, lastName, street, city, state, zip, email)
-
-        req.app.get('db').user.update_user([phone_number, firstName, lastName, street, city, state, zip, email])
+        const db = req.app.get('db')
+        db.user.update_user([phone_number, firstName, lastName, street, city, state, zip, email])
             .then((response) => {
                 console.log('here', response)
                 res.status(200).send(response[0])

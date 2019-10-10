@@ -14,7 +14,16 @@ class Register extends Component {
             city: '',
             state: '',
             zip: '',
-            email: ''
+            email: '',
+            validationString: [],
+
+            error: false,
+            fnError: false,
+            lnError: false,
+            streetError: false,
+            cityError: false,
+            zipError: false,
+            emailError: false
         }
     }
 
@@ -45,8 +54,53 @@ class Register extends Component {
             .catch(error => {
                 console.log(error)
             })
-
     }
+
+    validateData = () => {
+        if(this.state.firstName === ''){
+            this.setState({
+                error: true,
+                fnError: true
+            })
+        }
+        if(this.state.lastName === ''){
+            this.setState({
+                error: true,
+                lnError: true
+            })
+        }
+        if(this.state.street === ''){
+            this.setState({
+                error: true,
+                streetError: true
+            })
+        }
+        if(this.state.city === ''){
+            this.setState({
+                error: true,
+                cityError: true
+            })
+        }
+        if(this.state.state === '' || this.state.state.length > 1){
+            this.setState({
+                error: true,
+                stateError: true
+            })
+        }
+        if(this.state.zip === '' || Number.isInteger(parseInt(this.state.zip))){
+            this.setState({
+                error: true,
+                zipError: true
+            })
+        }
+        if(this.state.email === ''){
+            this.setState({
+                error: true,
+                emailError: true
+            })
+        }
+    }
+
     render() {
         const back = require('../../assets/back.png')
         return (
@@ -61,15 +115,19 @@ class Register extends Component {
 
                 <div className="carForm-container">
                     <form>
-                        <input type='text' placeholder='First name' onChange={this.handleChange} name='firstName' />
-                        <input type='text' placeholder='Last name' onChange={this.handleChange} name='lastName' />
-                        <input type='text' placeholder='Street' onChange={this.handleChange} name='street' />
-                        <input type='text' placeholder='City' onChange={this.handleChange} name='city' />
+                        {this.state.error ? 
+                            <div className="error-box">Some of the information is incorrect in the form</div> 
+                            : null
+                        }
+                        <input type='text' className={this.state.fnError ? "redError" : "form-input"} placeholder='First name' onChange={this.handleChange} name='firstName' />
+                        <input type='text' className={this.state.lnError ? "redError" : "form-input"} placeholder='Last name' onChange={this.handleChange} name='lastName' />
+                        <input type='text' className={this.state.streetError ? "redError" : "form-input"} placeholder='Street' onChange={this.handleChange} name='street' />
+                        <input type='text' className={this.state.cityError ? "redError" : "form-input"} placeholder='City' onChange={this.handleChange} name='city' />
                         <div>
-                        <input type='text' placeholder='State' onChange={this.handleChange} name='state' className='small-input'/>
-                        <input type='text' placeholder='Zip code' onChange={this.handleChange} name='zip'className='small-input'/>
+                        <input type='text' className={this.state.stateError ? "redError" : "form-input"} placeholder='State' onChange={this.handleChange} name='state' className='small-input'/>
+                        <input type='text' className={this.state.zipError ? "redError" : "form-input"} placeholder='Zip code' onChange={this.handleChange} name='zip'className='small-input'/>
                         </div>
-                        <input type='email' placeholder='Email' onChange={this.handleChange} name='email' />
+                        <input type='email' className={this.state.emailError ? "redError" : "form-input"} placeholder='Email' onChange={this.handleChange} name='email' />
 
                         <button onClick={this.submit}>Next</button>
                     </form>
