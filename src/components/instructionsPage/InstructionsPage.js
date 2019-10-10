@@ -18,6 +18,7 @@ class InstructionsPage extends Component {
                     <li>Either be home or have your keys hidden in a previously designated location with your driver.</li>
                     <li>Enjoy your day!</li>
                     <li>Your Car will be dropped off before 5pm that day.</li>
+                    
                     <li>The driver can drop the keys off directly to you or stash them in the same location they picked them up.(Discuss options with driver)</li>
                 </ol>
                 
