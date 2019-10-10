@@ -11,7 +11,6 @@ const app = express();
 app.use(cors());
 
 const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env;
-const PORT = SERVER_PORT;
 
 // import controllers
 const userCtrl = require('./controllers/userController');
@@ -19,6 +18,7 @@ const messageCtrl = require('./controllers/messageController');
 const carCtrl = require('./controllers/carController');
 const appointmentCtrl = require('./controllers/appointmentController');
 const stripeCtrl = require('./controllers/stripeController');
+const twilioCtrl = require('./controllers/twilioController');
 
 app.use(express.json());
 
@@ -43,6 +43,11 @@ massive(CONNECTION_STRING).then(db => {
 // Authenication MiddleWare
 
 // Additional Endpoints
+//Twilio text messages
+app.post('/twilio/send-verify', twilioCtrl.updateTempPass)
+app.post('/twilio/send-pickUp', twilioCtrl.pickUp)
+app.post('/twilio/send-dropOff', twilioCtrl.dropOff)
+
 // userCtrl
 app.post('/api/user/create', userCtrl.createUser)
 app.put('/api/user', userCtrl.updateUser)
@@ -69,7 +74,7 @@ app.put('/api/appointment/charged/:id', appointmentCtrl.updateChargeDate)
 const io = socket(
     // App Listening
     app.listen(SERVER_PORT, () => {
-        console.log(`Server is Running on ${PORT}!`)
+        console.log(`Server is Running on ${SERVER_PORT}!`)
     })
     )
 
