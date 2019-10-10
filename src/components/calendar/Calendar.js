@@ -79,6 +79,8 @@ class Calendar extends Component {
           <div className='header-title'><div className='circle-container'><h1>Calendar</h1></div></div>
           <div className='header-right'></div>
         </header>
+        <div className="cal-form-container">
+          <div className="cal-container">
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <Grid container justify="space-around">
             <KeyboardDatePicker
@@ -97,7 +99,10 @@ class Calendar extends Component {
             />
           </Grid>
         </MuiPickersUtilsProvider>
+       
         <button className="next-btn" onClick={this.createAppt}>Next</button>
+        </div>
+        </div>
       </div>
     )
   }
