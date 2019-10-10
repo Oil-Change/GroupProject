@@ -12,6 +12,8 @@ class InstructionsPage extends Component {
                 </header>
                 <div className="ins-form-container">
                     <div className="ins-container">
+
+                        
                 <ul>
                     <li>1. Have your car available for pick up from 7-11am.</li>
                     <li>2. Either be home or have your keys hidden in a previously designated location with your driver.</li>
