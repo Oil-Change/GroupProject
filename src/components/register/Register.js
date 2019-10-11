@@ -36,10 +36,11 @@ class Register extends Component {
 
     submit = (e) => {
         e.preventDefault()
-        
         //are there errors?
         this.validateData()
         if(this.state.error) return
+
+        console.log("phone_number:",this.props.phone_number)
 
         const body = {
             firstName: this.state.firstName,
@@ -51,10 +52,14 @@ class Register extends Component {
             email: this.state.email,
             phone_number: this.props.phone_number
         }
+
+        // this.props.updateUser(body)
+
         axios.put(`/api/user`, body)
             .then(response => {
-                console.log(response.data)
+                console.log(response)
                 this.props.updateUser(response.data)
+                console.dir(this.props.user)
                 //push to store
                 this.props.history.push('/car')
             })
@@ -88,13 +93,13 @@ class Register extends Component {
                 cityError: true
             })
         }
-        if(this.state.state === '' || this.state.state.length > 1){
+        if(this.state.state === '' || this.state.state.length > 2){
             this.setState({
                 error: true,
                 stateError: true
             })
         }
-        if(this.state.zip === '' || Number.isInteger(parseInt(this.state.zip))){
+        if(this.state.zip === '' || !Number.isInteger(parseInt(this.state.zip))){
             this.setState({
                 error: true,
                 zipError: true
@@ -122,8 +127,6 @@ class Register extends Component {
                     <div className='header-title'><div className='circle-container'><AccountCircleIcon id='AccountColor'/><h1>Account Info</h1></div></div>
                     <div className='header-right'></div>
                 </header>
-
-                        {/* need some text  */}
 
                 <div className="form-container">
                     <form>
