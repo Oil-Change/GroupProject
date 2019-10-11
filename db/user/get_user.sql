@@ -1,3 +1,3 @@
-select * 
-from users
-where phone_number = $1
+SELECT * 
+FROM users
+WHERE phone_number = $1;
