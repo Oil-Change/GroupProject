@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import axios from 'axios'
 import io from 'socket.io-client'
+import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+
 class Message extends Component {
 
     constructor(){
@@ -98,16 +100,22 @@ class Message extends Component {
             })
         })
       }
+      back = (e) => {
+        e.preventDefault()
+        this.props.history.push('/admin')
+    }
 
     render() {
+      const back = require('../../assets/back.png')
         return (
             <div>
                 <header>
-                    <button>Back</button>
-                    <h1>Messages</h1>
-                    
+                    <div><button className='Header-Btn' onClick={this.back}><img src={back}></img></button></div>
+                    <div className='header-title'><div className='circle-container'><AccountCircleIcon id='AccountColor'/><h1>Messages</h1></div></div>
+                    <div className='header-right'></div>
                 </header>
-
+              <div className='message-form-container'>
+                <div className='message-container'>
                 <div>
                     <h1>{this.state.user.first_name}</h1> <h1>{this.state.user.last_name}</h1>
                     
@@ -124,7 +132,8 @@ class Message extends Component {
                 })
               }} />
               <button onClick={this.sendMessage}>Send</button>
-                
+              </div>
+              </div>
             </div>
         )
     }
