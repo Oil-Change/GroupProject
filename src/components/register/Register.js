@@ -36,7 +36,6 @@ class Register extends Component {
 
     submit = (e) => {
         e.preventDefault()
-        
         //are there errors?
         this.validateData()
         if(this.state.error) return
@@ -51,10 +50,13 @@ class Register extends Component {
             email: this.state.email,
             phone_number: this.props.phone_number
         }
+
+        // this.props.updateUser(body)
+
         axios.put(`/api/user`, body)
             .then(response => {
-                console.log(response.data)
                 this.props.updateUser(response.data)
+                console.dir(this.props.user)
                 //push to store
                 this.props.history.push('/car')
             })

@@ -16,7 +16,10 @@ module.exports = {
 
         const db = req.app.get('db')
         const foundUser = await db.user.get_user([phone_number])
-        if(foundUser[0]) return res.status(200).send("exists")
+        if(foundUser[0]) {
+            console.log(foundUser)
+            return res.status(200).send(foundUser[0])
+        }
 
         db.user.create_user([phone_number])
             .then((response) => res.status(200).send(response))
