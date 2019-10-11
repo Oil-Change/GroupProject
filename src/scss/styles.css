@@ -513,6 +513,8 @@ header .header-right {
 
 .message-form-container {
   height: 88vh;
+.info-container {
+  height: 83.5vh;
   width: 100%;
   background: #fbbb06;
   display: -webkit-box;
@@ -525,6 +527,10 @@ header .header-right {
 }
 
 .message-container {
+  padding-top: 15%;
+}
+
+.info-container .adminUserInfo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -544,6 +550,7 @@ header .header-right {
   padding-top: 5%;
 }
 
+<<<<<<< HEAD
 .message-display {
   width: 100%;
   height: 85%;
@@ -566,12 +573,38 @@ header .header-right {
   background: white;
   width: 150px;
   height: 40px;
+=======
+.info-container .buttonContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.info-container .statusButton:hover {
+  cursor: pointer;
+  background: #777777;
+  color: white;
+  border: 2px solid #777777;
+}
+
+.info-container .statusButton {
+  background: white;
+  width: 200px;
+  height: 50px;
+>>>>>>> master
   border-radius: 5px;
   border: 2px solid #fbbb06;
   font-family: "Lato", sans-serif;
   font-size: 18px;
   color: #fbbb06;
+<<<<<<< HEAD
   margin: 2%;
+=======
+  margin-top: 15px;
+>>>>>>> master
 }
 
 body {
