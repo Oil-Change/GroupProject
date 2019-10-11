@@ -6,9 +6,12 @@ class InstructionsPage extends Component {
         return (
             <div>
                 <header>
+                    <div className="left-hdr"></div>
                     <div className='header-title'><div className='circle-container'><h1>Instructions</h1></div></div>
                     <div className='header-right'></div>
                 </header>
+                <div className="ins-form-container">
+                    <div className="ins-container">
 
                 <ol>
                     <li>Have your car available for pick up from 7-11am.</li>
@@ -18,8 +21,9 @@ class InstructionsPage extends Component {
                     <li>The driver can drop the keys off directly to you or stash them in the same location they were picked up.(Discuss options with driver)</li>
                 </ol>
                 
-                <button><ing></ing></button>
-
+                <button className="ins-message"><ing></ing></button>
+                </div>
+                </div>
             </div>
         )
     }

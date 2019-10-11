@@ -1,0 +1,40 @@
+.user-form-container{
+    height: 88vh;
+    width: 100%;
+    background: $bg;
+    display: flex;
+    justify-content: center;
+    padding-top: 5%;
+}
+
+.user-container{
+    background: white;
+    height: 96%;
+    width: 89%;
+    display: flex;
+    align-items: flex-start;
+    padding: 2% 0 2% 5%;
+   
+}
+.user-info{
+    display: flex;
+    flex-direction: column;
+
+    padding-bottom: 2%;
+    font-family: $poppins;
+    width: 40%;
+ 
+}
+.userBtn{
+    width: 45px;
+    height: 45px;
+    border: 1px solid $bg;
+    background: white;
+    margin: 5%;
+}
+.userBtn-container{
+    padding-left: 2%;
+    display: flex;
+    width: 60%;
+    justify-content: center;
+}
