@@ -16,7 +16,7 @@ module.exports = {
 
         const db = req.app.get('db')
         const foundUser = await db.user.get_user([phone_number])
-        if(foundUser[0]){
+        if (foundUser[0]) {
             res.status(409).send('exists')
         }
         const db = req.app.get('db')
