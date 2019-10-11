@@ -35,14 +35,17 @@ class Message extends Component {
         this.joinRoom()
         
         this.setState({
+            roomId: this.state.appointment.id,
             userName:this.props.user.first_name,
             isAdmin:this.props.user.isAdmin
         })
+        
     }
 
     componentWillUnmount() {
         this.socket.disconnect();
       }
+
       gettime = () => {
         const date = new Date().getDate()
         const month = new Date().getMonth() + 1
@@ -61,7 +64,7 @@ class Message extends Component {
         console.log(this.state.timestamp)
         this.socket.emit('message sent', {
           message: this.state.input,
-          roomId: this.state.appointment.id,
+          roomId: this.state.roomId,
           userName:this.props.userName,
           isAdmin: this.state.isAdmin,
           timestamp:this.state.timestamp
@@ -71,15 +74,16 @@ class Message extends Component {
         })
       }
     updateMessages = (messages) => {
+      console.log(messages)
         this.setState({
-          messages
+          messages:messages
         })
       }
       joinRoom = () => {
           this.socket.emit('join', {
             room_id: this.state.roomId
           })
-        
+          console.log('room joined')
       }
       getAppt = () => {
         const id = this.props.match.params
@@ -107,6 +111,7 @@ class Message extends Component {
     }
 
     render() {
+      console.log(this.state.roomId)
       const back = require('../../assets/back.png')
         return (
             <div>
