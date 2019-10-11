@@ -12,13 +12,13 @@ const sendCode = (req, res) => {
 
     //_GET Variables
     const { phone_number, code } = req.body;
-    console.log(phone_number, code)
+    console.log("SendCodetime:", phone_number, code)
     //Send Text
     client.messages.create({
         body: `Your verification code is ${code}`,
         to: phone_number,  // Text this number
         from: '+18582174901' // From a valid Twilio number
-    }).then((message) => console.log(message.body))
+    }).then((message) => console.log(phone_number, message.body))
     res.status(200).send('sent')
 }
 
