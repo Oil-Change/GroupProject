@@ -10,12 +10,16 @@ class UserInfo extends Component {
         super()
     }
 
+
+
+
     updateAppt = () => {
-        this.props.updateAppointment(this.props.appointment)
+        this.props.updateAppointment(this.props.appointments)
     }
 
     message = () => {
         let { id } = this.props.appointments
+        this.updateAppt()
         this.props.history.push(`/messages/${id}`)
     }
 
