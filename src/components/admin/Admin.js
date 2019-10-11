@@ -32,7 +32,7 @@ export default class Admin extends Component {
         this.props.history.push('/login')
     }
 
-    render() {
+    render() { 
         
         const mappedAppointments = this.state.appointments.map((appointment, i) => {
             return (
