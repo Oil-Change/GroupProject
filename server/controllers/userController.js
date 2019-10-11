@@ -38,14 +38,9 @@ module.exports = {
     },
     updateCode: async (req, res) => {
         const { code, phone_number } = req.body
+        console.log(code, phone_number)
         const db = req.app.get('db')
-        await db.user.update_user_code([phone_number, code])
+        await db.user.update_code([phone_number, code])
         return res.status(200).send("set")
-    },
-    removeCode: async (req, res) => {
-        const { phone_number } = req.body
-        const db = req.app.get('db')
-        await db.user.remove_user_code([phone_number])
-        return res.status(200).send("cleared")
     }
 };

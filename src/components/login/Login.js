@@ -4,6 +4,16 @@ import { updatePhone } from '../../redux/reducer'
 import axios from 'axios';
 
 class Login extends Component {
+    constructor(){
+        super()
+
+        this.state = {
+            phone_number: '',
+            code: '',
+            sentCode: false,
+            error: false
+        }
+    }
 
     updateRedux = (e) => {
         this.props.updatePhone(e)
@@ -14,19 +24,35 @@ class Login extends Component {
         this.props.history.push('/')
     }
 
-    codeSend = async () => {
+    codeSend = () => {
+        console.log(this.state.phone_number)
         let min = 10000
         let max = 99999
         let code = Math.floor(Math.random() * (max - min + 1)) + min
         
-        await axios.post('/twilio/send-verify', {code, phone_number: this.props.phone_number})
-
-        await axios.post('/api/user/code/1', {code, phone_number: this.props.phone_number})
-
+        axios.post('/twilio/send-code', {code, phone_number: this.state.phone_number}).then(() => {
+            console.log("finished")
+            this.setState({sentCode: true})
+            axios.post('/api/user/code', {code, phone_number: this.state.phone_number})
+        })
     }
 
-    codeVerify = async (code) => {
-        const dbCode = await axios.get('/auth/user/code/2', {code, phone_number: this.props.phone_number})
+    codeVerify = () => {
+        let {code, phone_number} = this.state
+        console.log(code, phone_number)
+        axios.post('/auth/code', {code, phone_number}).then((res) => {
+            console.dir(res)
+            let userInfo = res.data
+            this.updateRedux(userInfo)
+            if(userInfo.is_admin){
+                this.props.history.push(`/admin`)
+            } else {
+                this.props.history.push(`/register`)
+            }
+        }).catch((error) => {
+            console.log(error)
+            this.setState({error: true})
+        })
     }
 
     render() {
@@ -38,9 +64,24 @@ class Login extends Component {
                     <div className='header-title'><div className='circle-container'><h1>Login</h1></div></div>
                     <div className='header-right'></div>
                 </header>
-                <input onChange={this.updateRedux} placeholder="temp phone number"/>
-                <button onClick={() => this.props.history.push(`/register`)}
-                className="next-btn">Next</button>
+                {this.state.error ? 
+                    <div>SMS code was incorrect</div> 
+                    : null
+                }
+                <div className="verify">
+                    <input onChange={(e) => this.setState({phone_number: e.target.value})} placeholder="Mobile number"/>
+                    <button onClick={this.codeSend}
+                    className="next-btn">Send SMS code</button>
+                </div>
+
+                {this.state.sentCode ? 
+                    <div className="verify">
+                        <input onChange={(e) => this.setState({code: e.target.value})} placeholder="SMS code"/>
+                        <button onClick={this.codeVerify}
+                        className="next-btn">Verify code</button>
+                    </div>
+                    : <div className="verify"></div>
+                }
             </div>
         )
     }

@@ -40,18 +40,18 @@ massive(CONNECTION_STRING).then(db => {
 }).catch(err => console.log('Unable to connect to Database'));
 
 // Authenication Endpoints
-app.get('/auth/user/code/2', authCtrl.verifyCode)
+app.post('/auth/code', authCtrl.verifyCode)
 
 // Authenication MiddleWare
 
 //Twilio text messages
-app.post('/twilio/send-verify', twilioCtrl.sendCode)
+app.post('/twilio/send-code', twilioCtrl.sendCode)
 app.post('/twilio/send-pickUp', twilioCtrl.pickUp)
 app.post('/twilio/send-dropOff', twilioCtrl.dropOff)
 
 // userCtrl
 app.post('/api/user/create', userCtrl.createUser)
-app.post('/api/user/code/1', userCtrl.updateCode)
+app.post('/api/user/code', userCtrl.updateCode)
 app.put('/api/user', userCtrl.updateUser)
 app.get('/api/user/:id', userCtrl.getUser)
 
