@@ -3,7 +3,6 @@ import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updateAppointment } from '../../redux/reducer';
 
 class Subscription extends Component {
     constructor() {
@@ -79,12 +78,8 @@ const mapStateToProps = (reduxState) => {
     return { appointment };
 }
 
-const mapDispatchToProps = {
-    updateAppointment
-}
-
 // export default withRouter(Subscription);
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Subscription));
+export default withRouter(connect(mapStateToProps)(Subscription));
 
 const imageUrl = 'https://th.thgim.com/opinion/op-ed/article19253786.ece/alternates/FREE_660/Th11-Paper%20money'
 
