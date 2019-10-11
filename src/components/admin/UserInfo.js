@@ -3,18 +3,23 @@ import axios from 'axios'
 import { userInfo } from 'os';
 import { connect } from 'react-redux'
 import { updateAppointment } from '../../redux/reducer'
+import {withRouter} from 'react-router-dom'
 
 class UserInfo extends Component {
     constructor() {
         super()
     }
 
+
+
+
     updateAppt = () => {
-        this.props.updateAppointment(this.props.appointment)
+        this.props.updateAppointment(this.props.appointments)
     }
 
     message = () => {
-        let { id } = this.props.appointment
+        let { id } = this.props.appointments
+        this.updateAppt()
         this.props.history.push(`/messages/${id}`)
     }
 
@@ -43,4 +48,4 @@ function mapStateToProps(state) {
     return state
   }
   
-  export default connect(mapStateToProps, {updateAppointment})(UserInfo)
+  export default withRouter(connect(mapStateToProps, {updateAppointment})(UserInfo))

@@ -34,9 +34,9 @@ export default class Admin extends Component {
 
     render() { 
         
-        const mappedAppointments = this.state.appointments.map((appointment, i) => {
+        const mappedAppointments = this.state.appointments.map((appointments, i) => {
             return (
-                <UserInfo key={i} appointment={appointment} /> 
+                <UserInfo key={i} appointments={appointments} /> 
             )
         })
 
