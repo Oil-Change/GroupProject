@@ -4,7 +4,9 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    height: 100vh;
+    height: 99vh;
+    background: $bg;
+    padding: 5% 0 10% 0;
     
 }
 
@@ -13,6 +15,7 @@
     font-size: 40px;
     text-align: center;
     padding-bottom: 5%;
+    
     
 }
 
@@ -26,17 +29,13 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    border-top: 1px solid $bg;
+    
 
-    span{
-        width: 100px;
-        height: 100px;
-        border-radius: 50;
-        color: red;
-        box-shadow:0 0 5px #dad5d5;
-        
-    }
+    
     img{
         width: 100%;
+        z-index: 1;
     }
     
 }
@@ -49,4 +48,19 @@
         font-family: $lato;
         font-size: 18px;
         color: $bg;
+}
+.bot-section{
+    background: white;
+    height: 87vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+    
+    p{
+        margin-top: 10%;
+    }
+    button{
+        margin-top: 20%;
+    }
 }
