@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Stripe from './Stripe';
 
-export default class Payment extends Component {   
+export default class Payment extends Component {
     back = (e) => {
         e.preventDefault()
         this.props.history.push('/appointment')
@@ -17,11 +17,10 @@ export default class Payment extends Component {
                 </header>
                 <div className="pay-form-container">
                     <div className="inv-container">
-                <h1>Invoice</h1>
-                <h2>Oil Change: $60.00</h2>
-                <Stripe />
-                {/* onClick={this.props.history.push('/instructions')}  */}
-                </div>
+                        <h1>Invoice</h1>
+                        <h2>Oil Change: $60.00</h2>
+                        <Stripe />
+                    </div>
                 </div>
             </div>
         )
