@@ -572,6 +572,71 @@ header .header-right {
   margin-top: 15px;
 }
 
+.message-form-container {
+  height: 88vh;
+  width: 100%;
+  background: #fbbb06;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 5%;
+}
+
+.message-container {
+  background: white;
+  height: 96%;
+  width: 89%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 2% 0 2% 5%;
+}
+
+.message-display {
+  width: 100%;
+  height: 85%;
+  height: 70%;
+  border-bottom: 1px solid #777777;
+}
+
+.mes-bot {
+  width: 90%;
+}
+
+.mes-bot input {
+  width: 80%;
+  height: 30px;
+  width: 90%;
+  height: 20%;
+  margin: 20px 0 15px 0;
+  background: white;
+  border: none;
+  font-size: 18px;
+  color: #777777;
+  border-bottom: 1px solid #777777;
+  border: 1px solid #777777;
+  border-radius: 10px;
+  padding: 2%;
+}
+
+.mes-bot button {
+  width: 45px;
+  height: 45px;
+  border: 1px solid #fbbb06;
+  background: white;
+  margin: 5%;
+}
+
 body {
   max-width: 600px;
   margin: 0 auto;

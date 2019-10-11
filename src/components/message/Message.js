@@ -121,9 +121,10 @@ class Message extends Component {
                     
                 </div>
 
-                <div>{this.state.messages.map(messageObj => 
+                <div className='message-display'>{this.state.messages.map(messageObj => 
           
           <h2 key={messageObj.id}>{messageObj.user_name}: {messageObj.message}</h2>)}</div>
+          <div className='mes-bot'>
                 <h1>{this.props.user.first_name}</h1>
 
                 <input className='chatInput' value={this.state.input} onChange={e => {
@@ -132,6 +133,7 @@ class Message extends Component {
                 })
               }} />
               <button onClick={this.sendMessage}>Send</button>
+              </div>
               </div>
               </div>
             </div>
