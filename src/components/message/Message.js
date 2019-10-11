@@ -49,6 +49,7 @@ class Message extends Component {
         const hours = new Date().getHours()
         const min = new Date().getMinutes()
         const time = hours + ':' + min + ' ' + month + '/' + date
+        console.log(time)
         this.setState({
             timestamp:time
         })
@@ -56,8 +57,8 @@ class Message extends Component {
       sendMessage = () => {
 
         
-        
-        
+        this.gettime()
+        console.log(this.state.timestamp)
         this.socket.emit('message sent', {
           message: this.state.input,
           roomId: this.state.appointment.id,
@@ -121,9 +122,10 @@ class Message extends Component {
                     
                 </div>
 
-                <div>{this.state.messages.map(messageObj => 
+                <div className='message-display'>{this.state.messages.map(messageObj => 
           
           <h2 key={messageObj.id}>{messageObj.user_name}: {messageObj.message}</h2>)}</div>
+          <div className="mes-bot">
                 <h1>{this.props.user.first_name}</h1>
 
                 <input className='chatInput' value={this.state.input} onChange={e => {
@@ -132,6 +134,7 @@ class Message extends Component {
                 })
               }} />
               <button onClick={this.sendMessage}>Send</button>
+              </div>
               </div>
               </div>
             </div>

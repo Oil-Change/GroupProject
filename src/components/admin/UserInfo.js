@@ -14,7 +14,8 @@ class UserInfo extends Component {
     }
 
     message = () => {
-        let { id } = this.props.appointment
+        let { id } = this.props.appointments
+        
         this.props.history.push(`/messages/${id}`)
     }
 
