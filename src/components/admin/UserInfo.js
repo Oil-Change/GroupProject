@@ -30,8 +30,8 @@ class UserInfo extends Component {
             <div className="user-form-container">
                 <div className="user-container">
                 <div className="user-info">
-                <h3>{this.props.appointment.first_name} {this.props.appointment.last_name}</h3>
-                <p>{this.props.appointment.year} {this.props.appointment.make} {this.props.appointment.model} {this.props.appointment.color}</p>
+                <h3>{this.props.appointments.first_name} {this.props.appointments.last_name}</h3>
+                <p>{this.props.appointments.year} {this.props.appointments.make} {this.props.appointments.model} {this.props.appointments.color}</p>
                 </div>
                 <div className="userBtn-container">
                 <button className="userBtn" onClick={this.message}></button>
