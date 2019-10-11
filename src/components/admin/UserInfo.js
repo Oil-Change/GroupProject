@@ -42,13 +42,18 @@ class UserInfo extends Component {
 
     render() {
         return (
-            <div>
+            <div className="user-form-container">
+                <div className="user-container">
+                <div className="user-info">
                 <h3>{this.props.appointment.first_name} {this.props.appointment.last_name}</h3>
                 <p>{this.props.appointment.year} {this.props.appointment.make} {this.props.appointment.model} {this.props.appointment.color}</p>
-
-                <button onClick={this.message}>Message</button>
-                <button onClick={this.pickUp}>Pick Up</button>
-                <button onClick={this.dropOff}>Drop Off</button>
+                </div>
+                <div className="userBtn-container">
+                <button className="userBtn" onClick={this.message}></button>
+                <button className="userBtn" onClick={this.pickUp}></button>
+                <button className="userBtn" onClick={this.dropOff}></button>
+                </div>
+                </div>
             </div>
         )
     }
