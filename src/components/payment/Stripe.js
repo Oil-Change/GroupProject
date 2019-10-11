@@ -2,12 +2,15 @@ import React, { Component } from 'react'
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { updateAppointment } from '../../redux/reducer';
 
 class Subscription extends Component {
     constructor() {
         super()
         this.state = {
-            amount: 6000
+            amount: 6000,
+            appointment: {}
         }
     }
 
@@ -26,21 +29,22 @@ class Subscription extends Component {
         console.log(amount)
         token.card = void 0;
         let chargedDate = new Date();
+        console.log('Charged Date: ', chargedDate)
         let price = amount;
-        // let { id } = req.params;
-        // let { email } = this.props.user.email;
-        axios.post('/api/payment', { token, amount: this.state.amount * 100 }).then(res => {
-            console.log(res)
-            alert(`Congratulations you paid this ${amount}!`)
-            this.props.history.push('/instructions');
-        });
-        // axios.post('/api/receipt', { email }).then(res => {
-        //     alert('Receipt sent to your email');
-        // });
-        // axios.put(`/api/appointment/charged/${id}`, { price, chargedDate }).then(res => {
-        //     this.props.history.push('/instructions');
-        // }).catch(err => alert('Payment not accepted!'));
-    }
+        console.log('Price: ', price)
+        let { appointment } = this.props;
+        console.log('appointment: ', appointment)
+        axios.post('/api/appointment/create', { appointment, price, chargedDate }).then(res => {
+            console.log('Updating Database')
+            console.log('res: ', res.data);
+            axios.post('/api/payment', { token, amount: this.state.amount * 100 }).then(res => {
+                console.log('Updating stripe')
+                console.log(res);
+                alert(`Congratulations you paid this ${amount}!`);
+                this.props.history.push('/instructions');
+            });
+        }).catch(err => alert('Unable to connect to DataBase'));
+    };
 
     render() {
         return (
@@ -70,8 +74,17 @@ class Subscription extends Component {
         )
     }
 }
+const mapStateToProps = (reduxState) => {
+    const { appointment } = reduxState;
+    return { appointment };
+}
 
-export default withRouter(Subscription);
+const mapDispatchToProps = {
+    updateAppointment
+}
+
+// export default withRouter(Subscription);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Subscription));
 
 const imageUrl = 'https://th.thgim.com/opinion/op-ed/article19253786.ece/alternates/FREE_660/Th11-Paper%20money'
 
