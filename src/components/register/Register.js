@@ -48,7 +48,8 @@ class Register extends Component {
             city: this.state.city,
             state: this.state.state,
             zip: this.state.zip,
-            email: this.state.email
+            email: this.state.email,
+            phone_number: this.props.phone_number
         }
         axios.put(`/api/user`, body)
             .then(response => {
