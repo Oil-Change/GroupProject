@@ -88,13 +88,13 @@ class Register extends Component {
                 cityError: true
             })
         }
-        if(this.state.state === '' || this.state.state.length > 1){
+        if(this.state.state === '' || this.state.state.length > 2){
             this.setState({
                 error: true,
                 stateError: true
             })
         }
-        if(this.state.zip === '' || Number.isInteger(parseInt(this.state.zip))){
+        if(this.state.zip === '' || !Number.isInteger(parseInt(this.state.zip))){
             this.setState({
                 error: true,
                 zipError: true
@@ -122,8 +122,6 @@ class Register extends Component {
                     <div className='header-title'><div className='circle-container'><AccountCircleIcon id='AccountColor'/><h1>Account Info</h1></div></div>
                     <div className='header-right'></div>
                 </header>
-
-                        {/* need some text  */}
 
                 <div className="form-container">
                     <form>
