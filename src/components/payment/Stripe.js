@@ -27,13 +27,13 @@ class Subscription extends Component {
         amount /= 100
         console.log(amount)
         token.card = void 0;
-        let chargedDate = new Date();
-        console.log('Charged Date: ', chargedDate)
+        // let chargedDate = new Date();
+        // console.log('Charged Date: ', chargedDate)
         let price = amount;
         console.log('Price: ', price)
         let { appointment } = this.props;
         console.log('appointment: ', appointment)
-        axios.post('/api/appointment/create', { appointment, price, chargedDate }).then(res => {
+        axios.post('/api/appointment/create', { appointment, price }).then(res => {
             console.log('Updating Database')
             console.log('res: ', res.data);
             axios.post('/api/payment', { token, amount: this.state.amount * 100 }).then(res => {
