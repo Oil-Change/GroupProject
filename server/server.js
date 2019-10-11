@@ -44,7 +44,7 @@ app.post('/auth/code', authCtrl.verifyCode)
 
 // Authenication MiddleWare
 
-//Twilio text messages
+// twilio text messages
 app.post('/twilio/send-code', twilioCtrl.sendCode)
 app.post('/twilio/send-pickUp', twilioCtrl.pickUp)
 app.post('/twilio/send-dropOff', twilioCtrl.dropOff)

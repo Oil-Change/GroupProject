@@ -13,6 +13,11 @@ const verifyCode = async (req, res) => {
     return res.status(409).send(foundUser[0].code)
 }
 
+const checkPhone = async (req, res) => {
+    
+}
+
 module.exports = {
+    checkPhone,
     verifyCode
 }
