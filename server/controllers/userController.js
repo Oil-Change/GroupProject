@@ -12,8 +12,7 @@ module.exports = {
     createUser: (req, res) => {
         const { phone_number } = req.body
 
-        const { phone_number } = req.body
-        console.log("verifyCode", phone_number, code)
+        console.log("verifyCode", phone_number)
 
         const db = req.app.get('db')
         const foundUser = await db.user.get_user([phone_number])
@@ -29,7 +28,7 @@ module.exports = {
             })
         req.session.user = { phone_number: phone_number }
     },
-    
+
     updateUser: (req, res) => {
         const { firstName, lastName, street, city, state, zip, email } = req.body
         const phone_number = '4352325367'

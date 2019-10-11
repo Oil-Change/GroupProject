@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { userInfo } from 'os';
+import { connect } from 'react-redux'
+import { updateAppointment } from '../../redux/reducer'
 
-export default class UserInfo extends Component {
+class UserInfo extends Component {
     constructor() {
         super()
+    }
+
+    updateAppt = () => {
+        this.props.updateAppointment(this.props.appointment)
     }
 
     message = () => {
@@ -12,6 +19,7 @@ export default class UserInfo extends Component {
     }
 
     pickUp = () => {
+        this.updateAppt()
         console.log('Pick UP')
         let { id } = this.props.appointment
         let pickUpTime = new Date();
@@ -22,6 +30,7 @@ export default class UserInfo extends Component {
     };
 
     dropOff = () => {
+        this.updateAppt()
         console.log('Drop Off')
         let { id } = this.props.appointment;
         let dropOffTime = new Date();
@@ -44,3 +53,9 @@ export default class UserInfo extends Component {
         )
     }
 } 
+
+function mapStateToProps(state) {
+    return state
+  }
+  
+  export default connect(mapStateToProps, {updateAppointment})(UserInfo)

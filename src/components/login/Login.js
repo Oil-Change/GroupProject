@@ -29,7 +29,7 @@ class Login extends Component {
         let min = 10000
         let max = 99999
         let code = Math.floor(Math.random() * (max - min + 1)) + min
-        axios.post('/api/user/create', userCtrl.createUser).then((res) => {
+        axios.post('/api/user/create').then((res) => {
             axios.post('/twilio/send-code', {code, phone_number: this.state.phone_number}).then(() => {
                 console.log("finished")
                 this.setState({sentCode: true})
