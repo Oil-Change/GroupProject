@@ -16,7 +16,7 @@ class Login extends Component {
     }
 
     updateRedux = (e) => {
-        this.props.updatePhone(e)
+        this.props.updatePhone(e.phone_number)
     }
 
     back = (e) => {
