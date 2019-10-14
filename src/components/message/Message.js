@@ -23,7 +23,7 @@ class Message extends Component {
     }
     componentDidMount () {
         this.getAppt()
-        this.getUser()
+        
         this.socket = io();
         this.socket.on('room joined', data => {
           this.joinSuccess(data)
@@ -33,9 +33,9 @@ class Message extends Component {
           this.updateMessages(data);
         })
         this.joinRoom()
-        
+        this.getUser()
         this.setState({
-            roomId: this.state.appointment.id,
+            roomId: this.props.match.params.id,
             userName:this.props.user.first_name,
             isAdmin:this.props.user.isAdmin
         })
@@ -46,28 +46,28 @@ class Message extends Component {
         this.socket.disconnect();
       }
 
-      gettime = () => {
+      // gettime = () => {
+      
+      //   console.log(time)
+      //   this.setState({
+      //       timestamp:time
+      //   })
+      // }
+      sendMessage = () => {
+
+        
         const date = new Date().getDate()
         const month = new Date().getMonth() + 1
         const hours = new Date().getHours()
         const min = new Date().getMinutes()
         const time = hours + ':' + min + ' ' + month + '/' + date
-        console.log(time)
-        this.setState({
-            timestamp:time
-        })
-      }
-      sendMessage = () => {
-
-        
-        this.gettime()
         console.log(this.state.timestamp)
         this.socket.emit('message sent', {
-          message: this.state.input,
+          message: this.state.message,
           roomId: this.state.roomId,
-          userName:this.props.userName,
+          userName:this.state.userName,
           isAdmin: this.state.isAdmin,
-          timestamp:this.state.timestamp
+          timestamp:time
         })
         this.setState({
           message: ''
@@ -86,24 +86,29 @@ class Message extends Component {
           console.log('room joined')
       }
       getAppt = () => {
-        const id = this.props.match.params
-        axios.get('/api/appointment',id)
+        const id= this.props.match.params.id
+        
+        axios.get(`/api/appointment/${id}`)
         .then(response =>{
             this.setState({
-                appointment:response.data
+                appointment:response.data[0]
             })
         })
       }
       getUser = () => {
-          
+        setTimeout(() => {
           const id = this.state.appointment.user_id
-        axios.get('/api/user', id)
+          console.log(id)
+        axios.get(`/api/user/${id}`)
         
         .then(response => {
             this.setState({
-                user:response.data
+                user:response.data[0]
             })
         })
+        console.log(this.state.user)
+        }, 1000);
+          
       }
       back = (e) => {
         e.preventDefault()
@@ -111,7 +116,8 @@ class Message extends Component {
     }
 
     render() {
-      console.log(this.state.roomId)
+      console.log(this.props)
+      console.log(this.props.user.userName)
       const back = require('../../assets/back.png')
         return (
             <div>
@@ -133,9 +139,9 @@ class Message extends Component {
           <div className="mes-bot">
                 <h1>{this.props.user.first_name}</h1>
 
-                <input className='chatInput' value={this.state.input} onChange={e => {
+                <input className='chatInput' value={this.state.message} placeholder='Message'onChange={e => {
                 this.setState({
-                  input: e.target.value
+                  message: e.target.value
                 })
               }} />
               <button onClick={this.sendMessage}>Send</button>

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updatePhone } from '../../redux/reducer'
 import axios from 'axios';
+import PhoneLockedIcon from '@material-ui/icons/PhoneLocked';
 
 export class Login extends Component {
     constructor(){
@@ -62,30 +63,69 @@ export class Login extends Component {
     render() {
         const back = require('../../assets/back.png')
         return (
-            <div className="landing-container">
-                <header>
-                    <div><button className='Header-Btn' onClick={this.back}><img alt='none' src={back}></img></button></div>
-                    <div className='header-title'><div className='circle-container'><h1>Login</h1></div></div>
-                    <div className='header-right'></div>
-                </header>
-                {this.state.error ? 
-                    <div>SMS code was incorrect</div> 
-                    : null
-                }
-                <div className="verify">
-                    <input onChange={(e) => this.setState({phone_number: e.target.value})} placeholder="Mobile number"/>
-                    <button onClick={this.codeSend}
-                    className="next-btn">Send SMS code</button>
+            <div>
+                <div className="header-container">
+                    <header>
+                        <div className="header-spacer">
+                            <button className='header-btn' onClick={this.back}>
+                                <img alt='none' src={back}/>
+                            </button>
+                        </div>
+                        <div className='header-title'>
+                            <div className='circle-container'>
+                                <div className="circle-info">
+                                    <PhoneLockedIcon id="icon-color"/>
+                                    <h1>Login</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='header-spacer'></div>
+                    </header>
                 </div>
-
-                {this.state.sentCode ? 
-                    <div className="verify">
-                        <input onChange={(e) => this.setState({code: e.target.value})} placeholder="SMS code"/>
-                        <button onClick={this.codeVerify}
-                        className="next-btn">Verify code</button>
+                <div className="background-container">
+                    <div className="directions-step-container">
+                        <div className="directions-container">
+                            <div className="title">
+                                <h2>Login With Your Phone</h2>
+                            </div>
+                            <p>We send you a text with a code. The text is free, you're not charge for it.</p>
+                        </div>
+                        {/* One of the inputs is wrong */}
+                        {
+                            this.state.error ? 
+                            <div>SMS code was incorrect</div> 
+                            : null
+                        }
+                        <div className="verify-container">
+                            <div className="verify">
+                                <div className="step-container">
+                                    <h2 className="step-text">Step 1:</h2>
+                                    <p className="sub-text">Enter your phone number</p>
+                                </div>
+                                <div className="input-step-container">
+                                    <input onChange={(e) => this.setState({phone_number: e.target.value})} placeholder="Mobile number"
+                                    className="phone-number-input"/>
+                                    <button onClick={this.codeSend}
+                                    className="send-btn">Send</button>
+                                </div>
+                            </div>
+                            <div className="verify">
+                                <div className="step-container">
+                                    <h2 className="step-text">Step 2:</h2>
+                                    <p className="sub-text">Enter the code you received your text message</p>
+                                </div>
+                                <div className="step-container">
+                                    
+                                    <div className="input-container">
+                                        <input className="code-input" onChange={(e) => this.setState({code: e.target.value})} placeholder="SMS code"/>
+                                    </div>
+                                    <button onClick={this.codeVerify}
+                                    className="verify-btn">Verify code</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    : <div className="verify"></div>
-                }
+                </div>
             </div>
         )
     }

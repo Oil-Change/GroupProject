@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { updateCar } from '../../redux/reducer'
+import DriveEtaIcon from '@material-ui/icons/DriveEta';
+import TextField from '@material-ui/core/TextField';
 
 class CarInformation extends Component {
     constructor() {
@@ -58,22 +60,111 @@ class CarInformation extends Component {
         const back = require('../../assets/back.png')
         return (
             <div>
-                <header>
-                    <div><button className='Header-Btn' onClick={this.back}><img alt='none' src={back}></img></button></div>
-                    <div className='header-title'><div className='circle-container'><h1>Car Information</h1></div></div>
-                    <div className='header-right'></div>
-                </header>
+                <div className="header-container">
+                    <header>
+                        <div className='header-spacer'>
+                            <button className='header-btn' onClick={this.back}>
+                                <img alt='none' src={back}/>
+                            </button>
+                        </div>
+                        <div className='header-title'>
+                            <div className='circle-container'>
+                                <div className="circle-info">
+                                    <DriveEtaIcon id='icon-color'/>
+                                    <h1>Vehicle Info</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='header-spacer'></div>
+                    </header>
+                </div>
                 <div className="form-container">
-                    <form>
-                        <input type='text' placeholder='Make' onChange={this.handleChange} name='make' />
-                        <input type='text' placeholder='Model' onChange={this.handleChange} name='model' />
-                        <input type='text' placeholder='Trim' onChange={this.handleChange} name='trim' />
-                        <input type='text' placeholder='Year' onChange={this.handleChange} name='year' />
-                        <input type='text' placeholder='Color' onChange={this.handleChange} name='color' />
-                        <input type='text' placeholder='License' onChange={this.handleChange} name='licensePlate' />
-                        <input type='text' placeholder='Mileage' onChange={this.handleChange} name='mileage' />
+                    <form id="car-form">
+                        <div className="form-section full-name">
+                            <h2>Car Information</h2>
 
-                        <button onClick={this.submit}>Next</button>
+                            <TextField
+                                id="outlined-text-input standard-full-width"
+                                label="Make"
+                                type="text"
+                                fullWidth
+                                id='mui-input'
+                                style = {{width: '100%'}}
+                                name="make"
+                                onChange={this.handleChange}
+                                margin="normal"
+                                variant="outlined"
+                            />
+                            <TextField
+                                id="outlined-text-input"
+                                label="Model"
+                                type="text"
+                                id='mui-input'
+                                style = {{width: '100%'}}
+                                name="model"
+                                onChange={this.handleChange}
+                                margin="normal"
+                                variant="outlined"
+                            />
+                            <TextField
+                                id="outlined-text-input"
+                                label="Trim (optional)"
+                                type="text"
+                                id='mui-input'
+                                style = {{width: '100%'}}
+                                name="trim"
+                                onChange={this.handleChange}
+                                margin="normal"
+                                variant="outlined"
+                            />
+                            <TextField
+                                id="outlined-text-input"
+                                label="Year"
+                                type="text"
+                                id='mui-input'
+                                style = {{width: '100%'}}
+                                name="model"
+                                onChange={this.handleChange}
+                                margin="normal"
+                                variant="outlined"
+                            />
+                            <TextField
+                                id="outlined-text-input"
+                                label="Color"
+                                type="text"
+                                id='mui-input'
+                                style = {{width: '100%'}}
+                                name="color"
+                                onChange={this.handleChange}
+                                margin="normal"
+                                variant="outlined"
+                            />
+                            <TextField
+                                id="outlined-text-input"
+                                label="License"
+                                type="text"
+                                id='mui-input'
+                                style = {{width: '100%'}}
+                                name="license"
+                                onChange={this.handleChange}
+                                margin="normal"
+                                variant="outlined"
+                            />
+                            <TextField
+                                id="outlined-text-input"
+                                label="Mileage"
+                                type="text"
+                                id='mui-input'
+                                style = {{width: '100%'}}
+                                name="Mileage"
+                                onChange={this.handleChange}
+                                margin="normal"
+                                variant="outlined"
+                            />
+                        </div>
+                        <div className="next-btn-container">
+                            <button onClick={this.submit}>Next</button>
+                        </div>
                     </form>
                 </div>
             </div>

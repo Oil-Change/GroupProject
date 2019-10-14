@@ -68,7 +68,7 @@ app.post('/api/appointment/create', appointmentCtrl.createAppointment)
 app.get('/api/appointment/all', appointmentCtrl.getAllAppointments)
 app.get('/api/appointment/today', appointmentCtrl.getTodaysAppointments)
 app.get('/api/appointment/date', appointmentCtrl.getAppointments)
-app.get('/api/appointment', appointmentCtrl.getAppointment)
+app.get('/api/appointment/:id', appointmentCtrl.getAppointment)
 app.put('/api/appointment/pick_up/:id', appointmentCtrl.updatePickUp)
 app.put('/api/appointment/drop_off/:id', appointmentCtrl.updateDropOff)
 app.put('/api/appointment/charged/:id', appointmentCtrl.updateChargeDate)
@@ -87,6 +87,7 @@ io.on('connection', socket => {
         const {room_id} = data
         const db = app.get('db')
         console.log('Room Joined')
+        console.log('room', room_id)
         let existingRoom = await db.message.check_chat_room(room_id)
         let messages = await db.message.chat_messages_history(room_id)
         socket.join(room_id)
@@ -94,9 +95,9 @@ io.on('connection', socket => {
         
     })
     socket.on('message sent', async data => {
-        const {room_id, message, user_name, is_admin, timestamp} = data
+        const {roomId, message, user_name, is_admin, timestamp} = data
         const db = app.get('db')
-        await db.message.create_chat_messages(room_id, message, user_name, is_admin,timestamp)
+        await db.message.create_chat_messages(roomId, message, user_name, is_admin,timestamp)
         let messages = await db.message.chat_messages_history(room_id)
         io.to(room_id).emit('message dispatched', messages)
     })

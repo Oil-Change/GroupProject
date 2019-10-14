@@ -1,67 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Karla|Rubik|Rubik+Mono+One&display=swap');
+
 .landing-container{
-    
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     align-items: center;
-    height: 99vh;
-    background: $bg;
-    padding: 5% 0 10% 0;
-    
+    min-height: 130vh;
+
 }
 
 .welcome{
-    font-family: $poppins; 
+    // font-family: $poppins; 
+    font-family: 'Rubik', sans-serif;
     font-size: 40px;
     text-align: center;
-    padding-bottom: 5%;
-    
-    
 }
 
-.greeting-text{
-    font-family: $lato;
-    font-size: 20px;
-    padding-left: 2%;
-
+.top-section {
+    height: 10vh;
+    width: 100%;
+    background: $bg;
+    margin-bottom: 7vh;
 }
+
 .image-container{
+    position: relative;
+    top: 5vh;
     width: 100%;
     display: flex;
-    justify-content: center;
-    border-top: 1px solid $bg;
-    
+    justify-content: center; 
 
-    
     img{
-        width: 100%;
+        width: 100px;
         z-index: 1;
     }
     
 }
-.next-btn{
+
+.next-btn {
     background:white;
-        width: 200px;
-        height: 50px;
-        border-radius: 5px;
-        border: 2px solid $bg;
-        font-family: $lato;
-        font-size: 18px;
-        color: $bg;
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    border: 2px solid $bg;
+    font-family: $lato;
+    font-size: 18px;
+    color: $bg;
+    margin-top: 10%;
 }
-.bot-section{
+
+.bot-section {
     background: white;
     height: 87vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-   
-    
-    p{
-        margin-top: 10%;
+
+    .welcome {
+        margin-bottom: 3%;
     }
-    button{
-        margin-top: 20%;
+
+    .general-info-container {
+        .general-info {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 10px;
+            padding: 15px;
+            border-radius: 1%;
+            box-shadow:0px 0px 10px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            height: 120px;
+            display:flex;
+            justify-content: space-around;
+
+            .info-item {
+                width: 100%;
+                line-height: 1.6;
+
+                h3 {
+                    font-family: 'Rubik', sans-serif;
+                    font-weight: 500;
+                    font-size: 20px;
+                }
+                p {
+                    font-family: 'Karla', sans-serif;
+                    color:#777777;
+                }
+                .yellowize {
+                    color: $bg;
+                }
+            }
+        }
     }
 }

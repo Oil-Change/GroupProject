@@ -1,18 +1,19 @@
 
 @import "variables";
 @import "reset";
-@import  "landingPage";
+@import "landingPage";
 @import "header";
-@import "register";
+@import "form";
 @import "calendar";
 @import "payment";
 @import "instructionspage";
 @import "userInfo";
 @import "user";
 @import "message";
+@import "login";
 
 
-body{
+body {
     max-width: 600px;
     margin: 0 auto;
     box-shadow:0 0 5px #dad5d5;
