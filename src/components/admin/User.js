@@ -15,6 +15,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import appleMaps from '../../assets/apple-maps.jpg'
+
 class User extends Component {
 
     back = (e) => {
@@ -44,72 +46,82 @@ class User extends Component {
         }).catch(err => alert('Drop Off did not update'));
     };
 
+    correctStreetName = () => {
+        const {street, city, state, zip} = this.props.appointment
+
+        console.log(street)
+        // Street is the only case where spaces are available replaced with '+'
+        const updatedStreet = street.split(' ').join('+')
+        return `${updatedStreet},+${city},+${state}+${zip}`
+
+    }
+
     // this.props.match.params
     render() {
         const back = require('../../assets/back.png')
         const classes = makeStyles();
+        const path = `http://maps.google.com/maps?q=${this.correctStreetName()}`
         return (
             <div>
                 
                 <header>
-                    <div><button className='Header-Btn' onClick={this.back}><img alt='none' src={back}></img></button></div>
-                    <div className='header-title'><div className='circle-container'><h1>User Information</h1></div></div>
+                    <div>
+                        <button className='Header-Btn' onClick={this.back}>
+                            <img alt='none' src={back}></img>
+                        </button>
+                    </div>
+                    <div className='header-title'>
+                        <div className='circle-container'>
+                            <h1>User Information</h1>
+                        </div>
+                    </div>
                     <div className='header-right'></div>
                 </header>
                 <div className='info-container'>
                     <div className='adminUserInfo'>
-                        <div>
-                            <div>
-                                <Card className={classes.card}>
+                        <div className='cardsContainer'>
+                            <div className='singleCardContainer'>
+                                <Card style={{width: '100%'}} className={classes.card}>
                                     <CardContent>
                                         <Typography className={classes.title} color="textSecondary" gutterBottom>
-                                        Appointment: 10/12
+                                        Appointment: {this.props.appointment.appointment}
                                         </Typography>
                                         <Typography variant="h5" component="h2">
-                                        Alex Standfield
+                                        {this.props.appointment.first_name}{this.props.appointment.last_name}
                                         </Typography>
                                         <Typography className={classes.pos} color="textSecondary">
-                                        801-368-0547
+                                        {this.props.appointment.phone_number}
                                         </Typography>
                                         <br/>
                                         <Typography variant="body2" component="p">
-                                        Mazda | Mazda 3 lx | Black | 2016 
-                                        <br/>
-                                        Y2K 345 | 30,000
+                                        {this.props.appointment.make} | {this.props.appointment.model}{this.props.appointment.trim} | {this.props.appointment.color} | {this.props.appointment.year} 
+                                            <br/>
+                                        {this.props.appointment.license_plate} | {this.props.appointment.mileage}
                                         </Typography>
                                     </CardContent>
-                                    {/* <CardActions>
-                                        <Button size="small">Learn More</Button>
-                                    </CardActions> */}
                                 </Card>
                             </div>
 
+                            <br/>
 
                             <div>
                                 <Card className={classes.card}>
                                     <CardActionArea>
                                         <CardMedia
                                         className={classes.media}
-                                        image="/static/images/cards/contemplative-reptile.jpg"
-                                        title="Contemplative Reptile"
-                                        />
-                                        <CardContent>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            Lizard
-                                        </Typography>
-                                        <Typography variant="body2" color="textSecondary" component="p">
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                            across all continents except Antarctica
-                                        </Typography>
+                                        title="Apple Maps"> 
+                                            <img src={appleMaps}
+                                            style={{width: '100%', height:'275px'}} alt="Maps" /> 
+                                        </CardMedia>
+                                        <CardContent style={{height: '15px'}}>
+                                            <Typography gutterBottom variant="h5" component="h2">
+                                                Directions
+                                            </Typography>
                                         </CardContent>
                                     </CardActionArea>
                                     <CardActions>
-                                        <Button size="small" color="primary">
-                                        Share
-                                        </Button>
-                                        <Button size="small" color="primary">
-                                        Learn More
-                                        </Button>
+                                        <a href={path}> {this.props.appointment.street}{this.props.appointment.city}{this.props.appointment.state}
+                                        {this.props.appointment.zip} </a> 
                                     </CardActions>
                                 </Card>
                             </div>
