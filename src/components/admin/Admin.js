@@ -45,11 +45,22 @@ export default class Admin extends Component {
         console.log('mappedAppoitments', mappedAppointments)
         return (
             <div>
-                <header>
-                    <div className="left"></div>
-                    <div className='header-title'><div className='circle-container'><AccountCircleIcon id='AccountColor'/><h1>Account Info</h1></div></div>
-                    <div className='header-right'></div>
-                </header>
+                <div className="header-container">
+                    <header>
+                        <div>
+                            <button className='header-spacer' onClick={this.back}>
+                                {/* <img alt='none' src={back}></img> */}
+                            </button>
+                        </div>
+                        <div className='header-title'>
+                            <div className='circle-container'>
+                                <AccountCircleIcon id='AccountColor'/>
+                                <h1>User Information</h1>
+                            </div>
+                        </div>
+                        <div className='header-spacer'></div>
+                    </header>
+                </div>
 
                 {mappedAppointments}
             </div>

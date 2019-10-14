@@ -123,16 +123,26 @@ class Message extends Component {
     }
 
     render() {
-      console.log(this.state.messages)
+      console.log(this.props.user)
       
       const back = require('../../assets/back.png')
         return (
-            <div>
-                <header>
-                    <div><button className='Header-Btn' onClick={this.back}><img src={back}></img></button></div>
-                    <div className='header-title'><div className='circle-container'><AccountCircleIcon id='AccountColor'/><h1>Messages</h1></div></div>
-                    <div className='header-right'></div>
-                </header>
+          <div>
+              <div className="header-container">
+                  <header>
+                      <div>
+                          <button className='header-spacer' onClick={this.back}>
+                              <img alt='none' src={back}></img>
+                          </button>
+                      </div>
+                      <div className='header-title'>
+                          <div className='circle-container'>
+                              <h1>User Information</h1>
+                          </div>
+                      </div>
+                      <div className='header-spacer'></div>
+                  </header>
+              </div>
               <div className='message-form-container'>
                 <div className='message-container'>
                 <div>
@@ -142,7 +152,10 @@ class Message extends Component {
 
                 <div className='message-display'>{this.state.messages.map(messageObj => 
           
-          <h2 key={messageObj.id}>{messageObj.user_name}: {messageObj.message}</h2>)}</div>
+          <h2 className= 
+          {
+          messageObj.is_admin ?
+          'admin':'user'} key={messageObj.id}>{messageObj.user_name}: {messageObj.message}</h2>)}</div>
           <div className="mes-bot">
                 <h1>{this.props.user.first_name}</h1>
 

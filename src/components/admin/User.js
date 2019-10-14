@@ -22,11 +22,13 @@ export class User extends Component {
         super()
 
         this.state = {
-            appointment: {}
+            appointment: "hasn't updated",
+            streetAddress: 'this sucks'
         }
     }
 
     componentDidMount(){
+        console.log("here")
         this.getUser()
     }
 
@@ -39,18 +41,29 @@ export class User extends Component {
         let { id } = this.props.match.params
         console.log(id)
 
-        console.log(id)
-
         axios.get(`/api/appointment/${id}`)
             .then(res => {
-                console.log(res.data)
+                console.log(res.data[0])
                 this.setState({
                     appointment: res.data[0]
                 })
+                this.correctStreetName()
             })
             .catch(error => {
                 console.log('error', error)
             })
+    }
+    
+    correctStreetName = () => {
+        console.log(this.state.appointment)
+        const {street, city, state, zip} = this.state.appointment
+        console.log(street.split(" "))
+        // Street is the only case where spaces are available replaced with '+'
+        let updatedStreet = street.split(" ").join("+")
+        console.log(updatedStreet)
+        this.setState({
+            streetAddress: `${updatedStreet},+${city},+${state}+${zip}`
+        }) 
     }
 
     pickUp = () => {
@@ -75,24 +88,15 @@ export class User extends Component {
         }).catch(err => alert('Drop Off did not update'));
     };
 
-    correctStreetName = () => {
-        const {street, city, state, zip} = this.props.appointment
 
-        console.log(street)
-        // Street is the only case where spaces are available replaced with '+'
-        // const updatedStreet = street.split(' ').join('+')
-        // return `${updatedStreet},+${city},+${state}+${zip}`
-
-    }
-
-    // this.props.match.params
     render() {
+        console.log(this.state.appointment)
         const back = require('../../assets/back.png')
         const classes = makeStyles();
-        const path = `http://maps.google.com/maps?q=${this.correctStreetName()}`
+        const path = `http://maps.google.com/maps?q=${this.state.streetAddress}`
         const {street, city, state, zip, first_name, last_name, phone_number, appointment, make, model, trim, year, color, mileage, license_plate, pick_up} = this.state.appointment
-        const address = `${street}, ${city}, ${state}, 
-        ${zip}`
+        const address = `${this.state.appointment.street}, ${this.state.appointment.city}, ${this.state.appointment.state}, 
+        ${this.state.appointment.zip}`
         console.log(this.state.appointment)
         return (
             <div>
@@ -115,11 +119,11 @@ export class User extends Component {
                     <div className='adminUserInfo'>
                         <div className='cardsContainer'>
                             <div className='singleCardContainer'>
-                                <Card style={{width: '100%', 'box-shadow': 'none'}} className={classes.card}>
+                                <Card style={{width: '100%', boxShadow: 'none'}} className={classes.card}>
                                     <CardContent>
-                                        <Typography className={classes.title} color="textSecondary" gutterBottom>
-                                        Appointment: {appointment}
-                                        </Typography>
+                                        {/* <Typography className={classes.title} color="textSecondary" gutterBottom>
+                                        Appointment: {this.state.appointment.getMonth() + 1}/{this.state.appointment.getDate()}/{this.state.appointment.getFullYear()}
+                                        </Typography> */}
                                         <Typography variant="h5" component="h2">
                                         {first_name} {last_name}
                                         </Typography>
@@ -161,12 +165,12 @@ export class User extends Component {
                         </div>
 
                         <div className='buttonContainer'>
-                            {!pick_up
+                            {/* {!pick_up
                             ?
                             (<button className='statusButton' onClick={this.pickUp} >Pick Up</button>)
                             :
                             (<button className='statusButton' onClick={this.dropOff}>Drop Off</button>)
-                            }
+                            } */}
                         </div>
                         
                     </div>
