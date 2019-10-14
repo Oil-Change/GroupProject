@@ -7,9 +7,17 @@
     align-items: flex-start;
     padding-top: 5%;
 
+    #car-form {
+        height: 75vh;
+    }
+
+    #register-form {
+        height: 76vh;
+    }
+
     form {
         padding-top: 10%;
-        height: 90vh;
+        height: 100vh;
         width: 93%;
         display: flex;
         flex-direction: column;
