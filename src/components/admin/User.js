@@ -38,14 +38,17 @@ class User extends Component {
     getUser = () => {
         let { id } = this.props.match.params
 
+        console.log(id)
+
         axios.get(`/api/appointment/${id}`)
             .then(res => {
+                console.log(res.data)
                 this.setState({
                     appointment: res.data
                 })
             })
             .catch(error => {
-                console.log(error)
+                console.log('error', error)
             })
     }
 
