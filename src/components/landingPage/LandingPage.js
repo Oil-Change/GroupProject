@@ -12,7 +12,7 @@ export default class LandingPage extends Component {
                 <div className="top-section">
                     <div className="image-container">
                         <img src={img} alt="oil-change"/>
-                    </div>
+                    </div> 
                 </div>
                 <div className="bot-section">
                     <h1 className="welcome">WELCOME!</h1>
