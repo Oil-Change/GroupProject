@@ -25,7 +25,7 @@ export default (
         <Route path="/instructions" component={InstructionsPage}/>
         <Route path="/messages/:id" component={Message}/>
         {/* admin */}
-        <Route path="/admin/user/:id" component={User}/>
+        <Route path="/admin/user" component={User}/>
         <Route path="/admin" component={Admin}/>
     </Switch>
 )
