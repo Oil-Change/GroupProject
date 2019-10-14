@@ -1,3 +1,5 @@
 SELECT * 
-FROM appointments
-WHERE id = $1
+FROM appointments a
+JOIN users u ON a.user_id = u.phone_number
+JOIN cars c ON a.car_id = c.id
+WHERE a.id = $1

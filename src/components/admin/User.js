@@ -37,11 +37,13 @@ class User extends Component {
 
     getUser = () => {
         let { id } = this.props.match.params
+        console.log(id)
 
         axios.get(`/api/appointment/${id}`)
             .then(res => {
+                console.log(res.data)
                 this.setState({
-                    appointment: res.data
+                    appointment: res.data[0]
                 })
             })
             .catch(error => {
@@ -89,22 +91,24 @@ class User extends Component {
         const {street, city, state, zip, first_name, last_name, phone_number, appointment, make, model, trim, year, color, mileage, license_plate, pick_up} = this.state.appointment
         const address = `${street}, ${city}, ${state}, 
         ${zip}`
+        console.log(this.state.appointment)
         return (
             <div>
-                
-                <header>
-                    <div>
-                        <button className='Header-Btn' onClick={this.back}>
-                            <img alt='none' src={back}></img>
-                        </button>
-                    </div>
-                    <div className='header-title'>
-                        <div className='circle-container'>
-                            <h1>User Information</h1>
+                <div className="header-container">
+                    <header>
+                        <div>
+                            <button className='header-spacer' onClick={this.back}>
+                                <img alt='none' src={back}></img>
+                            </button>
                         </div>
-                    </div>
-                    <div className='header-right'></div>
-                </header>
+                        <div className='header-title'>
+                            <div className='circle-container'>
+                                <h1>User Information</h1>
+                            </div>
+                        </div>
+                        <div className='header-spacer'></div>
+                    </header>
+                </div>
                 <div className='info-container'>
                     <div className='adminUserInfo'>
                         <div className='cardsContainer'>

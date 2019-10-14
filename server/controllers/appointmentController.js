@@ -23,6 +23,7 @@ const getAppointment = async (req, res) => {
     const { id } = req.params;
     
     const appointment = await db.appointment.get_appointment([id]);
+    // console.log(appointment)
     // console.log('getAppointment: ', getAppointment);
     // console.log('');
     res.status(200).send(appointment);
