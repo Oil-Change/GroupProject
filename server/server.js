@@ -87,6 +87,7 @@ io.on('connection', socket => {
         const {room_id} = data
         const db = app.get('db')
         console.log('Room Joined')
+        console.log('room', room_id)
         let existingRoom = await db.message.check_chat_room(room_id)
         let messages = await db.message.chat_messages_history(room_id)
         socket.join(room_id)

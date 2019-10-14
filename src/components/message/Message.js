@@ -46,28 +46,28 @@ class Message extends Component {
         this.socket.disconnect();
       }
 
-      gettime = () => {
+      // gettime = () => {
+      
+      //   console.log(time)
+      //   this.setState({
+      //       timestamp:time
+      //   })
+      // }
+      sendMessage = () => {
+
+        
         const date = new Date().getDate()
         const month = new Date().getMonth() + 1
         const hours = new Date().getHours()
         const min = new Date().getMinutes()
         const time = hours + ':' + min + ' ' + month + '/' + date
-        console.log(time)
-        this.setState({
-            timestamp:time
-        })
-      }
-      sendMessage = () => {
-
-        
-        this.gettime()
         console.log(this.state.timestamp)
         this.socket.emit('message sent', {
           message: this.state.message,
           roomId: this.state.roomId,
           userName:this.state.userName,
           isAdmin: this.state.isAdmin,
-          timestamp:this.state.timestamp
+          timestamp:time
         })
         this.setState({
           message: ''
@@ -107,7 +107,7 @@ class Message extends Component {
             })
         })
         console.log(this.state.user)
-        }, 5000);
+        }, 1000);
           
       }
       back = (e) => {
@@ -116,7 +116,7 @@ class Message extends Component {
     }
 
     render() {
-      console.log(this.state.user)
+      console.log(this.props)
       console.log(this.props.user.userName)
       const back = require('../../assets/back.png')
         return (
