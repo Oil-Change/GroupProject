@@ -123,7 +123,7 @@ class Message extends Component {
     }
 
     render() {
-      console.log(this.state.messages)
+      console.log(this.props.user)
       
       const back = require('../../assets/back.png')
         return (
@@ -142,7 +142,10 @@ class Message extends Component {
 
                 <div className='message-display'>{this.state.messages.map(messageObj => 
           
-          <h2 key={messageObj.id}>{messageObj.user_name}: {messageObj.message}</h2>)}</div>
+          <h2 className= 
+          {
+          messageObj.is_admin ?
+          'admin':'user'} key={messageObj.id}>{messageObj.user_name}: {messageObj.message}</h2>)}</div>
           <div className="mes-bot">
                 <h1>{this.props.user.first_name}</h1>
 
