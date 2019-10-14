@@ -5,7 +5,6 @@ import { Payment } from '../components/payment/Payment';
 import { Login } from '../components/login/Login';
 import { InstructionsPage } from '../components/instructionsPage/InstructionsPage';
 import { UserInfo } from '../components/admin/UserInfo';
- 
 
 describe('Does Landing Page Render', function () {
     //before
@@ -32,14 +31,14 @@ describe('Does Login Page Render', function () {
 
 describe('Does the Instruction page Render', function () {
     it('This container will display Enjoy your day', () => {
-        const { container } = <InstructionsPage />
+        const { container } = render(<InstructionsPage />)
         expect(container.textContent).toContain('Instructions');
     })
 });
 
 describe('Does the UserInfo Page Render', function () {
     it('This container will display Pick Up', () => {
-        const { container } = <UserInfo />
+        const { container } = render(<UserInfo />)
         expect(container.textContent).toContain('Pick Up')
     })
 });

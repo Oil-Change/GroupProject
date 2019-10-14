@@ -3,7 +3,7 @@ import axios from 'axios'
 import { userInfo } from 'os';
 import { connect } from 'react-redux'
 import { updateAppointment } from '../../redux/reducer'
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 export class UserInfo extends Component {
 
@@ -11,7 +11,7 @@ export class UserInfo extends Component {
         super()
     }
 
-    componentDidMount(){
+    componentDidMount() {
         console.log(this.props.userAppointment)
     }
 
@@ -38,7 +38,7 @@ export class UserInfo extends Component {
     }
 
     render() {
-        const {first_name, last_name, year, make, model, color} = this.props.userAppointment
+        const { first_name, last_name, year, make, model, color } = this.props.userAppointment
 
         return (
             <div className="user-form-container">
@@ -60,6 +60,6 @@ export class UserInfo extends Component {
 
 function mapStateToProps(state) {
     return state
-  }
-  
-  export default withRouter(connect(mapStateToProps, {updateAppointment})(UserInfo))
+}
+
+export default withRouter(connect(mapStateToProps, { updateAppointment })(UserInfo))
