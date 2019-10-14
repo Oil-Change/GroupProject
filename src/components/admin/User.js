@@ -18,10 +18,35 @@ import Typography from '@material-ui/core/Typography';
 import appleMaps from '../../assets/apple-maps.jpg'
 
 class User extends Component {
+    constructor(){
+        super()
+
+        this.state = {
+            appointment: {}
+        }
+    }
+
+    componentDidMount(){
+        this.getUser()
+    }
 
     back = (e) => {
         e.preventDefault()
         this.props.history.push('/admin')
+    }
+
+    getUser = () => {
+        let { id } = this.props.match.params
+
+        axios.get(`/api/appointment/${id}`)
+            .then(res => {
+                this.setState({
+                    appointment: res.data
+                })
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 
     pickUp = () => {
@@ -61,6 +86,9 @@ class User extends Component {
         const back = require('../../assets/back.png')
         const classes = makeStyles();
         const path = `http://maps.google.com/maps?q=${this.correctStreetName()}`
+        const {street, city, state, zip, first_name, last_name, phone_number, appointment, make, model, trim, year, color, mileage, license_plate, pick_up} = this.state.appointment
+        const address = `${street}, ${city}, ${state}, 
+        ${zip}`
         return (
             <div>
                 
@@ -81,22 +109,22 @@ class User extends Component {
                     <div className='adminUserInfo'>
                         <div className='cardsContainer'>
                             <div className='singleCardContainer'>
-                                <Card style={{width: '100%'}} className={classes.card}>
+                                <Card style={{width: '100%', 'box-shadow': 'none'}} className={classes.card}>
                                     <CardContent>
                                         <Typography className={classes.title} color="textSecondary" gutterBottom>
-                                        Appointment: {this.props.appointment.appointment}
+                                        Appointment: {appointment}
                                         </Typography>
                                         <Typography variant="h5" component="h2">
-                                        {this.props.appointment.first_name}{this.props.appointment.last_name}
+                                        {first_name} {last_name}
                                         </Typography>
                                         <Typography className={classes.pos} color="textSecondary">
-                                        {this.props.appointment.phone_number}
+                                        {phone_number}
                                         </Typography>
                                         <br/>
                                         <Typography variant="body2" component="p">
-                                        {this.props.appointment.make} | {this.props.appointment.model}{this.props.appointment.trim} | {this.props.appointment.color} | {this.props.appointment.year} 
+                                        {make} | {model} {trim} | {color} | {year} 
                                             <br/>
-                                        {this.props.appointment.license_plate} | {this.props.appointment.mileage}
+                                        {license_plate} | {mileage}
                                         </Typography>
                                     </CardContent>
                                 </Card>
@@ -105,7 +133,7 @@ class User extends Component {
                             <br/>
 
                             <div>
-                                <Card className={classes.card}>
+                                <Card style={{'box-shadow': 'none'}} className={classes.card}>
                                     <CardActionArea>
                                         <CardMedia
                                         className={classes.media}
@@ -120,15 +148,14 @@ class User extends Component {
                                         </CardContent>
                                     </CardActionArea>
                                     <CardActions>
-                                        <a href={path}> {this.props.appointment.street}{this.props.appointment.city}{this.props.appointment.state}
-                                        {this.props.appointment.zip} </a> 
+                                        <Button style={{color: 'blue', 'text-decoration': 'underline'}}  href={path} target='_blank'> {address} </Button> 
                                     </CardActions>
                                 </Card>
                             </div>
                         </div>
 
                         <div className='buttonContainer'>
-                            {!this.props.appointment.pick_up
+                            {!pick_up
                             ?
                             (<button className='statusButton' onClick={this.pickUp} >Pick Up</button>)
                             :

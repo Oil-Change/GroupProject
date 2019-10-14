@@ -2,7 +2,7 @@ const createAppointment = async (req, res) => {
     // console.log('Creating Appointment');
     // console.log('');
     const id = req.session.user.phone_number;
-    console.log('user_id: ', id);
+    // console.log('user_id: ', id);
     const { cid } = req.body;
     // console.log('cid: ', cid);
     // console.log('');
@@ -18,13 +18,16 @@ const createAppointment = async (req, res) => {
 
 const getAppointment = async (req, res) => {
     // console.log(`Getting Apointments`);
-    // console.log('');
+    
     const db = req.app.get('db');
-    const { id } = req.body;
+    const { id } = req.params;
+    
     const appointment = await db.appointment.get_appointment([id]);
     // console.log('getAppointment: ', getAppointment);
     // console.log('');
     res.status(200).send(appointment);
+
+   
 };
 
 const getAllAppointments = async (req, res) => {
@@ -39,23 +42,23 @@ const getAllAppointments = async (req, res) => {
 
 
 const getTodaysAppointments = async (req, res) => {
-    console.log(`Getting Today's Appointments`);
-    console.log('');
+    // console.log(`Getting Today's Appointments`);
+    // console.log('');
     const db = req.app.get('db');
     const todaysAppointments = await db.appointment.get_todays_appointments();
-    console.log('getTodaysAppointment: ', todaysAppointments);
-    console.log('');
+    // console.log('getTodaysAppointment: ', todaysAppointments);
+    // console.log('');
     res.status(200).send(todaysAppointments);
 };
 
 const getAppointments = async (req, res) => {
-    console.log(`Getting day's Appointments`);
+    // console.log(`Getting day's Appointments`);
     const { month, year } = req.body
-    console.log("req-date", date);
+    // console.log("req-date", date);
     const db = req.app.get('db');
     const daysAppointments = await db.appointment.get_dates_appointments(month, year);
-    console.log('daysAppointments: ', daysAppointments);
-    console.log('');
+    // console.log('daysAppointments: ', daysAppointments);
+    // console.log('');
     res.status(200).send(daysAppointments);
 };
 
