@@ -1,10 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import LandingPage from '../components/landingPage/LandingPage';
-import { Payment } from '../components/payment/Payment';
-import { Login } from '../components/login/Login';
 import { InstructionsPage } from '../components/instructionsPage/InstructionsPage';
-import { UserInfo } from '../components/admin/UserInfo';
 
 describe('Does Landing Page Render', function () {
     //before
@@ -15,20 +12,6 @@ describe('Does Landing Page Render', function () {
     })
 });
 
-describe('Does Payment Page Render', function () {
-    it('This container will display Invoice', () => {
-        const { container } = render(<Payment />)
-        expect(container.textContent).toContain("Invoice")
-    })
-});
-
-describe('Does Login Page Render', function () {
-    it('Verify code is Rendered', () => {
-        const { container } = render(<Login />)
-        expect(container.textContent).toContain('Verify code')
-    })
-});
-
 describe('Does the Instruction page Render', function () {
     it('This container will display Enjoy your day', () => {
         const { container } = render(<InstructionsPage />)
@@ -36,9 +19,23 @@ describe('Does the Instruction page Render', function () {
     })
 });
 
-describe('Does the UserInfo Page Render', function () {
-    it('This container will display Pick Up', () => {
-        const { container } = render(<UserInfo />)
-        expect(container.textContent).toContain('Pick Up')
+describe('Does LETs go button exist', function () {
+    it('lets go button exists', () => {
+        const { container } = render(<LandingPage />)
+        expect(container.textContent).toContain(`LET'S GO!`)
+    })
+});
+
+describe('Does Fast And Easy Pickup Exist', function () {
+    it('Fast And Easy Pickup', () => {
+        const { container } = render(<LandingPage />)
+        expect(container.textContent).toContain('Fast And Easy Pickup')
+    })
+});
+
+describe(`Just add your address and you'll see everything you need!`, function () {
+    it(`Just add your address and you'll see everything you need!`, () => {
+        const { container } = render(<LandingPage />)
+        expect(container.textContent).toContain(`Just add your address and you'll see everything you need!`)
     })
 });
