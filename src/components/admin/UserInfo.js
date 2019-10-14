@@ -6,38 +6,45 @@ import { updateAppointment } from '../../redux/reducer'
 import {withRouter} from 'react-router-dom'
 
 class UserInfo extends Component {
+
     constructor() {
         super()
     }
 
-
-
-
     updateAppt = () => {
-        this.props.updateAppointment(this.props.appointments)
+        this.props.updateAppointment(this.props.userAppointment)
     }
 
     message = () => {
-        let { id } = this.props.appointments
+        let { id } = this.props.userAppointment
         this.updateAppt()
         this.props.history.push(`/messages/${id}`)
     }
 
-   
+    pickUp = () => {
+        this.updateAppt()
+        this.props.history.push(`admin/user/pick_up`)
+    }
+
+    dropOff = () => {
+        this.updateAppt()
+        this.props.history.push(`admin/user/drop_off`)
+    }
 
     render() {
+        const {first_name, last_name, year, make, model, color} = this.props.userAppointment
         return (
             <div className="user-form-container">
                 <div className="user-container">
-                <div className="user-info">
-                <h3>{this.props.appointments.first_name} {this.props.appointments.last_name}</h3>
-                <p>{this.props.appointments.year} {this.props.appointments.make} {this.props.appointments.model} {this.props.appointments.color}</p>
-                </div>
-                <div className="userBtn-container">
-                <button className="userBtn" onClick={this.message}></button>
-                <button className="userBtn" onClick={this.pickUp}></button>
-                <button className="userBtn" onClick={this.dropOff}></button>
-                </div>
+                    <div className="user-info">
+                        <h3>{first_name} {last_name}</h3>
+                        <p>{year} {make} {model} {color}</p>
+                    </div>
+                    <div className="userBtn-container">
+                        <button className="userBtn" onClick={this.message}>Message</button>
+                        <button className="userBtn" onClick={this.pickUp}>Pick Up</button>
+                        <button className="userBtn" onClick={this.dropOff}>Drop Off</button>
+                    </div>
                 </div>
             </div>
         )

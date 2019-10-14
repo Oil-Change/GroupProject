@@ -112,14 +112,10 @@ input, select {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 99vh;
-  background: #fbbb06;
+  min-height: 130vh;
 }
 
 .welcome {
@@ -128,7 +124,16 @@ input, select {
   text-align: center;
 }
 
+.top-section {
+  height: 10vh;
+  width: 100%;
+  background: #fbbb06;
+  margin-bottom: 7vh;
+}
+
 .image-container {
+  position: relative;
+  top: 5vh;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -136,11 +141,10 @@ input, select {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border-top: 1px solid #fbbb06;
 }
 
 .image-container img {
-  width: 100%;
+  width: 100px;
   z-index: 1;
 }
 
@@ -170,6 +174,10 @@ input, select {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.bot-section .welcome {
+  margin-bottom: 3%;
 }
 
 .bot-section .general-info-container .general-info {
@@ -293,7 +301,7 @@ header .header-right {
 }
 
 .form-container {
-  height: 90vh;
+  height: 100vh;
   width: 100%;
   background: #fbbb06;
   display: -webkit-box;
@@ -309,7 +317,7 @@ header .header-right {
 
 .form-container form {
   padding-top: 10%;
-  height: 85%;
+  height: 90vh;
   width: 93%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -733,7 +741,7 @@ header .header-right {
 }
 
 .background-container {
-  height: 90vh;
+  height: 100vh;
   background: #fbbb06;
   display: -webkit-box;
   display: -ms-flexbox;
