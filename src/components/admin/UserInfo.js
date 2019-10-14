@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { updateAppointment } from '../../redux/reducer'
 import {withRouter} from 'react-router-dom'
 
-class UserInfo extends Component {
+export class UserInfo extends Component {
 
     constructor() {
         super()

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-class Stripe extends Component {
+export class Stripe extends Component {
     constructor() {
         super()
         this.state = {
@@ -77,10 +77,10 @@ const mapStateToProps = (reduxState) => {
 }
 
 // export default withRouter(Subscription);
-// export default withRouter(connect(mapStateToProps)(Stripe));
+export default withRouter(connect(mapStateToProps)(Stripe));
 
 //this is for testing only
-export default connect(mapStateToProps)(Stripe);
+// export default connect(mapStateToProps)(Stripe);
 
 
 

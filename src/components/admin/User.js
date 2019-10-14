@@ -17,7 +17,7 @@ import Typography from '@material-ui/core/Typography';
 
 import appleMaps from '../../assets/apple-maps.jpg'
 
-class User extends Component {
+export class User extends Component {
     constructor(){
         super()
 
