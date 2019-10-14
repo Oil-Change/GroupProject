@@ -4,7 +4,7 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-class Subscription extends Component {
+class Stripe extends Component {
     constructor() {
         super()
         this.state = {
@@ -27,8 +27,6 @@ class Subscription extends Component {
         amount /= 100
         console.log(amount)
         token.card = void 0;
-        // let chargedDate = new Date();
-        // console.log('Charged Date: ', chargedDate)
         let price = amount;
         console.log('Price: ', price)
         let { appointment } = this.props;
@@ -79,7 +77,12 @@ const mapStateToProps = (reduxState) => {
 }
 
 // export default withRouter(Subscription);
-export default withRouter(connect(mapStateToProps)(Subscription));
+// export default withRouter(connect(mapStateToProps)(Stripe));
+
+//this is for testing only
+export default connect(mapStateToProps)(Stripe);
+
+
 
 const imageUrl = 'https://th.thgim.com/opinion/op-ed/article19253786.ece/alternates/FREE_660/Th11-Paper%20money'
 

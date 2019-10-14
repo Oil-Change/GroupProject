@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { updatePhone } from '../../redux/reducer'
 import axios from 'axios';
 
-class Login extends Component {
+export class Login extends Component {
     constructor(){
         super()
 
