@@ -1,0 +1,42 @@
+.info-container {
+    height: 83.5vh;
+    width: 100%;
+    background: $bg;
+    display: flex;
+    justify-content: center;
+    padding-top: 15%;
+
+
+    .adminUserInfo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 95%;
+        height: 95%;
+        background: white;
+        box-shadow: 1px 2px 3px rgba(0, 0, 0, .1);
+        border-radius: 3px;
+        padding-top: 5%;
+    }
+    .buttonContainer{
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .statusButton:hover{
+        cursor: pointer;
+        background: #777777;
+        color: white;
+        border: 2px solid #777777;
+    }
+    .statusButton{
+        background:white;
+        width: 200px;
+        height: 50px;
+        border-radius: 5px;
+        border: 2px solid $bg;
+        font-family: $lato;
+        font-size: 18px;
+        color: $bg;
+        margin-top: 15px;
+    }
+}

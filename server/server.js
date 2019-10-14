@@ -91,6 +91,7 @@ io.on('connection', socket => {
         let messages = await db.message.chat_messages_history(room_id)
         socket.join(room_id)
         io.to(room_id).emit('room joined', messages)
+        
     })
     socket.on('message sent', async data => {
         const {room_id, message, user_name, is_admin, timestamp} = data
