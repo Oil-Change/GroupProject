@@ -26,7 +26,10 @@ class UserInfo extends Component {
    
 
     render() {
+        console.log('user-appt', this.props.appointments)
+        console.log('name', this.props.appointment.first_name)
         return (
+            
             <div className="user-form-container">
                 <div className="user-container">
                 <div className="user-info">
