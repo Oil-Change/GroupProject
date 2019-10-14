@@ -15,6 +15,7 @@
         .header-spacer {
             display: flex;
             height: 80px;
+            width: 40px;
             
             img{
                 width: 20px;
@@ -25,6 +26,9 @@
             justify-content: center;
             align-items: center;
             
+            h1 {
+                color: white;
+            }
         }
         .circle-container {
             width: 180px;

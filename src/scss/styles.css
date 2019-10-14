@@ -246,6 +246,7 @@ input, select {
   display: -ms-flexbox;
   display: flex;
   height: 80px;
+  width: 40px;
 }
 
 .header-container header .header-spacer img {
@@ -262,6 +263,10 @@ input, select {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.header-container header .header-title h1 {
+  color: white;
 }
 
 .header-container header .circle-container {
