@@ -7,7 +7,7 @@
         "_reset.scss",
         "_landingPage.scss",
         "_header.scss",
-        "_register.scss",
+        "_form.scss",
         "_calendar.scss",
         "_payment.scss",
         "_instructionspage.scss",

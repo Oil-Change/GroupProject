@@ -3,6 +3,7 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { updateCar } from '../../redux/reducer'
 import DriveEtaIcon from '@material-ui/icons/DriveEta';
+import TextField from '@material-ui/core/TextField';
 
 class CarInformation extends Component {
     constructor() {
@@ -77,6 +78,45 @@ class CarInformation extends Component {
                 </header>
                 <div className="form-container">
                     <form>
+                    <div className="form-section full-name">
+                            <h2>Car Information</h2>
+
+                            <TextField
+                                id="outlined-text-input standard-full-width"
+                                label="Make"
+                                type="text"
+                                fullWidth
+                                id='mui-input'
+                                style = {{width: '100%'}}
+                                name="make"
+                                onChange={this.handleChange}
+                                margin="normal"
+                                variant="outlined"
+                            />
+
+                            <TextField
+                                id="outlined-text-input"
+                                label="Make"
+                                type="text"
+                                id='mui-input'
+                                style = {{width: '100%'}}
+                                name="model"
+                                onChange={this.handleChange}
+                                margin="normal"
+                                variant="outlined"
+                            />
+                            <TextField
+                                id="outlined-text-input"
+                                label="Year"
+                                type="text"
+                                id='mui-input'
+                                style = {{width: '100%'}}
+                                name="model"
+                                onChange={this.handleChange}
+                                margin="normal"
+                                variant="outlined"
+                            />
+                        </div>
                         <input type='text' placeholder='Make' onChange={this.handleChange} name='make' />
                         <input type='text' placeholder='Model' onChange={this.handleChange} name='model' />
                         <input type='text' placeholder='Trim' onChange={this.handleChange} name='trim' />

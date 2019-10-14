@@ -51,8 +51,8 @@ class User extends Component {
 
         console.log(street)
         // Street is the only case where spaces are available replaced with '+'
-        const updatedStreet = street.split(' ').join('+')
-        return `${updatedStreet},+${city},+${state}+${zip}`
+        // const updatedStreet = street.split(' ').join('+')
+        // return `${updatedStreet},+${city},+${state}+${zip}`
 
     }
 

@@ -3,7 +3,6 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { updateUser } from '../../redux/reducer'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
-import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 
 
