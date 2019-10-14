@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css?family=Karla|Rubik|Rubik+Mono+One&display=swap');
+
+$text-spacing: 0 0 2% 0;
+
+.background-container {
+    height: 90vh;
+    background: $bg;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding-top: 5%;
+
+    .directions-step-container {
+        min-height: 65%;
+        width: 93%;
+        background: white;
+        box-shadow:0px 0px 10px rgba(0, 0, 0, 0.2);
+        border-radius: 3px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+
+        .directions-container {
+            width: 85%;
+            height: 15%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: center;
+            text-align: center;
+
+            .title {
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+
+                h2 {
+                    width: 85%;
+                    font-family: 'Rubik', sans-serif;
+                    font-size: 24px;
+                    margin-bottom: 7%;
+                }
+            }
+            p {
+                font-family: 'Karla', sans-serif;
+                color: #AAAAAA;
+            }
+        }
+        .verify{
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+
+            .step-container {
+                width: 85%;
+                .step-text{
+                    margin: $text-spacing;
+                    width: 100%;
+                    font-family: 'Rubik', sans-serif;
+                    font-size: 20px;
+                }
+                .sub-text {
+                    margin: $text-spacing;
+                    font-family: 'Karla', sans-serif;
+                    color: #AAAAAA;
+                }
+                .phone-number-input {
+                    margin: $text-spacing;
+                    font-size: 11pt;
+                    color: #AAAAAA;
+                    border-radius: 3%;
+                    padding-left: 10px;
+                    width: 150px;
+                    height: 45px;
+                    border: 1px solid #AAAAAA;
+                    margin-bottom: 7%;
+                }
+                .send-btn {
+                    border-radius: 3%;
+                    background: #CCCCCC;
+                    padding-left: 10px;
+                    width: 30%;
+                    height: 45px;
+                    color: white;
+                    font-size: 14pt;
+                    border: 1px solid #CCCCCC;
+                }
+                .code-input {
+                    margin: $text-spacing;
+                    border-radius: 3%;
+                    font-size: 11pt;
+                    color: #AAAAAA;
+                    padding-left: 10px;
+                    width: 110px;
+                    height: 45px;
+                    border: 1px solid #AAAAAA;
+                }
+                .verify-btn {
+                    margin-top: 5%;
+                    border-radius: 3%;
+                    background: #CCCCCC;
+                    padding-left: 10px;
+                    width: 100%;
+                    height: 45px;
+                    color: white;
+                    font-size: 14pt;
+                    border: 1px solid #CCCCCC;
+                }
+                .entered-data {
+
+                }
+            }
+            .input-step-container {
+                width: 85%;
+                margin: $text-spacing;
+                margin-bottom: 7%;
+                display: flex;
+                align-items: center;
+
+                .phone-number-input {
+                    font-size: 11pt;
+                    margin-right: 5%;
+                    color: #AAAAAA;
+                    border-radius: 4%;
+                    padding-left: 10px;
+                    width: 150px;
+                    height: 45px;
+                    border: 1px solid #AAAAAA;
+                }
+                .send-btn {
+                    border-radius: 4%;
+                    background: #55B1FF;
+                    padding-left: 10px;
+                    width: 30%;
+                    height: 49px;
+                    color: white;
+                    font-size: 14pt;
+                    border: 1px solid #CCCCCC;
+                }
+            }
+        }
+    }
+}

@@ -3,6 +3,8 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { updateUser } from '../../redux/reducer'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
 
 
 class Register extends Component {
@@ -123,28 +125,135 @@ class Register extends Component {
         return (
             <div>
                 <header>
-                    <div><button className='Header-Btn' onClick={this.back}><img src={back}></img></button></div>
-                    <div className='header-title'><div className='circle-container'><AccountCircleIcon id='AccountColor'/><h1>Account Info</h1></div></div>
+                    <div>
+                        <button className='Header-Btn' onClick={this.back}>
+                            <img alt='none' src={back}/>
+                        </button>
+                    </div>
+                    <div className='header-title'>
+                        <div className='circle-container'>
+                            <div className="circle-info">
+                                <AccountCircleIcon id='icon-color'/>
+                                <h1>Account Info</h1>
+                            </div>
+                        </div>
+                    </div>
                     <div className='header-right'></div>
                 </header>
-
                 <div className="form-container">
                     <form>
                         {this.state.error ? 
                             <div className="error-box">Some of the information is incorrect in the form</div> 
                             : null
                         }
-                        <input type='text' className={this.state.fnError ? "redError" : "form-input"} placeholder='First name' onChange={this.handleChange} name='firstName' />
-                        <input type='text' className={this.state.lnError ? "redError" : "form-input"} placeholder='Last name' onChange={this.handleChange} name='lastName' />
-                        <input type='text' className={this.state.streetError ? "redError" : "form-input"} placeholder='Street' onChange={this.handleChange} name='street' />
-                        <input type='text' className={this.state.cityError ? "redError" : "form-input"} placeholder='City' onChange={this.handleChange} name='city' />
-                        <div>
-                        <input type='text' className={this.state.stateError ? "redError" : "form-input"} placeholder='State' onChange={this.handleChange} name='state' className='small-input'/>
-                        <input type='text' className={this.state.zipError ? "redError" : "form-input"} placeholder='Zip code' onChange={this.handleChange} name='zip'className='small-input'/>
-                        </div>
-                        <input type='email' className={this.state.emailError ? "redError" : "form-input"} placeholder='Email' onChange={this.handleChange} name='email' />
+                        <div className="form-section full-name">
+                            <h2>Full Name</h2>
 
-                        <button onClick={this.submit}>Next</button>
+                            <TextField
+                                id="outlined-text-input standard-full-width"
+                                label="First name"
+                                type="text"
+                                fullWidth
+                                id='mui-input'
+                                style = {{width: '100%'}}
+                                name="firstName"
+                                onChange={this.handleChange}
+                                autoComplete="first name"
+                                margin="normal"
+                                variant="outlined"
+                            />
+
+                            <TextField
+                                id="outlined-text-input"
+                                label="Last name"
+                                type="text"
+                                id='mui-input'
+                                style = {{width: '100%'}}
+                                name="lastName"
+                                onChange={this.handleChange}
+                                autoComplete="last name"
+                                margin="normal"
+                                variant="outlined"
+                            />
+                        </div>
+
+                        <div className="form-section address-info">
+                            <h2>Address Information</h2>
+                        
+                            <TextField
+                                id="outlined-text-input"
+                                label="Street"
+                                type="text"
+                                id='mui-input'
+                                style = {{width: '100%'}}
+                                name="street"
+                                onChange={this.handleChange}
+                                autoComplete="address"
+                                margin="normal"
+                                variant="outlined"
+                            />
+
+                            <TextField
+                                id="outlined-text-input"
+                                label="City"
+                                type="text"
+                                id='mui-input'
+                                style = {{width: '100%'}}
+                                name="city"
+                                onChange={this.handleChange}
+                                autoComplete="city"
+                                margin="normal"
+                                variant="outlined"
+                            />
+
+                            <div className="small-inputs">
+                                <TextField
+                                    id="outlined-text-input"
+                                    label="State"
+                                    type="text"
+                                    id='mui-input'
+                                    style = {{width: '45%'}}
+                                    name="state"
+                                    onChange={this.handleChange}
+                                    autoComplete="state"
+                                    margin="normal"
+                                    variant="outlined"
+                                />
+
+                                <TextField
+                                    id="outlined-text-input"
+                                    label="Zip"
+                                    type="text"
+                                    id='mui-input'
+                                    style = {{width: '45%'}}
+                                    name="zip"
+                                    onChange={this.handleChange}
+                                    autoComplete="zip"
+                                    margin="normal"
+                                    variant="outlined"
+                                />
+                            </div>
+                        </div>
+                        <div className="form-section contact-info">
+                            <h2>Contact</h2>
+
+                            <TextField
+                                style = {{width: '100%'}}
+                                inputStyle ={{width: '100%'}}
+                                id="outlined-text-input"
+                                label="Email"
+                                type="text"
+                                id='mui-input'
+                                name="email"
+                                onChange={this.handleChange}
+                                autoComplete="email"
+                                margin="normal"
+                                variant="outlined"
+                            />
+                        </div>
+                        <div className="next-btn-container">
+                            <button onClick={this.submit}>Next</button>
+                        </div>
                     </form>
                 </div>
             </div>
