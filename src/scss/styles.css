@@ -613,7 +613,7 @@ header .header-right {
 }
 
 .info-container {
-  height: 83.5vh;
+  height: 90vh;
   width: 100%;
   background: #fbbb06;
   display: -webkit-box;
@@ -622,7 +622,7 @@ header .header-right {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding-top: 15%;
+  padding-top: 5%;
 }
 
 .info-container .adminUserInfo {
@@ -671,6 +671,14 @@ header .header-right {
   font-size: 18px;
   color: #fbbb06;
   margin-top: 15px;
+}
+
+.info-container .cardsContainer {
+  width: 85%;
+}
+
+.info-container .singleCardContainer {
+  width: 100%;
 }
 
 .message-form-container {

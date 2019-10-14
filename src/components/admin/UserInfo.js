@@ -34,6 +34,7 @@ class UserInfo extends Component {
     render() {
         const {first_name, last_name, year, make, model, color} = this.props.userAppointment
         return (
+            
             <div className="user-form-container">
                 <div className="user-container">
                     <div className="user-info">
@@ -49,7 +50,7 @@ class UserInfo extends Component {
             </div>
         )
     }
-} 
+}
 
 function mapStateToProps(state) {
     return state
