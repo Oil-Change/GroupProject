@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { updateCar } from '../../redux/reducer'
+import DriveEtaIcon from '@material-ui/icons/DriveEta';
 
 class CarInformation extends Component {
     constructor() {
@@ -59,8 +60,19 @@ class CarInformation extends Component {
         return (
             <div>
                 <header>
-                    <div><button className='Header-Btn' onClick={this.back}><img alt='none' src={back}></img></button></div>
-                    <div className='header-title'><div className='circle-container'><h1>Car Information</h1></div></div>
+                    <div>
+                        <button className='Header-Btn' onClick={this.back}>
+                            <img alt='none' src={back}/>
+                        </button>
+                    </div>
+                    <div className='header-title'>
+                        <div className='circle-container'>
+                            <div className="circle-info">
+                                <DriveEtaIcon id='icon-color'/>
+                                <h1>Vehicle Info</h1>
+                            </div>
+                        </div>
+                    </div>
                     <div className='header-right'></div>
                 </header>
                 <div className="form-container">

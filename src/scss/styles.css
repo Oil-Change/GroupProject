@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Lato|Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Karla|Rubik|Rubik+Mono+One&display=swap");
 /* 
 html5doctor.com Reset Stylesheet
 v1.6.1
@@ -6,6 +7,8 @@ Last Updated: 2010-09-17
 Author: Richard Clark - http://richclarkdesign.com 
 Twitter: @rich_clark
 */
+@import url("https://fonts.googleapis.com/css?family=Karla|Rubik|Rubik+Mono+One&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Karla|Rubik|Rubik+Mono+One&display=swap");
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
@@ -117,20 +120,12 @@ input, select {
           align-items: center;
   height: 99vh;
   background: #fbbb06;
-  padding: 5% 0 10% 0;
 }
 
 .welcome {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-size: 40px;
   text-align: center;
-  padding-bottom: 5%;
-}
-
-.greeting-text {
-  font-family: "Lato", sans-serif;
-  font-size: 20px;
-  padding-left: 2%;
 }
 
 .image-container {
@@ -158,6 +153,7 @@ input, select {
   font-family: "Lato", sans-serif;
   font-size: 18px;
   color: #fbbb06;
+  margin-top: 10%;
 }
 
 .bot-section {
@@ -176,18 +172,48 @@ input, select {
           align-items: center;
 }
 
-.bot-section p {
-  margin-top: 10%;
+.bot-section .general-info-container .general-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 10px;
+  padding: 15px;
+  border-radius: 1%;
+  -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  height: 120px;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
-.bot-section button {
-  margin-top: 20%;
+.bot-section .general-info-container .general-info .info-item {
+  width: 100%;
+  line-height: 1.6;
+}
+
+.bot-section .general-info-container .general-info .info-item h3 {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.bot-section .general-info-container .general-info .info-item p {
+  font-family: 'Karla', sans-serif;
+  color: #777777;
+}
+
+.bot-section .general-info-container .general-info .info-item .yellowize {
+  color: #fbbb06;
 }
 
 header {
-  z-index: 500;
+  z-index: 10;
   width: 100%;
-  height: 80px;
+  height: 10vh;
   background: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -228,11 +254,25 @@ header .circle-container {
   border-radius: 20px;
 }
 
-header .circle-container #AccountColor {
-  color: white;
+header .circle-container .circle-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: 95%;
 }
 
-header .circle-container h1 {
+header .circle-container .circle-info #icon-color {
+  color: white;
+  margin-right: 3%;
+}
+
+header .circle-container .circle-info h1 {
   font-size: 20px;
   font-family: "Lato", sans-serif;
   color: white;
@@ -253,19 +293,24 @@ header .header-right {
 }
 
 .form-container {
-  height: 83.5vh;
+  height: 90vh;
   width: 100%;
   background: #fbbb06;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding-top: 15%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding-top: 5%;
 }
 
 .form-container form {
+  padding-top: 10%;
+  height: 85%;
+  width: 93%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -276,16 +321,66 @@ header .header-right {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 95%;
-  height: 95%;
   background: white;
   -webkit-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
           box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
-  padding-top: 5%;
 }
 
-.form-container input {
+.form-container form .form-section {
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-bottom: 3%;
+}
+
+.form-container form .form-section h2 {
+  font-family: "Rubik", sans-serif;
+  font-size: 20px;
+}
+
+.form-container form .form-section .full-name {
+  margin-top: 5%;
+  height: 250px;
+}
+
+.form-container form .form-section .address-info {
+  height: 300px;
+}
+
+.form-container form .form-section .contact {
+  height: 200px;
+}
+
+.form-container form .form-section .small-inputs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.form-container form #mui-input {
+  padding: 2px 0 2px 0;
+  border-bottom: none;
+  margin: 2px 0 10px 10px;
+  font-family: 'Karla', sans-serif;
+  color: #777777;
+}
+
+.form-container form input {
   width: 80%;
   height: 30px;
   margin: 20px 0 15px 0;
@@ -298,45 +393,43 @@ header .header-right {
   padding: 2%;
 }
 
-.form-container input::-webkit-input-placeholder {
+.form-container form input::-webkit-input-placeholder {
   color: #777777;
 }
 
-.form-container input:-ms-input-placeholder {
+.form-container form input:-ms-input-placeholder {
   color: #777777;
 }
 
-.form-container input::-ms-input-placeholder {
+.form-container form input::-ms-input-placeholder {
   color: #777777;
 }
 
-.form-container input::placeholder {
+.form-container form input::placeholder {
   color: #777777;
 }
 
-.form-container div {
+.form-container form .next-btn-container {
   width: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding-top: 5%;
 }
 
-.form-container .small-input {
-  width: 40%;
-}
-
-.form-container button {
-  background: white;
+.form-container form .next-btn-container button {
   width: 200px;
   height: 50px;
   border-radius: 5px;
-  border: 2px solid #fbbb06;
   font-family: "Lato", sans-serif;
   font-size: 18px;
-  color: #fbbb06;
+  color: white;
+  font-size: 14pt;
+  border: 1px solid #CCCCCC;
+  background: #CCCCCC;
 }
 
 .cal-form-container {
@@ -637,6 +730,192 @@ header .header-right {
   font-size: 18px;
   color: #fbbb06;
   margin: 2%;
+}
+
+.background-container {
+  height: 90vh;
+  background: #fbbb06;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding-top: 5%;
+}
+
+.background-container .directions-step-container {
+  min-height: 65%;
+  width: 93%;
+  background: white;
+  -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.background-container .directions-step-container .directions-container {
+  width: 85%;
+  height: 15%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.background-container .directions-step-container .directions-container .title {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.background-container .directions-step-container .directions-container .title h2 {
+  width: 85%;
+  font-family: 'Rubik', sans-serif;
+  font-size: 24px;
+  margin-bottom: 7%;
+}
+
+.background-container .directions-step-container .directions-container p {
+  font-family: 'Karla', sans-serif;
+  color: #AAAAAA;
+}
+
+.background-container .directions-step-container .verify {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.background-container .directions-step-container .verify .step-container {
+  width: 85%;
+}
+
+.background-container .directions-step-container .verify .step-container .step-text {
+  margin: 0 0 2% 0;
+  width: 100%;
+  font-family: 'Rubik', sans-serif;
+  font-size: 20px;
+}
+
+.background-container .directions-step-container .verify .step-container .sub-text {
+  margin: 0 0 2% 0;
+  font-family: 'Karla', sans-serif;
+  color: #AAAAAA;
+}
+
+.background-container .directions-step-container .verify .step-container .phone-number-input {
+  margin: 0 0 2% 0;
+  font-size: 11pt;
+  color: #AAAAAA;
+  border-radius: 3%;
+  padding-left: 10px;
+  width: 150px;
+  height: 45px;
+  border: 1px solid #AAAAAA;
+  margin-bottom: 7%;
+}
+
+.background-container .directions-step-container .verify .step-container .send-btn {
+  border-radius: 3%;
+  background: #CCCCCC;
+  padding-left: 10px;
+  width: 30%;
+  height: 45px;
+  color: white;
+  font-size: 14pt;
+  border: 1px solid #CCCCCC;
+}
+
+.background-container .directions-step-container .verify .step-container .code-input {
+  margin: 0 0 2% 0;
+  border-radius: 3%;
+  font-size: 11pt;
+  color: #AAAAAA;
+  padding-left: 10px;
+  width: 110px;
+  height: 45px;
+  border: 1px solid #AAAAAA;
+}
+
+.background-container .directions-step-container .verify .step-container .verify-btn {
+  margin-top: 5%;
+  border-radius: 3%;
+  background: #CCCCCC;
+  padding-left: 10px;
+  width: 100%;
+  height: 45px;
+  color: white;
+  font-size: 14pt;
+  border: 1px solid #CCCCCC;
+}
+
+.background-container .directions-step-container .verify .input-step-container {
+  width: 85%;
+  margin: 0 0 2% 0;
+  margin-bottom: 7%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.background-container .directions-step-container .verify .input-step-container .phone-number-input {
+  font-size: 11pt;
+  margin-right: 5%;
+  color: #AAAAAA;
+  border-radius: 4%;
+  padding-left: 10px;
+  width: 150px;
+  height: 45px;
+  border: 1px solid #AAAAAA;
+}
+
+.background-container .directions-step-container .verify .input-step-container .send-btn {
+  border-radius: 4%;
+  background: #55B1FF;
+  padding-left: 10px;
+  width: 30%;
+  height: 49px;
+  color: white;
+  font-size: 14pt;
+  border: 1px solid #CCCCCC;
 }
 
 body {
