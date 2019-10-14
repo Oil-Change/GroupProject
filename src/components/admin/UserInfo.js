@@ -23,7 +23,6 @@ class UserInfo extends Component {
         this.props.history.push(`/messages/${id}`)
     }
 
-   
 
     render() {
         console.log('user-appt', this.props.appointments)
@@ -45,7 +44,7 @@ class UserInfo extends Component {
             </div>
         )
     }
-} 
+}
 
 function mapStateToProps(state) {
     return state
