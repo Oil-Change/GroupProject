@@ -53,6 +53,13 @@ class Message extends Component {
       //       timestamp:time
       //   })
       // }
+
+      joinSuccess = (messages) => {
+        this.setState({
+          joined: true,
+          messages
+        })
+      }
       sendMessage = () => {
 
         
@@ -80,10 +87,10 @@ class Message extends Component {
         })
       }
       joinRoom = () => {
-          this.socket.emit('join', {
-            room_id: this.state.roomId
+          this.socket.emit('join room', {
+            roomId: this.props.match.params.id
           })
-          console.log('room joined')
+         
       }
       getAppt = () => {
         const id= this.props.match.params.id
@@ -106,7 +113,7 @@ class Message extends Component {
                 user:response.data[0]
             })
         })
-        console.log(this.state.user)
+        
         }, 1000);
           
       }
@@ -116,8 +123,8 @@ class Message extends Component {
     }
 
     render() {
-      console.log(this.props)
-      console.log(this.props.user.userName)
+      console.log(this.state.messages)
+      
       const back = require('../../assets/back.png')
         return (
             <div>
