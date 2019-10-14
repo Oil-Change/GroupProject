@@ -9,6 +9,7 @@ module.exports = {
                 console.log(err)
             })
     },
+
     createUser: async (req, res) => {
         const { phone_number } = req.body
 
@@ -29,7 +30,6 @@ module.exports = {
             })
         req.session.user = { phone_number: phone_number }
     },
-
     updateUser: (req, res) => {
         const { firstName, lastName, street, city, state, zip, email, phone_number} = req.body
         //req.session.user.phone_number
