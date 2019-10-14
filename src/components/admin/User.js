@@ -42,12 +42,13 @@ class User extends Component {
 
         axios.get(`/api/appointment/${id}`)
             .then(res => {
+                console.log(res.data)
                 this.setState({
                     appointment: res.data
                 })
             })
             .catch(error => {
-                console.log(error)
+                console.log('error', error)
             })
     }
 
