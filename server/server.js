@@ -84,22 +84,24 @@ const io = socket(
 io.on('connection', socket => {
     console.log('User Connected')
     socket.on('join room', async data => {
-        const {room_id} = data
+        console.log(data)
+        const {roomId} = data
         const db = app.get('db')
         console.log('Room Joined')
-        console.log('room', room_id)
-        let existingRoom = await db.message.check_chat_room(room_id)
-        let messages = await db.message.chat_messages_history(room_id)
-        socket.join(room_id)
-        io.to(room_id).emit('room joined', messages)
+        console.log('room', roomId)
+        let existingRoom = await db.message.check_chat_room(roomId)
+        let messages = await db.message.chat_messages_history(roomId)
+        socket.join(roomId)
+        io.to(data.roomId).emit('room joined', messages)
         
     })
     socket.on('message sent', async data => {
-        const {roomId, message, user_name, is_admin, timestamp} = data
+        const {roomId, message, userName, isAdmin, timestamp} = data
+        console.log(data)
         const db = app.get('db')
-        await db.message.create_chat_messages(roomId, message, user_name, is_admin,timestamp)
-        let messages = await db.message.chat_messages_history(room_id)
-        io.to(room_id).emit('message dispatched', messages)
+        await db.message.create_chat_messages(roomId, message, userName, isAdmin,timestamp)
+        let messages = await db.message.chat_messages_history(roomId)
+        io.to(roomId).emit('message dispatched', messages)
     })
     socket.on('disconnect', () => {
         console.log('User Disconnected')

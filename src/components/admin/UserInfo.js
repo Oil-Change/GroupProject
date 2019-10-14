@@ -11,6 +11,10 @@ export class UserInfo extends Component {
         super()
     }
 
+    componentDidMount(){
+        console.log(this.props.userAppointment)
+    }
+
     updateAppt = () => {
         this.props.updateAppointment(this.props.userAppointment)
     }
@@ -22,21 +26,21 @@ export class UserInfo extends Component {
     }
 
     pickUp = () => {
-        let { phone_number } = this.props.userAppointment
+        let { appointment_id } = this.props.userAppointment
         this.updateAppt()
-        this.props.history.push(`admin/user/pick_up/${phone_number}`)
+        this.props.history.push(`admin/user/pick_up/${appointment_id}`)
     }
 
     dropOff = () => {
-        let { phone_number } = this.props.userAppointment
+        let { appointment_id } = this.props.userAppointment
         this.updateAppt()
-        this.props.history.push(`admin/user/drop_off/${phone_number}`)
+        this.props.history.push(`admin/user/drop_off/${appointment_id}`)
     }
 
     render() {
         const {first_name, last_name, year, make, model, color} = this.props.userAppointment
+
         return (
-            
             <div className="user-form-container">
                 <div className="user-container">
                     <div className="user-info">
