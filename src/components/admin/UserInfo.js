@@ -3,35 +3,43 @@ import axios from 'axios'
 import { userInfo } from 'os';
 import { connect } from 'react-redux'
 import { updateAppointment } from '../../redux/reducer'
+import {withRouter} from 'react-router-dom'
 
 class UserInfo extends Component {
     constructor() {
         super()
     }
 
+
+
+
     updateAppt = () => {
-        this.props.updateAppointment(this.props.appointment)
+        this.props.updateAppointment(this.props.appointments)
     }
 
     message = () => {
-        let { id } = this.props.appointment
+        let { id } = this.props.appointments
+        this.updateAppt()
         this.props.history.push(`/messages/${id}`)
     }
 
 
     render() {
+        console.log('user-appt', this.props.appointments)
+        console.log('name', this.props.appointment.first_name)
         return (
+            
             <div className="user-form-container">
                 <div className="user-container">
-                    <div className="user-info">
-                        <h3>{this.props.appointment.first_name} {this.props.appointment.last_name}</h3>
-                        <p>{this.props.appointment.year} {this.props.appointment.make} {this.props.appointment.model} {this.props.appointment.color}</p>
-                    </div>
-                    <div className="userBtn-container">
-                        <button className="userBtn" onClick={this.message}></button>
-                        <button className="userBtn" onClick={this.pickUp}></button>
-                        <button className="userBtn" onClick={this.dropOff}></button>
-                    </div>
+                <div className="user-info">
+                <h3>{this.props.appointments.first_name} {this.props.appointments.last_name}</h3>
+                <p>{this.props.appointments.year} {this.props.appointments.make} {this.props.appointments.model} {this.props.appointments.color}</p>
+                </div>
+                <div className="userBtn-container">
+                <button className="userBtn" onClick={this.message}></button>
+                <button className="userBtn" onClick={this.pickUp}></button>
+                <button className="userBtn" onClick={this.dropOff}></button>
+                </div>
                 </div>
             </div>
         )
@@ -40,6 +48,6 @@ class UserInfo extends Component {
 
 function mapStateToProps(state) {
     return state
-}
-
-export default connect(mapStateToProps, { updateAppointment })(UserInfo)
+  }
+  
+  export default withRouter(connect(mapStateToProps, {updateAppointment})(UserInfo))
