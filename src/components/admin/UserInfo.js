@@ -22,15 +22,15 @@ class UserInfo extends Component {
     }
 
     pickUp = () => {
-        let { id } = this.props.userAppointment
+        let { phone_number } = this.props.userAppointment
         this.updateAppt()
-        this.props.history.push(`admin/user/pick_up/${id}`)
+        this.props.history.push(`admin/user/pick_up/${phone_number}`)
     }
 
     dropOff = () => {
-        let { id } = this.props.userAppointment
+        let { phone_number } = this.props.userAppointment
         this.updateAppt()
-        this.props.history.push(`admin/user/drop_off/${id}`)
+        this.props.history.push(`admin/user/drop_off/${phone_number}`)
     }
 
     render() {

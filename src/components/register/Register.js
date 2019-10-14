@@ -123,24 +123,26 @@ class Register extends Component {
         const back = require('../../assets/back.png')
         return (
             <div>
-                <header>
-                    <div>
-                        <button className='Header-Btn' onClick={this.back}>
-                            <img alt='none' src={back}/>
-                        </button>
-                    </div>
-                    <div className='header-title'>
-                        <div className='circle-container'>
-                            <div className="circle-info">
-                                <AccountCircleIcon id='icon-color'/>
-                                <h1>Account Info</h1>
+                <div className="header-container">
+                    <header>
+                        <div className="header-spacer">
+                            <button className='header-btn' onClick={this.back}>
+                                <img alt='none' src={back}/>
+                            </button>
+                        </div>
+                        <div className='header-title'>
+                            <div className='circle-container'>
+                                <div className="circle-info">
+                                    <AccountCircleIcon id='icon-color'/>
+                                    <h1>Account Info</h1>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className='header-right'></div>
-                </header>
+                        <div className='header-spacer'></div>
+                    </header>
+                </div>
                 <div className="form-container">
-                    <form>
+                    <form id="register-form">
                         {this.state.error ? 
                             <div className="error-box">Some of the information is incorrect in the form</div> 
                             : null
