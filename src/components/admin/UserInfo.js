@@ -12,7 +12,7 @@ class UserInfo extends Component {
         super()
     }
 
-    componentDidMount(){
+    componentDidMount() {
         console.log(this.props.userAppointment)
     }
 
@@ -39,7 +39,7 @@ class UserInfo extends Component {
     }
 
     render() {
-        const {first_name, last_name, year, make, model, color} = this.props.userAppointment
+        const { first_name, last_name, year, make, model, color } = this.props.userAppointment
 
         return (
             <div className="user-form-container">
@@ -61,6 +61,6 @@ class UserInfo extends Component {
 
 function mapStateToProps(state) {
     return state
-  }
-  
-  export default withRouter(connect(mapStateToProps, {updateAppointment})(UserInfo))
+}
+
+export default withRouter(connect(mapStateToProps, { updateAppointment })(UserInfo))
