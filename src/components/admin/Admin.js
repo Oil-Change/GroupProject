@@ -54,8 +54,10 @@ export default class Admin extends Component {
                         </div>
                         <div className='header-title'>
                             <div className='circle-container'>
-                                <AccountCircleIcon id='AccountColor'/>
-                                <h1>User Information</h1>
+                                <div className="circle-info">
+                                    <AccountCircleIcon id="icon-color"/>
+                                    <h1>Admin</h1>
+                                </div>
                             </div>
                         </div>
                         <div className='header-spacer'></div>
