@@ -12,10 +12,10 @@ class CarInformation extends Component {
             make: '',
             model: '',
             trim: '',
-            year: '',
+            year: 0,
             color: '',
             licensePlate: '',
-            mileage: ''
+            mileage: 0
         }
     }
 
@@ -40,6 +40,7 @@ class CarInformation extends Component {
             mileage: this.state.mileage
 
         }
+        console.log('Body: ', body);
         axios.post(`/api/car/${phoneNumber}`, body)
             .then(response => {
                 this.props.updateCar(response.data)
@@ -123,7 +124,7 @@ class CarInformation extends Component {
                                 type="text"
                                 id='mui-input'
                                 style = {{width: '100%'}}
-                                name="model"
+                                name="year"
                                 onChange={this.handleChange}
                                 margin="normal"
                                 variant="outlined"
@@ -156,7 +157,7 @@ class CarInformation extends Component {
                                 type="text"
                                 id='mui-input'
                                 style = {{width: '100%'}}
-                                name="Mileage"
+                                name="mileage"
                                 onChange={this.handleChange}
                                 margin="normal"
                                 variant="outlined"

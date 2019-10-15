@@ -1,9 +1,12 @@
 const createCar = async (req, res) => {
-    // console.log("createCar")
+    console.log("createCar")
     const { id } = req.params
     const { make, model, trim, year, color, licensePlate, mileage } = req.body
+    console.log('req.body: ', req.body);
+    console.log('');
     const db = req.app.get('db')
-    console.log(id, make, model, trim, year, color, licensePlate, mileage)
+    console.log(id, make, model, trim, year, color, licensePlate, mileage);
+    console.log('');
     const car = await db.car.add_car([id, make, model, trim, year, color, licensePlate, mileage])
     res.status(200).send(car[0])
 }
