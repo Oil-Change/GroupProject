@@ -1,18 +1,19 @@
-.left-hdr{
-    width: 10%;
-}
-.ins-form-container{
-    height: 83.5vh;
-    width: 100%;
-    background: $bg;
-    display: flex;
-    justify-content: center;
-    padding-top: 15%;
+#instructions-page {
+    height: 90vh;
+    border-radius: 3px;
 }
 
-.ins-container{
+#smaller-info {
+    height: auto;
+}
+
+#lengthen-page {
+    height: auto;
+}
+
+.ins-container {
     background: white;
-    height: 80vh;
+    height: 90vh;
     width: 94%;
     li{
         list-style-type: none;
@@ -23,12 +24,25 @@
     }
     
 }
-.ins-message{
-    width: 80px;
-    height: 80px;
-    background: white;
-    position: fixed;
-    bottom: 5px;
-    margin:0 0 2% 2%;
+
+.message-bubble {
+    padding-right: 2px;
+    padding-bottom: 2px;
+    color: white;
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    background: $bg;
+    position: -webkit-sticky;
+    position: sticky;
+    left: 77vw;
+    bottom: 2vh;
+    border-radius: 50%;
     border: 2px solid $bg;
+    cursor: pointer;
 }
