@@ -143,13 +143,13 @@ class User extends Component {
                             <br/>
 
                             <div>
-                                <Card style={{'box-shadow': 'none'}} className={classes.card}>
+                                <Card style={{boxShadow: 'none'}} className={classes.card}>
                                     <CardActionArea>
                                         <CardMedia
                                         className={classes.media}
                                         title="Apple Maps"> 
                                             <img src={appleMaps}
-                                            style={{width: '100%', height:'275px'}} alt="Maps" /> 
+                                            style={{width: '100%'}} alt="Maps" /> 
                                         </CardMedia>
                                         <CardContent style={{height: '15px'}}>
                                             <Typography gutterBottom variant="h5" component="h2">
@@ -158,19 +158,19 @@ class User extends Component {
                                         </CardContent>
                                     </CardActionArea>
                                     <CardActions>
-                                        <Button style={{color: 'blue', 'text-decoration': 'underline'}}  href={path} target='_blank'> {address} </Button> 
+                                        <Button style={{color: 'blue', textDecoration: 'underline'}}  href={path} target='_blank'> {address} </Button> 
                                     </CardActions>
                                 </Card>
                             </div>
                         </div>
 
                         <div className='buttonContainer'>
-                            {/* {!pick_up
+                            {!pick_up
                             ?
                             (<button className='statusButton' onClick={this.pickUp} >Pick Up</button>)
                             :
                             (<button className='statusButton' onClick={this.dropOff}>Drop Off</button>)
-                            } */}
+                            }
                         </div>
                         
                     </div>
