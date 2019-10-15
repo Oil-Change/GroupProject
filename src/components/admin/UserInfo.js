@@ -6,6 +6,9 @@ import { updateAppointment } from '../../redux/reducer'
 import {withRouter} from 'react-router-dom'
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
+import AssignmentReturnedOutlinedIcon from '@material-ui/icons/AssignmentReturnedOutlined';
+import AssignmentTurnedInOutlinedIcon from '@material-ui/icons/AssignmentTurnedInOutlined';
+
 class UserInfo extends Component {
 
     constructor() {
@@ -21,9 +24,9 @@ class UserInfo extends Component {
     }
 
     message = () => {
-        let { id } = this.props.userAppointment
+        let { appointment_id } = this.props.userAppointment
         this.updateAppt()
-        this.props.history.push(`/messages/${id}`)
+        this.props.history.push(`/messages/${appointment_id}`)
     }
 
     pickUp = () => {
@@ -50,8 +53,8 @@ class UserInfo extends Component {
                     </div>
                     <div className="userBtn-container">
                         <button className="userBtn" onClick={this.message}><MailOutlineIcon /></button>
-                        <button className="userBtn" onClick={this.pickUp}>Pick Up</button>
-                        <button className="userBtn" onClick={this.dropOff}>Drop Off</button>
+                        <button className="userBtn" onClick={this.pickUp}><AssignmentReturnedOutlinedIcon/></button>
+                        <button className="userBtn" onClick={this.dropOff}><AssignmentTurnedInOutlinedIcon/></button>
                     </div>
                 </div>
             </div>

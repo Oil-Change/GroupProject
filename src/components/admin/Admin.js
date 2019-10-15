@@ -19,7 +19,7 @@ export default class Admin extends Component {
     getAppointments = () => {
         axios.get('/api/appointment/today')
             .then(res => {
-                
+                console.log(res.data)
                 this.setState({
                     appointments: res.data
                 })

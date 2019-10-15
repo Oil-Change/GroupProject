@@ -1,5 +1,5 @@
 UPDATE appointments
-SET drop_off_time = $2,
-    drop_off = $3
+SET drop_off_time = DATE(now()),
+    drop_off = true
 WHERE
    id = $1;
