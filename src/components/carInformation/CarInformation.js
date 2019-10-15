@@ -72,7 +72,7 @@ class CarInformation extends Component {
                             <div className='circle-container'>
                                 <div className="circle-info">
                                     <DriveEtaIcon id='icon-color'/>
-                                    <h1>Vehicle Info</h1>
+                                    <h1>Vehicle</h1>
                                 </div>
                             </div>
                         </div>
