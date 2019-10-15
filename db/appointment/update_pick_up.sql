@@ -1,6 +1,6 @@
 UPDATE appointments
-SET pick_up_time = $2,
-    pick_up = $3 
+SET pick_up_time = DATE(now()),
+    pick_up = true 
 WHERE
    id = $1;
    

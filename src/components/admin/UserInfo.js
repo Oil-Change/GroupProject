@@ -6,6 +6,9 @@ import { updateAppointment } from '../../redux/reducer'
 import {withRouter} from 'react-router-dom'
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
+import AssignmentReturnedOutlinedIcon from '@material-ui/icons/AssignmentReturnedOutlined';
+import AssignmentTurnedInOutlinedIcon from '@material-ui/icons/AssignmentTurnedInOutlined';
+
 class UserInfo extends Component {
 
     constructor() {
@@ -16,25 +19,18 @@ class UserInfo extends Component {
         console.log(this.props.userAppointment)
     }
 
-    updateAppt = () => {
-        this.props.updateAppointment(this.props.userAppointment)
-    }
-
     message = () => {
-        let { id } = this.props.userAppointment
-        this.updateAppt()
-        this.props.history.push(`/messages/${id}`)
+        let { appointment_id } = this.props.userAppointment
+        this.props.history.push(`/messages/${appointment_id}`)
     }
 
     pickUp = () => {
         let { appointment_id } = this.props.userAppointment
-        this.updateAppt()
         this.props.history.push(`admin/user/pick_up/${appointment_id}`)
     }
 
     dropOff = () => {
         let { appointment_id } = this.props.userAppointment
-        this.updateAppt()
         this.props.history.push(`admin/user/drop_off/${appointment_id}`)
     }
 
@@ -50,8 +46,8 @@ class UserInfo extends Component {
                     </div>
                     <div className="userBtn-container">
                         <button className="userBtn" onClick={this.message}><MailOutlineIcon /></button>
-                        <button className="userBtn" onClick={this.pickUp}>Pick Up</button>
-                        <button className="userBtn" onClick={this.dropOff}>Drop Off</button>
+                        <button className="userBtn" onClick={this.pickUp}><AssignmentReturnedOutlinedIcon/></button>
+                        <button className="userBtn" onClick={this.dropOff}><AssignmentTurnedInOutlinedIcon/></button>
                     </div>
                 </div>
             </div>

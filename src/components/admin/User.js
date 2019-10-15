@@ -67,25 +67,23 @@ class User extends Component {
     }
 
     pickUp = () => {
-        this.updateAppt()
         console.log('Pick UP')
-        let { id } = this.props.appointment
-        let pickUpTime = new Date();
-        let pickUp = true;
-        axios.put(`/api/appointment/pick_up/${id}`, { pickUp, pickUpTime }).then(res => {
+        let { appointment_id } = this.props.appointment
+        axios.put(`/api/appointment/pick_up/${appointment_id}`)
+            .then(res => {
             console.log('Updating Pick Up');
-        }).catch(err => alert('Pick Up did not update'));
+        })
+            .catch(err => alert('Pick Up did not update'));
     };
 
     dropOff = () => {
-        this.updateAppt()
         console.log('Drop Off')
-        let { id } = this.props.appointment;
-        let dropOffTime = new Date();
-        let dropOff = true;
-        axios.put(`/api/appointment/drop_off/${id}`, { dropOff, dropOffTime }).then(res => {
+        let { appointment_id } = this.props.appointment;
+        axios.put(`/api/appointment/drop_off/${appointment_id}`)
+            .then(res => {
             console.log('Updaing Drop Off');
-        }).catch(err => alert('Drop Off did not update'));
+        })
+            .catch(err => alert('Drop Off did not update'));
     };
 
 
@@ -143,13 +141,13 @@ class User extends Component {
                             <br/>
 
                             <div>
-                                <Card style={{'box-shadow': 'none'}} className={classes.card}>
+                                <Card style={{boxShadow: 'none'}} className={classes.card}>
                                     <CardActionArea>
                                         <CardMedia
                                         className={classes.media}
                                         title="Apple Maps"> 
                                             <img src={appleMaps}
-                                            style={{width: '100%', height:'275px'}} alt="Maps" /> 
+                                            style={{width: '100%'}} alt="Maps" /> 
                                         </CardMedia>
                                         <CardContent style={{height: '15px'}}>
                                             <Typography gutterBottom variant="h5" component="h2">
@@ -158,19 +156,19 @@ class User extends Component {
                                         </CardContent>
                                     </CardActionArea>
                                     <CardActions>
-                                        <Button style={{color: 'blue', 'text-decoration': 'underline'}}  href={path} target='_blank'> {address} </Button> 
+                                        <Button style={{color: 'blue', textDecoration: 'underline'}}  href={path} target='_blank'> {address} </Button> 
                                     </CardActions>
                                 </Card>
                             </div>
                         </div>
 
                         <div className='buttonContainer'>
-                            {/* {!pick_up
+                            {!pick_up
                             ?
                             (<button className='statusButton' onClick={this.pickUp} >Pick Up</button>)
                             :
                             (<button className='statusButton' onClick={this.dropOff}>Drop Off</button>)
-                            } */}
+                            }
                         </div>
                         
                     </div>
