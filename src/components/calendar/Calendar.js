@@ -6,6 +6,7 @@ import React, {Component} from 'react'
 import {Grid} from '@material-ui/core'
 import DateFnsUtils from '@date-io/date-fns'
 import {MuiPickersUtilsProvider, KeyboardDatePicker} from '@material-ui/pickers'
+import TodayIcon from '@material-ui/icons/Today';
 
 class Calendar extends Component {
     constructor(){
@@ -74,34 +75,49 @@ class Calendar extends Component {
     console.log(this.props)
     return (
       <div>
-        <header>
-          <div><button className='Header-Btn' onClick={this.back}><img alt='none' src={back}></img></button></div>
-          <div className='header-title'><div className='circle-container'><h1>Calendar</h1></div></div>
-          <div className='header-right'></div>
-        </header>
+        <div className="header-container">
+            <header>
+                <div className='header-spacer'>
+                    <button className='header-btn' onClick={this.back}>
+                        <img alt='none' src={back}/>
+                    </button>
+                </div>
+                <div className='header-title'>
+                    <div className='circle-container'>
+                        <div className="circle-info">
+                            <TodayIcon id='icon-color'/>
+                            <h1>Appointment</h1>
+                        </div>
+                    </div>
+                </div>
+                <div className='header-spacer'></div>
+            </header>
+        </div>
         <div className="cal-form-container">
           <div className="cal-container">
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <Grid container justify="space-around">
-            <KeyboardDatePicker
-              shouldDisableDate={this.disableDates}
-              disableToolbar
-              variant="inline"
-              format="MM/dd/yyyy"
-              margin="normal"
-              id="date-picker-inline"
-              label="Date picker inline"
-              value={this.state.selectedDate}
-              onChange={this.handleDateChange}
-              KeyboardButtonProps={{
-                'aria-label': 'change date',
-              }}
-            />
-          </Grid>
-        </MuiPickersUtilsProvider>
-       
-        <button className="next-btn" onClick={this.createAppt}>Next</button>
-        </div>
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <Grid container justify="space-around">
+                <KeyboardDatePicker
+                  shouldDisableDate={this.disableDates}
+                  disableToolbar
+                  variant="inline"
+                  format="MM/dd/yyyy"
+                  margin="normal"
+                  id="date-picker-inline"
+                  label="Date picker inline"
+                  value={this.state.selectedDate}
+                  onChange={this.handleDateChange}
+                  KeyboardButtonProps={{
+                    'aria-label': 'change date',
+                  }}
+                />
+              </Grid>
+            </MuiPickersUtilsProvider>
+          
+            <div className="next-btn-container">
+                <button className="next-btn" onClick={this.createAppt}>Next</button>
+            </div>
+          </div>
         </div>
       </div>
     )
