@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import InsertCommentOutlinedIcon from '@material-ui/icons/InsertCommentOutlined';
 
 class InstructionsPage extends Component {
     constructor() {
@@ -17,16 +18,12 @@ class InstructionsPage extends Component {
             <div>
                 <div className="header-container">
                     <header>
-                        <div className='header-spacer'>
-                            <button className='header-btn' onClick={this.back}>
-                                <img alt='none' src={back}/>
-                            </button>
-                        </div>
+                        <div className="header-spacer"></div>
                         <div className='header-title'>
                             <div className='circle-container'>
                                 <div className="circle-info">
-                                    <DriveEtaIcon id='icon-color'/>
-                                    <h1>Vehicle Info</h1>
+                                    <InsertCommentOutlinedIcon id="icon-color"/>
+                                    <h1>Login</h1>
                                 </div>
                             </div>
                         </div>
