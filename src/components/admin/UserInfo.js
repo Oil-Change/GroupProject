@@ -16,10 +16,6 @@ class UserInfo extends Component {
         console.log(this.props.userAppointment)
     }
 
-    updateAppt = () => {
-        this.props.updateAppointment(this.props.userAppointment)
-    }
-
     message = () => {
         let { id } = this.props.userAppointment
         this.updateAppt()
@@ -28,13 +24,11 @@ class UserInfo extends Component {
 
     pickUp = () => {
         let { appointment_id } = this.props.userAppointment
-        this.updateAppt()
         this.props.history.push(`admin/user/pick_up/${appointment_id}`)
     }
 
     dropOff = () => {
         let { appointment_id } = this.props.userAppointment
-        this.updateAppt()
         this.props.history.push(`admin/user/drop_off/${appointment_id}`)
     }
 

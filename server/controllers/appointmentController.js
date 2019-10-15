@@ -70,10 +70,9 @@ const updatePickUp = async (req, res) => {
     const { id } = req.params;
     // console.log('id: ', id);
     // console.log('');
-    const { pickUpTime, pickUp } = req.body;
     // console.log('pickUpTime: ', pickUpTime);
     // console.log('');
-    const updatePickUp = await db.appointment.update_pick_up([id, pickUpTime, pickUp])
+    const updatePickUp = await db.appointment.update_pick_up([id])
     // console.log('updatePickUp: ', updatePickUp);
     // console.log('');
     res.status(200).send(updatePickUp);
@@ -86,10 +85,9 @@ const updateDropOff = async (req, res) => {
     const { id } = req.params;
     // console.log('id: ', id);
     // console.log('');
-    const { dropOffTime, dropOff } = req.body;
     // console.log('dropOffTime: ', dropOffTime);
     // console.log('');
-    const updateDropOff = await db.appointment.update_drop_off([id, dropOffTime, dropOff])
+    const updateDropOff = await db.appointment.update_drop_off([id])
     // console.log('updateDropOff: ', updateDropOff);
     // console.log('');
     res.status(200).send(updateDropOff);
