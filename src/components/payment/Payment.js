@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Stripe from './Stripe';
+import CreditCardIcon from '@material-ui/icons/CreditCard';
 
 export default class Payment extends Component {
     back = (e) => {
@@ -10,11 +11,24 @@ export default class Payment extends Component {
         const back = require('../../assets/back.png')
         return (
             <div>
-                <header>
-                    <div><button className='Header-Btn' onClick={this.back}><img alt='none' src={back}></img></button></div>
-                    <div className='header-title'><div className='circle-container'><h1>Payment</h1></div></div>
-                    <div className='header-right'></div>
-                </header>
+                <div className="header-container">
+                    <header>
+                        <div className='header-spacer'>
+                            <button className='header-btn' onClick={this.back}>
+                                <img alt='none' src={back}/>
+                            </button>
+                        </div>
+                        <div className='header-title'>
+                            <div className='circle-container'>
+                                <div className="circle-info">
+                                    <CreditCardIcon id='icon-color'/>
+                                    <h1>Vehicle Info</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='header-spacer'></div>
+                    </header>
+                </div>
                 <div className="pay-form-container">
                     <div className="inv-container">
                         <h1>Invoice</h1>

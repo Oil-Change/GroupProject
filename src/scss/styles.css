@@ -737,8 +737,8 @@ input, select {
 
 .message-display {
   margin-top: 5%;
-  width: 100%;
-  height: 85%;
+  width: 90%;
+  height: 88%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -746,10 +746,22 @@ input, select {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 3% 0 0 5%;
 }
 
-.message-display .bubble {
+.message-display .user-bubble {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.message-display .user {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -759,7 +771,7 @@ input, select {
       -ms-flex-align: center;
           align-items: center;
   background: white;
-  padding: 12px;
+  padding: 10px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -769,14 +781,41 @@ input, select {
   font-size: 18px;
   color: white;
   margin: 5px;
+  background: #AAAAAA;
+}
+
+.message-display .admin-bubble {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .message-display .admin {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  align-items: center;
+  background: white;
+  padding: 10px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 7px;
+  border-radius: 30px;
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  color: white;
+  margin: 5px;
   background: #55B1FF;
-}
-
-.message-display .user {
-  background: #AAAAAA;
 }
 
 .mes-bot {
@@ -799,21 +838,22 @@ input, select {
   height: 18px;
   background: white;
   font-size: 18px;
-  color: #777777;
+  color: #d3d1d1;
   border: 1px solid #777777;
   border-radius: 30px;
   padding: 2%;
+  font-family: "Karla", sans-serif;
 }
 
 .mes-bot button {
-  background: white;
   width: 80px;
   height: 32.5px;
   border-radius: 30px;
-  border: 1px solid #fbbb06;
-  font-family: "Lato", sans-serif;
+  border: none;
+  font-family: "Karla", sans-serif;
   font-size: 18px;
-  color: #fbbb06;
+  color: white;
+  background: #55B1FF;
 }
 
 .background-container {
