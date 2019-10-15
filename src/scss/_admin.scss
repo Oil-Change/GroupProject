@@ -1,0 +1,11 @@
+.appt-title-container {
+    width: 93%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    .appt-title {
+        font-size: 18pt;
+        font-family: $font-primary;
+        margin-bottom: 8%;
+    }
+}

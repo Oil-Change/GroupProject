@@ -1,11 +1,15 @@
 .form-container{
     height: 100vh;
     width: 100%;
-    background: $bg;
+    background: $primary-bg;
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
     padding-top: 5%;
+
+    #admin-display {
+        height: auto;
+    }
 
     #car-form {
         height: 75vh;

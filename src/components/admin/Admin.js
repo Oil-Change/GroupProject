@@ -63,8 +63,15 @@ export default class Admin extends Component {
                         <div className='header-spacer'></div>
                     </header>
                 </div>
+                <div className="form-container">
+                    <form id="admin-display">
+                        <div className="appt-title-container">
+                            <h2 className="appt-title">Appointments</h2>
+                        </div>
+                        {mappedAppointments}
+                    </form>
+                </div>
 
-                {mappedAppointments}
             </div>
         )
     }

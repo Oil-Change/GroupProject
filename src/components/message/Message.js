@@ -123,7 +123,7 @@ class Message extends Component {
     }
 
     render() {
-      console.log(this.props.user)
+      console.log(this.props.appointment)
       
       const back = require('../../assets/back.png')
         return (
@@ -150,16 +150,25 @@ class Message extends Component {
                 <div className='message-container'>
                   <div className='username'>
                       <h1>
-                        {this.state.user.first_name} {this.state.user.last_name}
+                        {this.props.user.first_name} {this.props.user.last_name}
                       </h1>
                   </div>
-                  <div className='message-display'>{this.state.messages.map(messageObj => 
-                    <h2 className={ messageObj.is_admin ?
-                      'bubble admin'
-                      :'bubble user'} 
-                      key={messageObj.id}>
-                      {messageObj.message}
-                    </h2>)}
+                  <div className='message-display'>{this.state.messages.map(messageObj => {
+                      if (messageObj.is_admin) {
+                        return (<div className="admin-bubble">
+                                  <h2 className="admin">
+                                    {messageObj.message}
+                                  </h2>
+                                </div>)
+                      } else {
+                        return (<div className="user-bubble">
+                                  <h2 className="user">
+                                    {messageObj.message}
+                                  </h2>
+                                </div>)
+                      }
+                    }
+                  )}
                   </div>
                   <div className="mes-bot">
                     {/* <h1>{this.props.user.first_name}</h1> */}

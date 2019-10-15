@@ -312,7 +312,7 @@ input, select {
 .form-container {
   height: 100vh;
   width: 100%;
-  background: #fbbb06;
+  background: #dddddd;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -322,6 +322,10 @@ input, select {
       -ms-flex-align: start;
           align-items: flex-start;
   padding-top: 5%;
+}
+
+.form-container #admin-display {
+  height: auto;
 }
 
 .form-container #car-form {
@@ -458,7 +462,7 @@ input, select {
 }
 
 .cal-form-container {
-  background: #fbbb06;
+  background: #dddddd;
   height: 90vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -468,10 +472,10 @@ input, select {
           justify-content: center;
 }
 
-.cal-container {
+.cal-form-container .cal-container {
   background: white;
-  height: 95%;
-  width: 94%;
+  height: 70%;
+  width: 93%;
   margin-top: 5%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -485,7 +489,33 @@ input, select {
           align-items: center;
 }
 
-.cal-container .next-btn {
+.cal-form-container .cal-container .next-btn-container {
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  padding-top: 5%;
+}
+
+.cal-form-container .cal-container .next-btn-container button {
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+  color: white;
+  font-size: 14pt;
+  border: 1px solid #CCCCCC;
+  background: #CCCCCC;
+}
+
+.cal-form-container .cal-container .next-btn {
   margin-top: 90%;
 }
 
@@ -572,32 +602,37 @@ input, select {
 }
 
 .user-form-container {
-  height: 88vh;
-  width: 100%;
-  background: #fbbb06;
+  height: 6vh;
+  width: 94%;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 0px 6px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 6px -2px rgba(0, 0, 0, 0.75);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding-top: 5%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 15px;
 }
 
-.user-container {
+.user-form-container .user-container {
   background: white;
   height: 96%;
-  width: 89%;
+  width: 96%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  padding: 2% 0 2% 5%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.user-info {
+.user-form-container .user-container .user-info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -605,17 +640,25 @@ input, select {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding-bottom: 2%;
-  font-family: "Poppins", sans-serif;
-  width: 40%;
+  width: 80%;
 }
 
-.userBtn {
-  width: 45px;
-  height: 45px;
-  border: 1px solid #fbbb06;
-  background: white;
-  margin: 5%;
+.user-form-container .user-container .user-info h3 {
+  font-family: "Rubik", sans-serif;
+  width: auto;
+}
+
+.user-form-container .user-container .user-info p {
+  font-family: "Karla", sans-serif;
+  color: #AAAAAA;
+  font-size: 10pt;
 }
 
 .userBtn-container {
@@ -627,6 +670,15 @@ input, select {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.userBtn-container .userBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #AAAAAA;
+  background: white;
+  margin: 2%;
 }
 
 .info-container {
@@ -737,8 +789,8 @@ input, select {
 
 .message-display {
   margin-top: 5%;
-  width: 100%;
-  height: 85%;
+  width: 90%;
+  height: 88%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -746,10 +798,22 @@ input, select {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 3% 0 0 5%;
 }
 
-.message-display .bubble {
+.message-display .user-bubble {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.message-display .user {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -759,7 +823,7 @@ input, select {
       -ms-flex-align: center;
           align-items: center;
   background: white;
-  padding: 12px;
+  padding: 10px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -769,14 +833,41 @@ input, select {
   font-size: 18px;
   color: white;
   margin: 5px;
+  background: #AAAAAA;
+}
+
+.message-display .admin-bubble {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .message-display .admin {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  align-items: center;
+  background: white;
+  padding: 10px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 7px;
+  border-radius: 30px;
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  color: white;
+  margin: 5px;
   background: #55B1FF;
-}
-
-.message-display .user {
-  background: #AAAAAA;
 }
 
 .mes-bot {
@@ -799,26 +890,27 @@ input, select {
   height: 18px;
   background: white;
   font-size: 18px;
-  color: #777777;
+  color: #d3d1d1;
   border: 1px solid #777777;
   border-radius: 30px;
   padding: 2%;
+  font-family: "Karla", sans-serif;
 }
 
 .mes-bot button {
-  background: white;
   width: 80px;
   height: 32.5px;
   border-radius: 30px;
-  border: 1px solid #fbbb06;
-  font-family: "Lato", sans-serif;
+  border: none;
+  font-family: "Karla", sans-serif;
   font-size: 18px;
-  color: #fbbb06;
+  color: white;
+  background: #55B1FF;
 }
 
 .background-container {
   height: 100vh;
-  background: #fbbb06;
+  background: #dddddd;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -929,7 +1021,7 @@ input, select {
   border-radius: 3%;
   padding-left: 10px;
   width: 150px;
-  height: 45px;
+  height: 40px;
   border: 1px solid #AAAAAA;
   margin-bottom: 7%;
 }
@@ -939,7 +1031,7 @@ input, select {
   background: #CCCCCC;
   padding-left: 10px;
   width: 30%;
-  height: 45px;
+  height: 40px;
   color: white;
   font-size: 14pt;
   border: 1px solid #CCCCCC;
@@ -952,20 +1044,20 @@ input, select {
   color: #AAAAAA;
   padding-left: 10px;
   width: 110px;
-  height: 45px;
+  height: 40px;
   border: 1px solid #AAAAAA;
 }
 
 .background-container .directions-step-container .verify .step-container .verify-btn {
   margin-top: 5%;
   border-radius: 3%;
-  background: #CCCCCC;
+  background: #fbbb06;
   padding-left: 10px;
   width: 100%;
   height: 45px;
   color: white;
   font-size: 14pt;
-  border: 1px solid #CCCCCC;
+  border: none;
 }
 
 .background-container .directions-step-container .verify .input-step-container {
@@ -1000,6 +1092,25 @@ input, select {
   color: white;
   font-size: 14pt;
   border: 1px solid #CCCCCC;
+}
+
+.appt-title-container {
+  width: 93%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.appt-title-container .appt-title {
+  font-size: 18pt;
+  font-family: "Rubik", sans-serif;
+  margin-bottom: 8%;
 }
 
 body {

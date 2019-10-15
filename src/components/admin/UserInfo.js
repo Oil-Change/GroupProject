@@ -3,7 +3,8 @@ import axios from 'axios'
 import { userInfo } from 'os';
 import { connect } from 'react-redux'
 import { updateAppointment } from '../../redux/reducer'
-import { withRouter } from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
 class UserInfo extends Component {
 
@@ -48,7 +49,7 @@ class UserInfo extends Component {
                         <p>{year} {make} {model} {color}</p>
                     </div>
                     <div className="userBtn-container">
-                        <button className="userBtn" onClick={this.message}>Message</button>
+                        <button className="userBtn" onClick={this.message}><MailOutlineIcon /></button>
                         <button className="userBtn" onClick={this.pickUp}>Pick Up</button>
                         <button className="userBtn" onClick={this.dropOff}>Drop Off</button>
                     </div>
