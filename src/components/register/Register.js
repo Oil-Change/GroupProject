@@ -134,7 +134,7 @@ class Register extends Component {
                             <div className='circle-container'>
                                 <div className="circle-info">
                                     <AccountCircleIcon id='icon-color'/>
-                                    <h1>Account Info</h1>
+                                    <h1>Account</h1>
                                 </div>
                             </div>
                         </div>

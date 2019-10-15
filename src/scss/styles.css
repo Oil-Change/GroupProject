@@ -270,7 +270,8 @@ input, select {
 }
 
 .header-container header .circle-container {
-  width: 180px;
+  width: auto;
+  padding: 0 5vw 0 5vw;
   height: 33px;
   background: #fbbb06;
   display: -webkit-box;
@@ -560,26 +561,22 @@ input, select {
   color: #fbbb06;
 }
 
-.left-hdr {
-  width: 10%;
+#instructions-page {
+  height: 90vh;
+  border-radius: 3px;
 }
 
-.ins-form-container {
-  height: 83.5vh;
-  width: 100%;
-  background: #fbbb06;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding-top: 15%;
+#smaller-info {
+  height: auto;
+}
+
+#lengthen-page {
+  height: auto;
 }
 
 .ins-container {
   background: white;
-  height: 80vh;
+  height: 90vh;
   width: 94%;
 }
 
@@ -591,14 +588,30 @@ input, select {
   padding: 5%;
 }
 
-.ins-message {
-  width: 80px;
-  height: 80px;
-  background: white;
-  position: fixed;
-  bottom: 5px;
-  margin: 0 0 2% 2%;
+.message-bubble {
+  padding-right: 2px;
+  padding-bottom: 2px;
+  color: white;
+  -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.75);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 70px;
+  height: 70px;
+  background: #fbbb06;
+  position: -webkit-sticky;
+  position: sticky;
+  left: 77vw;
+  bottom: 2vh;
+  border-radius: 50%;
   border: 2px solid #fbbb06;
+  cursor: pointer;
 }
 
 .user-form-container {
@@ -662,19 +675,18 @@ input, select {
 }
 
 .userBtn-container {
-  padding-left: 2%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 70%;
+  width: 80%;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
 }
 
 .userBtn-container .userBtn {
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   border: none;
   -webkit-box-shadow: 0px 0px 6px -0.5px rgba(0, 0, 0, 0.75);

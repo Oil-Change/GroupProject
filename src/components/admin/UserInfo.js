@@ -8,15 +8,21 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
 import AssignmentReturnedOutlinedIcon from '@material-ui/icons/AssignmentReturnedOutlined';
 import AssignmentTurnedInOutlinedIcon from '@material-ui/icons/AssignmentTurnedInOutlined';
+import Badge from '@material-ui/core/Badge';
 
 class UserInfo extends Component {
 
     constructor() {
         super()
+
+        this.state = { 
+            invisible: false
+        }
     }
 
     componentDidMount() {
         console.log(this.props.userAppointment)
+        
     }
 
     message = () => {
@@ -45,7 +51,11 @@ class UserInfo extends Component {
                         <p>{year} {make} {model} {color}</p>
                     </div>
                     <div className="userBtn-container">
-                        <button className="userBtn" onClick={this.message}><MailOutlineIcon /></button>
+                        <button className="userBtn" onClick={this.message}>
+                            <Badge color="secondary" variant="dot" invisible={this.state.invisible}>
+                                <MailOutlineIcon />
+                            </Badge>
+                        </button>
                         <button className="userBtn" onClick={this.pickUp}><AssignmentReturnedOutlinedIcon/></button>
                         <button className="userBtn" onClick={this.dropOff}><AssignmentTurnedInOutlinedIcon/></button>
                     </div>
