@@ -602,7 +602,7 @@ input, select {
 }
 
 .user-form-container {
-  height: 6vh;
+  height: 7vh;
   width: 94%;
   border-radius: 3px;
   -webkit-box-shadow: 0px 0px 6px -2px rgba(0, 0, 0, 0.75);
@@ -666,7 +666,7 @@ input, select {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 60%;
+  width: 70%;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -676,9 +676,11 @@ input, select {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid #AAAAAA;
+  border: none;
+  -webkit-box-shadow: 0px 0px 6px -0.5px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 6px -0.5px rgba(0, 0, 0, 0.75);
   background: white;
-  margin: 2%;
+  margin: 3%;
 }
 
 .info-container {
