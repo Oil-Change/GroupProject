@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import LandingPage from '../components/landingPage/LandingPage';
-import { InstructionsPage } from '../components/instructionsPage/InstructionsPage';
 
 describe('Does Landing Page Render', function () {
     //before
@@ -12,10 +11,10 @@ describe('Does Landing Page Render', function () {
     })
 });
 
-describe('Does the Instruction page Render', function () {
-    it('This container will display Enjoy your day', () => {
-        const { container } = render(<InstructionsPage />)
-        expect(container.textContent).toContain('Instructions');
+describe('Does Professional Service Exist', function () {
+    it('This container will display Professional Service', () => {
+        const { container } = render(<LandingPage />)
+        expect(container.textContent).toContain('Professional Service');
     })
 });
 
