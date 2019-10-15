@@ -4,7 +4,7 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-export class Stripe extends Component {
+class Stripe extends Component {
     constructor() {
         super()
         this.state = {

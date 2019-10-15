@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-export class InstructionsPage extends Component {
+class InstructionsPage extends Component {
     constructor() {
         super()
     }
