@@ -21,7 +21,6 @@ class UserInfo extends Component {
 
     message = () => {
         let { appointment_id } = this.props.userAppointment
-        this.updateAppt()
         this.props.history.push(`/messages/${appointment_id}`)
     }
 
