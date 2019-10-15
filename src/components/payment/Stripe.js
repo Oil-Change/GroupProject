@@ -71,6 +71,7 @@ class Stripe extends Component {
         )
     }
 }
+
 const mapStateToProps = (reduxState) => {
     const { appointment } = reduxState;
     return { appointment };
