@@ -7,7 +7,6 @@
     padding-top: 5%;
 }
 
-
 .message-container{
     display: flex;
     flex-direction: column;
@@ -18,35 +17,75 @@
     box-shadow: 1px 2px 3px rgba(0, 0, 0, .1);
     border-radius: 3px;
     padding-top: 5%;
+
+    .username {
+        h1 {
+            font-family: $font-secondary;
+        }
+    }
 }
 
 .message-display{
-width: 100%;
-height: 70%;
-border-bottom: 1px solid #777777
+    margin-top: 5%;
+    width: 100%;
+    height: 85%;
+    // border-bottom: 1px solid #777777;
+    display: flex;
+    flex-direction: column;
+    padding: 3% 0 0 5%;
+
+
+    .bubble {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background:white;
+        padding: 12px;
+        width: fit-content;
+        height: 7px;
+        border-radius: 30px;
+        font-family: $font-secondary;
+        font-size: 18px;
+        color: white;
+        margin: 5px;
+    }
+    .admin {
+        background: #55B1FF;
+    }
+    .user {
+        background: #AAAAAA;
+    }
+
 }
 .mes-bot{
+    overflow: scroll;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     width: 90%;
+    padding-top: 3%;
+    border-top: 1px solid gray;
+
     input{
-        width: 90%;
-        height: 20%;;
-        margin: 20px 0 15px 0;
+        width: 60%;
+        height: 18px;
+        // margin: 20px 0 15px 0;
         background: white;
         font-size: 18px;
         color: #777777;
         border: 1px solid #777777;
-        border-radius: 10px;
+        border-radius: 30px;
         padding: 2%;
     }
     button{
         background:white;
-        width: 150px;
-        height: 40px;
-        border-radius: 5px;
-        border: 2px solid $bg;
+        width: 80px;
+        height: 32.5px;
+        border-radius: 30px;
+        border: 1px solid $bg;
         font-family: $lato;
         font-size: 18px;
         color: $bg;
-        margin: 2%;
+        // margin: 2%;
     }
 }
