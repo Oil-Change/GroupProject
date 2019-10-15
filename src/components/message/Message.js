@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import axios from 'axios'
 import io from 'socket.io-client'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
 class Message extends Component {
 
@@ -137,7 +137,10 @@ class Message extends Component {
                       </div>
                       <div className='header-title'>
                           <div className='circle-container'>
-                              <h1>User Information</h1>
+                            <div className="circle-info">
+                                <MailOutlineIcon id="icon-color"/>
+                                <h1>Messages</h1>
+                            </div>
                           </div>
                       </div>
                       <div className='header-spacer'></div>
@@ -145,28 +148,29 @@ class Message extends Component {
               </div>
               <div className='message-form-container'>
                 <div className='message-container'>
-                <div>
-                    <h1>{this.state.user.first_name}</h1> <h1>{this.state.user.last_name}</h1>
-                    
+                  <div className='username'>
+                      <h1>
+                        {this.state.user.first_name} {this.state.user.last_name}
+                      </h1>
+                  </div>
+                  <div className='message-display'>{this.state.messages.map(messageObj => 
+                    <h2 className={ messageObj.is_admin ?
+                      'bubble admin'
+                      :'bubble user'} 
+                      key={messageObj.id}>
+                      {messageObj.message}
+                    </h2>)}
+                  </div>
+                  <div className="mes-bot">
+                    {/* <h1>{this.props.user.first_name}</h1> */}
+                    <input className='chatInput' value={this.state.message} placeholder='Message'onChange={e => {
+                      this.setState({
+                        message: e.target.value
+                      })
+                    }} />
+                    <button onClick={this.sendMessage}>Send</button>
+                  </div>
                 </div>
-
-                <div className='message-display'>{this.state.messages.map(messageObj => 
-          
-          <h2 className= 
-          {
-          messageObj.is_admin ?
-          'admin':'user'} key={messageObj.id}>{messageObj.user_name}: {messageObj.message}</h2>)}</div>
-          <div className="mes-bot">
-                <h1>{this.props.user.first_name}</h1>
-
-                <input className='chatInput' value={this.state.message} placeholder='Message'onChange={e => {
-                this.setState({
-                  message: e.target.value
-                })
-              }} />
-              <button onClick={this.sendMessage}>Send</button>
-              </div>
-              </div>
               </div>
             </div>
         )

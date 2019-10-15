@@ -304,7 +304,7 @@ input, select {
 }
 
 .header-container header .circle-container .circle-info h1 {
-  font-size: 20px;
+  font-size: 17px;
   font-family: "Lato", sans-serif;
   color: white;
 }
@@ -731,38 +731,89 @@ input, select {
   padding-top: 5%;
 }
 
+.message-container .username h1 {
+  font-family: "Karla", sans-serif;
+}
+
 .message-display {
+  margin-top: 5%;
   width: 100%;
-  height: 70%;
-  border-bottom: 1px solid #777777;
+  height: 85%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 3% 0 0 5%;
+}
+
+.message-display .bubble {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: white;
+  padding: 12px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 7px;
+  border-radius: 30px;
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  color: white;
+  margin: 5px;
+}
+
+.message-display .admin {
+  background: #55B1FF;
+}
+
+.message-display .user {
+  background: #AAAAAA;
 }
 
 .mes-bot {
+  overflow: scroll;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 90%;
+  padding-top: 3%;
+  border-top: 1px solid gray;
 }
 
 .mes-bot input {
-  width: 90%;
-  height: 20%;
-  margin: 20px 0 15px 0;
+  width: 60%;
+  height: 18px;
   background: white;
   font-size: 18px;
   color: #777777;
   border: 1px solid #777777;
-  border-radius: 10px;
+  border-radius: 30px;
   padding: 2%;
 }
 
 .mes-bot button {
   background: white;
-  width: 150px;
-  height: 40px;
-  border-radius: 5px;
-  border: 2px solid #fbbb06;
+  width: 80px;
+  height: 32.5px;
+  border-radius: 30px;
+  border: 1px solid #fbbb06;
   font-family: "Lato", sans-serif;
   font-size: 18px;
   color: #fbbb06;
-  margin: 2%;
 }
 
 .background-container {
