@@ -6,77 +6,81 @@ import { connect } from 'react-redux';
 import { updateAppointment } from '../../redux/reducer';
 
 class Stripe extends Component {
-        constructor() {
-            super()
-            this.state = {
-                amount: 6000,
-                appointment: {}
-            }
-        }
-
-        onOpened = () => {
-            console.log('this is opened')
-        }
-
-        onClosed = () => {
-            console.log('this is closed')
-        }
-
-        onToken = (token) => {
-            console.log(token)
-            let { amount } = this.state
-            amount /= 100
-            console.log(amount)
-            token.card = void 0;
-            let price = amount;
-            console.log('Price: ', price)
-            let { appointment } = this.props;
-            console.log('appointment: ', appointment)
-            axios.post('/api/appointment/create', { appointment, price }).then(res => {
-                console.log('Updating Database')
-                console.log('res: ', res.data);
-                this.props.updateAppointment(res.data);
-                this.props.history.push('/instructions');
-                axios.post('/api/payment', { token, amount: this.state.amount * 100 }).then(res => {
-                    console.log('Updating stripe')
-                    console.log(res);
-                    alert(`Congratulations you paid this ${amount}!`);
-                });
-            }).catch(err => alert('Unable to connect to DataBase'));
-        };
-
-        render() {
-            return (
-                <div>
-                    <div>
-                        <div className='stripe-container'>
-                            <StripeCheckout
-                                name='Oil Change Charge'
-                                image={imageUrl}
-                                description='Charging $60.00 for Oil Change'
-                                stripeKey={process.env.REACT_APP_STRIPE_KEY}
-                                token={this.onToken}
-                                amount={this.state.amount}
-                                currency="USD"
-                                panelLabel="Submit Payment"
-                                locale="en"
-                                opened={this.onOpened}
-                                closed={this.onClosed}
-                                allowRememberMe
-                                billingAddress={false}
-                                zipCode={false}>
-                                <button className='stripe-checkout-button'>Checkout</button>
-                            </StripeCheckout>
-                        </div>
-                    </div>
-                </div>
-            )
+    constructor() {
+        super()
+        this.state = {
+            amount: 6000,
+            appointment: {},
+            car: {}
         }
     }
 
+    onOpened = () => {
+        console.log('this is opened')
+    }
+
+    onClosed = () => {
+        console.log('this is closed')
+    }
+
+    onToken = (token) => {
+        console.log(token)
+        let { amount } = this.state
+        amount /= 100
+        console.log(amount)
+        token.card = void 0;
+        let price = amount;
+        console.log('Price: ', price)
+        let { appointment } = this.props.appointment;
+        let car = this.props.car;
+        let cid = car.id;
+        console.log('car: ', cid);
+        console.log('appointment: ', appointment)
+        axios.post('/api/appointment/create', { appointment, price, cid }).then(res => {
+            console.log('Updating Database')
+            console.log('res: ', res.data);
+            this.props.updateAppointment(res.data);
+            this.props.history.push('/instructions');
+            axios.post('/api/payment', { token, amount: this.state.amount * 100 }).then(res => {
+                console.log('Updating stripe')
+                console.log(res);
+                alert(`Congratulations you paid this ${amount}!`);
+            });
+        }).catch(err => alert('Unable to connect to DataBase'));
+    };
+
+    render() {
+        return (
+            <div>
+                <div>
+                    <div className='stripe-container'>
+                        <StripeCheckout
+                            name='Oil Change Charge'
+                            image={imageUrl}
+                            description='Charging $60.00 for Oil Change'
+                            stripeKey={process.env.REACT_APP_STRIPE_KEY}
+                            token={this.onToken}
+                            amount={this.state.amount}
+                            currency="USD"
+                            panelLabel="Submit Payment"
+                            locale="en"
+                            opened={this.onOpened}
+                            closed={this.onClosed}
+                            allowRememberMe
+                            billingAddress={false}
+                            zipCode={false}>
+                            <button className='stripe-checkout-button'>Checkout</button>
+                        </StripeCheckout>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+
 const mapStateToProps = (reduxState) => {
-    const { appointment } = reduxState;
-    return { appointment };
+    const { appointment, car } = reduxState;
+    return { appointment, car };
 }
 
 const mapDispatchToProps = {

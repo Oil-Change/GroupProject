@@ -8,12 +8,20 @@ import AccessAlarmsIcon from '@material-ui/icons/AccessAlarms';
 import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt';
 import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
+import axios from 'axios';
 
 export class InstructionsPage extends Component {
     constructor() {
         super()
     }
 
+    componentDidMount(){
+
+    }
+
+    getappt = () => {
+        axios.get('/api')
+    }
     message = () => {
         let { id } = this.props.appointment
         this.props.history.push(`/messages/${id}`)
