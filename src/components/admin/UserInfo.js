@@ -24,7 +24,7 @@ class UserInfo extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.userAppointment)
+        // console.log(this.props.userAppointment)
         
     }
 

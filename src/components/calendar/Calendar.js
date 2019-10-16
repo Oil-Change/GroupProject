@@ -32,21 +32,21 @@ class Calendar extends Component {
     }
 
     createAppt = () => {
-      console.log(this.state.selectedDate)
+      // console.log(this.state.selectedDate)
       this.props.updateAppointment(this.state.selectedDate)
 
-      console.log(this.props.user)
-      console.log(this.props.car)
-      console.log(this.props)
+      // console.log(this.props.user)
+      // console.log(this.props.car)
+      // console.log(this.props)
       this.props.history.push('/payment')
     }
 
     getAppointmentCount = (date) => {
-      console.log('before: getTodayAPpt')
-      console.log('date', date.getMonth(), date.getFullYear())
+      // console.log('before: getTodayAPpt')
+      // console.log('date', date.getMonth(), date.getFullYear())
       axios.get('/api/appointment/date', {month: date.getMonth()+1, year: date.getFullYear()}).then((res) => {
-        console.log('here: getTodayAppt')
-        console.log(res.data)
+        // console.log('here: getTodayAppt')
+        // console.log(res.data)
         return res.data
       })
     }
