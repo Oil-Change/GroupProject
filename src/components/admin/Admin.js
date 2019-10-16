@@ -14,13 +14,13 @@ export default class Admin extends Component {
 
     componentDidMount() {
         this.getAppointments()
-        console.dir(this.state.appointments)
+        // console.dir(this.state.appointments)
     }
 
     getAppointments = () => {
         axios.get('/api/appointment/today')
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 this.setState({
                     appointments: res.data
                 })
