@@ -14,6 +14,7 @@ export default class Admin extends Component {
 
     componentDidMount() {
         this.getAppointments()
+        console.dir(this.state.appointments)
     }
 
     getAppointments = () => {

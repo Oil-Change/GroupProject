@@ -2,15 +2,11 @@ const createAppointment = async (req, res) => {
     // console.log('Creating Appointment');
     // console.log('');
     const id = req.session.user.phone_number;
-    // console.log('user_id: ', id);
-    const { cid } = req.body;
-    // console.log('cid: ', cid);
-    // console.log('');
     const { appointment, price } = req.body;
     // console.log('appointment: ', appointment);
     // console.log('');
     const db = req.app.get('db');
-    const createdAppointment = await db.appointment.add_appointment([id, cid, appointment, price]);
+    const createdAppointment = await db.appointment.add_appointment([id, appointment.car_id, appointment, price]);
     // console.log('appointmentCreated: ', appointmentCreated);
     // console.log('');
     res.status(200).send(createdAppointment[0]);

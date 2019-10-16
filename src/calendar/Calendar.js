@@ -9,6 +9,8 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers'
 
+import Calendar from "react-material-ui-calendar";
+
 export default class Calendar extends Component {
     constructor(){
         setSelectedDate: null
