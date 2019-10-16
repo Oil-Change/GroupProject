@@ -71,13 +71,14 @@ $text-spacing: 0 0 2% 0;
                 .phone-number-input {
                     margin: $text-spacing;
                     font-size: 11pt;
-                    color: #AAAAAA;
+                    color: none;
                     border-radius: 3%;
                     padding-left: 10px;
                     width: 150px;
                     height: 40px;
                     border: 1px solid #AAAAAA;
                     margin-bottom: 7%;
+                    
                 }
                 .send-btn {
                     border-radius: 3%;
@@ -93,7 +94,7 @@ $text-spacing: 0 0 2% 0;
                     margin: $text-spacing;
                     border-radius: 3%;
                     font-size: 11pt;
-                    color: #AAAAAA;
+                    color: rgb(102, 95, 95);
                     padding-left: 10px;
                     width: 110px;
                     height: 40px;
@@ -126,7 +127,7 @@ $text-spacing: 0 0 2% 0;
                 .phone-number-input {
                     font-size: 11pt;
                     margin-right: 5%;
-                    color: #AAAAAA;
+                    color: rgb(102, 95, 95);
                     border-radius: 4%;
                     padding-left: 10px;
                     width: 150px;

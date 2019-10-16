@@ -26,14 +26,14 @@
                 border-radius: 5px;
                 font-family: $lato;
                 font-size: 18px;
-                color: white;
+                color: $bg;
                 font-size: 14pt;
-                border: 1px solid #CCCCCC;
-                background: #CCCCCC;
+                border: 2px solid $bg;
+                background: white;
             }
         }
         .next-btn{
-            margin-top: 90%;
+            margin-top: 80%;
         }
     }
 }

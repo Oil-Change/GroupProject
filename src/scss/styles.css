@@ -243,8 +243,9 @@ input, select {
 }
 
 .header-container header .header-btn {
-  background-color: none;
+  background-color: white;
   border: none;
+  height: 60px;
 }
 
 .header-container header .header-spacer {
@@ -254,6 +255,8 @@ input, select {
   height: 64px;
   width: 40px;
   border: none;
+  background-color: white;
+  background: none;
 }
 
 .header-container header .header-spacer img {
@@ -522,14 +525,14 @@ input, select {
   border-radius: 5px;
   font-family: "Lato", sans-serif;
   font-size: 18px;
-  color: white;
+  color: #fbbb06;
   font-size: 14pt;
-  border: 1px solid #CCCCCC;
-  background: #CCCCCC;
+  border: 2px solid #fbbb06;
+  background: white;
 }
 
 .cal-form-container .cal-container .next-btn {
-  margin-top: 90%;
+  margin-top: 80%;
 }
 
 .pay-form-container {
@@ -775,7 +778,7 @@ input, select {
 .message-form-container {
   height: 88vh;
   width: 100%;
-  background: #fbbb06;
+  background: #dddddd;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1039,7 +1042,7 @@ input, select {
 .background-container .directions-step-container .verify .step-container .phone-number-input {
   margin: 0 0 2% 0;
   font-size: 11pt;
-  color: #AAAAAA;
+  color: none;
   border-radius: 3%;
   padding-left: 10px;
   width: 150px;
@@ -1063,7 +1066,7 @@ input, select {
   margin: 0 0 2% 0;
   border-radius: 3%;
   font-size: 11pt;
-  color: #AAAAAA;
+  color: #665f5f;
   padding-left: 10px;
   width: 110px;
   height: 40px;
@@ -1097,7 +1100,7 @@ input, select {
 .background-container .directions-step-container .verify .input-step-container .phone-number-input {
   font-size: 11pt;
   margin-right: 5%;
-  color: #AAAAAA;
+  color: #665f5f;
   border-radius: 4%;
   padding-left: 10px;
   width: 150px;
