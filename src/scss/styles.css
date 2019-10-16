@@ -162,7 +162,7 @@ input, select {
 
 .bot-section {
   background: white;
-  height: 87vh;
+  height: 85vh;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -226,6 +226,7 @@ input, select {
   position: fixed;
   z-index: 10;
   width: 100%;
+  max-width: 600px;
   height: 7vh;
   background: #fff;
   display: -webkit-box;
@@ -241,12 +242,18 @@ input, select {
           box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
+.header-container header .header-btn {
+  background-color: none;
+  border: none;
+}
+
 .header-container header .header-spacer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 80px;
+  height: 64px;
   width: 40px;
+  border: none;
 }
 
 .header-container header .header-spacer img {
@@ -528,7 +535,7 @@ input, select {
 .pay-form-container {
   height: 83.5vh;
   width: 100%;
-  background: #fbbb06;
+  background: #dddddd;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -572,10 +579,6 @@ input, select {
 }
 
 #smaller-info {
-  height: auto;
-}
-
-#lengthen-page {
   height: auto;
 }
 

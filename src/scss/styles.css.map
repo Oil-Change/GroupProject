@@ -10,7 +10,7 @@
         "_form.scss",
         "_calendar.scss",
         "_payment.scss",
-        "_instructionsPage.scss",
+        "_instructionspage.scss",
         "_userInfo.scss",
         "_user.scss",
         "_message.scss",

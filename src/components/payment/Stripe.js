@@ -3,13 +3,15 @@ import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { updateAppointment } from '../../redux/reducer';
 
 class Stripe extends Component {
     constructor() {
         super()
         this.state = {
             amount: 6000,
-            appointment: {}
+            appointment: {},
+            car: {}
         }
     }
 
@@ -29,16 +31,20 @@ class Stripe extends Component {
         token.card = void 0;
         let price = amount;
         console.log('Price: ', price)
-        let { appointment } = this.props;
-        console.log('appointment: ', this.props.car)
-        axios.post('/api/appointment/create', { appointment, price, cid:this.props.car.id }).then(res => {
-            // console.log('Updating Database')
-            // console.log('res: ', res.data);
+        let { appointment } = this.props.appointment;
+        let car = this.props.car;
+        let cid = car.id;
+        console.log('car: ', cid);
+        console.log('appointment: ', appointment)
+        axios.post('/api/appointment/create', { appointment, price, cid }).then(res => {
+            console.log('Updating Database')
+            console.log('res: ', res.data);
+            this.props.updateAppointment(res.data);
+            this.props.history.push('/instructions');
             axios.post('/api/payment', { token, amount: this.state.amount * 100 }).then(res => {
-                // console.log('Updating stripe')
-                // console.log(res);
-                alert(`Payment of ${amount} has been made.`);
-                this.props.history.push('/instructions');
+                console.log('Updating stripe')
+                console.log(res);
+                alert(`Congratulations you paid this ${amount}!`);
             });
         }).catch(err => alert('Unable to connect to DataBase'));
     };
@@ -71,18 +77,21 @@ class Stripe extends Component {
         )
     }
 }
+
 const mapStateToProps = (reduxState) => {
-    const { appointment } = reduxState;
-    return { appointment };
+    const { appointment, car } = reduxState;
+    return { appointment, car };
+}
+
+const mapDispatchToProps = {
+    updateAppointment
 }
 
 // export default withRouter(Subscription);
-export default withRouter(connect(mapStateToProps)(Stripe));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Stripe));
 
 //this is for testing only
 // export default connect(mapStateToProps)(Stripe);
-
-
 
 const imageUrl = 'https://th.thgim.com/opinion/op-ed/article19253786.ece/alternates/FREE_660/Th11-Paper%20money'
 
