@@ -22,7 +22,7 @@ export default class Payment extends Component {
                             <div className='circle-container'>
                                 <div className="circle-info">
                                     <CreditCardIcon id='icon-color'/>
-                                    <h1>Vehicle Info</h1>
+                                    <h1>Payment</h1>
                                 </div>
                             </div>
                         </div>
