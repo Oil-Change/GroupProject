@@ -77,8 +77,8 @@ class User extends Component {
     };
 
     dropOff = () => {
-        console.log('Drop Off')
         let { appointment_id } = this.props.appointment;
+        console.log('Drop Off', appointment_id)
         axios.put(`/api/appointment/drop_off/${appointment_id}`)
             .then(res => {
             console.log('Updaing Drop Off');
