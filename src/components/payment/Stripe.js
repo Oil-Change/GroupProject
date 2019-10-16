@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 import { updateAppointment } from '../../redux/reducer';
 
 class Stripe extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             amount: 6000,
             appointment: {},
@@ -35,7 +35,6 @@ class Stripe extends Component {
         let car = this.props.car;
         let cid = car.id;
         console.log('car: ', cid);
-        console.log('appointment: ', appointment)
         axios.post('/api/appointment/create', { appointment, price, cid }).then(res => {
             console.log('Updating Database')
             console.log('res: ', res.data);
