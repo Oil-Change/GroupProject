@@ -1,5 +1,5 @@
 .form-container{
-    height: 100vh;
+    height: 105vh;
     width: 100%;
     background: $primary-bg;
     display: flex;
@@ -94,12 +94,17 @@
                 width: 200px;
                 height: 50px;
                 border-radius: 5px;
-                font-family: $lato;
+                font-family: $font-secondary;
+                background: white;
                 font-size: 18px;
-                color: white;
+                color: $bg;
                 font-size: 14pt;
-                border: 1px solid #CCCCCC;
-                background: #CCCCCC;
+                border: 2px solid $bg;
+            }
+
+            button:hover{
+                background: $bg;
+                color: white;
             }
         }
     }

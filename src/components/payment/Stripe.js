@@ -30,14 +30,14 @@ class Stripe extends Component {
         let price = amount;
         console.log('Price: ', price)
         let { appointment } = this.props;
-        console.log('appointment: ', appointment)
-        axios.post('/api/appointment/create', { appointment, price }).then(res => {
-            console.log('Updating Database')
-            console.log('res: ', res.data);
+        console.log('appointment: ', this.props.car)
+        axios.post('/api/appointment/create', { appointment, price, cid:this.props.car.id }).then(res => {
+            // console.log('Updating Database')
+            // console.log('res: ', res.data);
             axios.post('/api/payment', { token, amount: this.state.amount * 100 }).then(res => {
-                console.log('Updating stripe')
-                console.log(res);
-                alert(`Congratulations you paid this ${amount}!`);
+                // console.log('Updating stripe')
+                // console.log(res);
+                alert(`Payment of ${amount} has been made.`);
                 this.props.history.push('/instructions');
             });
         }).catch(err => alert('Unable to connect to DataBase'));
