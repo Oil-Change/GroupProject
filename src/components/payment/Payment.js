@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import Stripe from './Stripe';
 import CreditCardIcon from '@material-ui/icons/CreditCard';
+import { connect } from 'react-redux'
 
-export default class Payment extends Component {
+class Payment extends Component {
     back = (e) => {
         e.preventDefault()
         this.props.history.push('/appointment')
     }
     render() {
+        console.log(this.props)
         const back = require('../../assets/back.png')
         return (
             <div>
@@ -41,3 +43,8 @@ export default class Payment extends Component {
     };
 }
 
+function mapStateToProps(state) {
+    return state
+  }
+  
+export default connect(mapStateToProps)(Payment)

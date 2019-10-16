@@ -31,9 +31,7 @@ class Stripe extends Component {
         token.card = void 0;
         let price = amount;
         console.log('Price: ', price)
-        console.dir('Props: ', this.props)
         let appointment = this.props.appointment;
-        console.log('appointment: ', appointment)
         let car = this.props.car;
         let cid = car.id;
         console.log('car: ', cid);
@@ -80,8 +78,7 @@ class Stripe extends Component {
 }
 
 const mapStateToProps = (reduxState) => {
-    // const { appointment, car } = reduxState;
-    return reduxState;
+   return reduxState
 }
 
 const mapDispatchToProps = {

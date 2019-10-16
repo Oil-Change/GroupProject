@@ -16,7 +16,10 @@ class UserInfo extends Component {
         super()
 
         this.state = { 
-            invisible: false
+            invisible: false,
+            pickUp: false,
+            dropOff: false
+
         }
     }
 
@@ -31,13 +34,23 @@ class UserInfo extends Component {
     }
 
     pickUp = () => {
-        let { appointment_id } = this.props.userAppointment
-        this.props.history.push(`admin/user/pick_up/${appointment_id}`)
+        if(!this.state.pickUp){
+            let { appointment_id } = this.props.userAppointment
+            this.props.history.push(`admin/user/pick_up/${appointment_id}`)
+            this.setState({
+                pickUp: true
+            })
+        }
     }
 
     dropOff = () => {
-        let { appointment_id } = this.props.userAppointment
-        this.props.history.push(`admin/user/drop_off/${appointment_id}`)
+        if(!this.state.dropOff){
+            let { appointment_id } = this.props.userAppointment
+            this.props.history.push(`admin/user/drop_off/${appointment_id}`)
+            this.setState({
+                dropOff: true
+            })
+        }
     }
 
     render() {
@@ -56,8 +69,16 @@ class UserInfo extends Component {
                                 <MailOutlineIcon />
                             </Badge>
                         </button>
-                        <button className="userBtn" onClick={this.pickUp}><AssignmentReturnedOutlinedIcon/></button>
-                        <button className="userBtn" onClick={this.dropOff}><AssignmentTurnedInOutlinedIcon/></button>
+                        <button className={
+                            this.state.dropOff ? "userBtn btn-done"
+                            :
+                            "userBtn"
+                        } onClick={this.pickUp}><AssignmentReturnedOutlinedIcon/></button>
+                        <button className={
+                            this.state.dropOff ? "userBtn btn-done"
+                            :
+                            "userBtn"
+                        } onClick={this.dropOff}><AssignmentTurnedInOutlinedIcon/></button>
                     </div>
                 </div>
             </div>
