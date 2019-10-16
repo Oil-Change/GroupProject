@@ -123,7 +123,7 @@ class Message extends Component {
     }
 
     render() {
-      console.log(this.props.appointment)
+      console.log(this.state.message)
       
       const back = require('../../assets/back.png')
         return (
