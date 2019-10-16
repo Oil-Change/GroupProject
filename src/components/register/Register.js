@@ -41,7 +41,7 @@ class Register extends Component {
         this.validateData()
         if(this.state.error) return
 
-        console.log("phone_number:",this.props.phone_number)
+        // console.log("phone_number:",this.props.phone_number)
 
         const body = {
             firstName: this.state.firstName,
@@ -58,9 +58,9 @@ class Register extends Component {
 
         axios.put(`/api/user`, body)
             .then(response => {
-                console.log(response)
+                // console.log(response)
                 this.props.updateUser(response.data)
-                console.dir(this.props.user)
+                // console.dir(this.props.user)
                 //push to store
                 this.props.history.push('/car')
             })
