@@ -3,7 +3,7 @@ const initialState = {
     phone_number: 0,
     user: {},
     car: {},
-    appointment: []
+    appointment: ''
 };
 
 // Action Types
@@ -56,8 +56,8 @@ export default function reducer(state = initialState, action) {
             return { ...state, car }
         case UPDATE_APPT:
             console.log("app set", action.payload)
-            // const appointment = action.payload
-            return { ...state, appointment: action.payload }
+            const appointment = action.payload
+            return { ...state, appointment }
         default:
             return state
     };
