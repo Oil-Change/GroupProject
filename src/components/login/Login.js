@@ -4,7 +4,7 @@ import { updatePhone, updateAdmin } from '../../redux/reducer'
 import axios from 'axios';
 import PhoneLockedIcon from '@material-ui/icons/PhoneLocked';
 
- class Login extends Component {
+ export class Login extends Component {
     constructor(){
         super()
 
