@@ -1,40 +1,33 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import LandingPage from '../components/landingPage/LandingPage';
+import Login from '../components/login/Login';
 
-describe('Does Landing Page Render', function () {
+describe('Does Login Page Render', function () {
     //before
-    it('This countainer will display Landing', () => {
+    it('This countainer will display Login', () => {
         console.log('here')
-        const { container } = render(<LandingPage />)
-        expect(container.textContent).toContain("WELCOME")
+        const { container } = render(<Login />)
+        expect(container.textContent).toContain("Login")
     })
-});
 
-describe('Does Professional Service Exist', function () {
     it('This container will display Professional Service', () => {
-        const { container } = render(<LandingPage />)
+        const { container } = render(<Login />)
         expect(container.textContent).toContain('Professional Service');
     })
-});
 
-describe('Does LETs go button exist', function () {
     it('lets go button exists', () => {
-        const { container } = render(<LandingPage />)
+        const { container } = render(<Login />)
         expect(container.textContent).toContain(`LET'S GO!`)
     })
-});
 
-describe('Does Fast And Easy Pickup Exist', function () {
+    it('lets go button exists', () => {
+        const { container } = render(<Login />)
+        expect(container.textContent).toContain(`LET'S GO!`)
+    })
+    
     it('Fast And Easy Pickup', () => {
-        const { container } = render(<LandingPage />)
+        const { container } = render(<Login />)
         expect(container.textContent).toContain('Fast And Easy Pickup')
     })
 });
 
-describe(`Just add your address and you'll see everything you need!`, function () {
-    it(`Just add your address and you'll see everything you need!`, () => {
-        const { container } = render(<LandingPage />)
-        expect(container.textContent).toContain(`Just add your address and you'll see everything you need!`)
-    })
-});
