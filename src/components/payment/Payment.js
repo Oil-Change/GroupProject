@@ -38,9 +38,7 @@ class Payment extends Component {
                                     <div className="info-item">
                                         <p>Your appointment has been book-marked! Make your way to payment to get your appointment made.</p>
                                     </div>
-                                    <div className="checkout-btn">
-                                        <Stripe />
-                                    </div>
+                                    <Stripe />
                                 </div>
                             </div>
                         </div>
