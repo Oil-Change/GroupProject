@@ -1,7 +1,7 @@
 .info-container {
     height: 90vh;
     width: 100%;
-    background: $bg;
+    background: $primary-bg;
     display: flex;
     justify-content: center;
     padding-top: 5%;
@@ -24,9 +24,9 @@
     }
     .statusButton:hover{
         cursor: pointer;
-        background: #777777;
+        background: $bg;
         color: white;
-        border: 2px solid #777777;
+        border: 2px solid $bg;
     }
     .statusButton{
         background:white;

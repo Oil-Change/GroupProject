@@ -146,11 +146,11 @@ class CarInformation extends Component {
                             />
                             <TextField
                                 id="outlined-text-input"
-                                label="License"
+                                label="License plate"
                                 type="text"
                                 id='mui-input'
                                 style = {{width: '100%'}}
-                                name="license"
+                                name="licensePlate"
                                 onChange={this.handleChange}
                                 margin="normal"
                                 variant="outlined"

@@ -3,12 +3,9 @@ import {connect} from 'react-redux'
 import axios from 'axios'
 import io from 'socket.io-client'
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
-
 class Message extends Component {
-
     constructor(){
         super()
-
         this.state = {
             id: null,
             roomId: null,
@@ -42,11 +39,9 @@ class Message extends Component {
         })
         
     }
-
     componentWillUnmount() {
         this.socket.disconnect();
       }
-
       // gettime = () => {
       
       //   console.log(time)
@@ -54,7 +49,6 @@ class Message extends Component {
       //       timestamp:time
       //   })
       // }
-
       joinSuccess = (messages) => {
         this.setState({
           joined: true,
@@ -62,7 +56,6 @@ class Message extends Component {
         })
       }
       sendMessage = () => {
-
         
         const date = new Date().getDate()
         const month = new Date().getMonth() + 1
@@ -122,7 +115,6 @@ class Message extends Component {
         e.preventDefault()
         this.props.history.push('/admin')
     }
-
     render() {
       // console.log(this.state.message)
       
@@ -189,9 +181,7 @@ class Message extends Component {
         )
     }
 }
-
 function mapStateToProps(state){
     return state
 }
-
-export default connect(mapStateToProps)(Message)
+export default connect(mapStateToProps)(Message) 

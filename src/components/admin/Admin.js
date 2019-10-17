@@ -14,7 +14,6 @@ export default class Admin extends Component {
 
     componentDidMount() {
         this.getAppointments()
-        // console.dir(this.state.appointments)
     }
 
     getAppointments = () => {
@@ -37,6 +36,7 @@ export default class Admin extends Component {
     render() { 
         
         const mappedAppointments = this.state.appointments.map((userAppointment, i) => {
+            console.log(userAppointment)
             return (
                 <UserInfo key={i} userAppointment={userAppointment} /> 
             )
