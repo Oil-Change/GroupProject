@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { updatePhone } from '../../redux/reducer'
+import { updatePhone, updateAdmin } from '../../redux/reducer'
 import axios from 'axios';
 import PhoneLockedIcon from '@material-ui/icons/PhoneLocked';
 
@@ -18,6 +18,7 @@ import PhoneLockedIcon from '@material-ui/icons/PhoneLocked';
 
     updateRedux = (e) => {
         this.props.updatePhone(e.phone_number)
+        this.props.updateAdmin(e.is_admin)
     }
 
     back = (e) => {
@@ -26,14 +27,14 @@ import PhoneLockedIcon from '@material-ui/icons/PhoneLocked';
     }
 
     codeSend = () => {
-        console.log(this.state.phone_number)
+        // console.log(this.state.phone_number)
         let min = 10000
         let max = 99999
         let code = Math.floor(Math.random() * (max - min + 1)) + min
         axios.post('/api/user/create', {phone_number: this.state.phone_number}).then((res) => {
-            console.log("sending to chris")
+            // console.log("sending to chris")
             axios.post('/twilio/send-code', {code, phone_number: this.state.phone_number}).then(() => {
-                console.log("finished")
+                // console.log("finished")
                 this.setState({sentCode: true})
                 axios.post('/api/user/code', {code, phone_number: this.state.phone_number})
             })
@@ -44,9 +45,9 @@ import PhoneLockedIcon from '@material-ui/icons/PhoneLocked';
 
     codeVerify = () => {
         let {code, phone_number} = this.state
-        console.log(code, phone_number)
+        // console.log(code, phone_number)
         axios.post('/auth/code', {code, phone_number}).then((res) => {
-            console.dir(res)
+            // console.dir(res)
             let userInfo = res.data
             this.updateRedux(userInfo)
             if(userInfo.is_admin){
@@ -135,4 +136,4 @@ function mapStateToProps(state) {
     return state
 }
 
-export default connect(mapStateToProps, {updatePhone})(Login)
+export default connect(mapStateToProps, {updatePhone, updateAdmin})(Login)

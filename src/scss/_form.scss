@@ -16,7 +16,16 @@
     }
 
     #register-form {
-        height: 76vh;
+        height: 82vh;
+    }
+    .error-box{
+        border: 1px solid rgb(236, 53, 53);
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 5%;
+        top: 100px;
+        color:  rgb(236, 53, 53);
+        font-family: $font-secondary;
     }
 
     form {

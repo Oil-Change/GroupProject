@@ -23,6 +23,8 @@ const authCtrl = require('./controllers/authController');
 
 app.use(express.json());
 
+app.use( express.static( `${__dirname}/../build` ) );
+
 // session set 
 app.use(session({
     secret: SESSION_SECRET,

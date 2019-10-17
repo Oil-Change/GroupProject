@@ -345,7 +345,17 @@ input, select {
 }
 
 .form-container #register-form {
-  height: 76vh;
+  height: 82vh;
+}
+
+.form-container .error-box {
+  border: 1px solid #ec3535;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 5%;
+  top: 100px;
+  color: #ec3535;
+  font-family: "Karla", sans-serif;
 }
 
 .form-container form {
@@ -912,25 +922,32 @@ input, select {
       -ms-flex-align: center;
           align-items: center;
   width: 90%;
-  margin: 20px 0 20px 0;
+  padding: 20px 0 20px 0;
   border-top: 1px solid gray;
 }
 
 .mes-bot .chatInput {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 60%;
-  height: 18px;
+  height: 30px;
   background: white;
   font-size: 18px;
-  color: #d3d1d1;
   border: 1px solid #777777;
   border-radius: 30px;
-  margin-bottom: 10px;
+  padding-left: 20px;
   font-family: "Karla", sans-serif;
 }
 
 .mes-bot button {
   width: 80px;
-  height: 32.5px;
+  height: 32px;
   border-radius: 30px;
   border: none;
   font-family: "Karla", sans-serif;
