@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import LandingPage from '../components/landingPage/LandingPage';
 
+// Grant's Tests
 describe('Does Landing Page Render', function () {
     //before
     it('This countainer will display Landing', () => {

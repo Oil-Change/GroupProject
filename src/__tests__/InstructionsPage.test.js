@@ -2,8 +2,9 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { InstructionsPage } from '../components/instructionsPage/InstructionsPage';
 
+// Alex's Tests
 describe('Instructions Page', function () {
-    it('Checks to see if Login Displays', () => {
+    it('Checks to see if Instructions Displays', () => {
         const { container } = render(<InstructionsPage />)
         expect(container.textContent).toContain('Instructions')
     });
