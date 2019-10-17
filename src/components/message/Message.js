@@ -28,16 +28,17 @@ class Message extends Component {
         this.socket.on('room joined', data => {
           this.joinSuccess(data)
         })
+        this.joinRoom()
         this.socket.on('message dispatched', data => {
           // console.log(data)
           this.updateMessages(data);
         })
-        this.joinRoom()
+        
         this.getUser()
         this.setState({
             roomId: this.props.match.params.id,
             userName:this.props.user.first_name,
-            isAdmin:this.props.user.isAdmin
+            isAdmin:this.props.isAdmin
         })
         
     }
@@ -73,7 +74,7 @@ class Message extends Component {
           message: this.state.message,
           roomId: this.state.roomId,
           userName:this.state.userName,
-          isAdmin: this.state.isAdmin,
+          isAdmin: this.props.isAdmin,
           timestamp:time
         })
         this.setState({
@@ -131,9 +132,12 @@ class Message extends Component {
               <div className="header-container">
                   <header>
                       <div>
+                        {this.props.isAdmin ?
                           <button className='header-spacer' onClick={this.back}>
                               <img alt='none' src={back}></img>
                           </button>
+                          :
+                          null}
                       </div>
                       <div className='header-title'>
                           <div className='circle-container'>
@@ -150,7 +154,7 @@ class Message extends Component {
                 <div className='message-container'>
                   <div className='username'>
                       <h1>
-                        {this.props.user.first_name} {this.props.user.last_name}
+                        {this.state.user.first_name} {this.state.user.last_name}
                       </h1>
                   </div>
                   <div className='message-display'>{this.state.messages.map(messageObj => {

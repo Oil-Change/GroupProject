@@ -1,6 +1,7 @@
 // Setting Inital State
 const initialState = {
     phone_number: 0,
+    isAdmin: false,
     user: {},
     car: {},
     appointment: ''
@@ -11,12 +12,20 @@ const UPDATE_PHONE = 'UDPATE_PHONE';
 const UPDATE_USER = "UPDATE_USER";
 const UPDATE_CAR = "UPDATE_CAR";
 const UPDATE_APPT = "UPDATE_APPT";
+const UPDATE_ADMIN = 'UPDATE_ADMIN';
 
 // Action Builders
 export function updatePhone(phoneNumber) {
     return {
         type: UPDATE_PHONE,
         payload: phoneNumber
+    }
+};
+
+export function updateAdmin(isAdmin) {
+    return {
+        type: UPDATE_ADMIN,
+        payload: isAdmin
     }
 };
 
@@ -58,6 +67,9 @@ export default function reducer(state = initialState, action) {
             console.log("app set", action.payload)
             const appointment = action.payload
             return { ...state, appointment }
+        case UPDATE_ADMIN:
+            const isAdmin = action.payload
+            return {...state, isAdmin}
         default:
             return state
     };

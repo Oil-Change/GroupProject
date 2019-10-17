@@ -344,7 +344,17 @@ input, select {
 }
 
 .form-container #register-form {
-  height: 76vh;
+  height: 82vh;
+}
+
+.form-container .error-box {
+  border: 1px solid #ec3535;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 5%;
+  top: 100px;
+  color: #ec3535;
+  font-family: "Karla", sans-serif;
 }
 
 .form-container form {
@@ -704,6 +714,10 @@ input, select {
   box-shadow: 0px 0px 6px -0.5px rgba(0, 0, 0, 0.75);
   background: white;
   margin: 3%;
+}
+
+.userBtn-container .btn-done {
+  background: #56B1FE;
 }
 
 .info-container {
