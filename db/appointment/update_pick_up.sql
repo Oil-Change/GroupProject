@@ -1,5 +1,5 @@
 UPDATE appointments
-SET pick_up_time = CURRENT_TIMESTAMP, date(now()), now()
+SET pick_up_time = DATE(now()),
     pick_up = true 
 WHERE
    id = $1;
