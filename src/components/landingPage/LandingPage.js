@@ -25,7 +25,7 @@ export default class LandingPage extends Component {
                                 <h3><b>Make Your Day Seemless</b></h3>
                             </div>
                             <div className="info-item">
-                                <p>Just add your address and you'll see everything you need!</p>
+                                <p>Just add your info and we'll get you everything you need!</p>
                             </div>
                         </div>
                         <div className="general-info">
