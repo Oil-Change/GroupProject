@@ -128,7 +128,7 @@ input, select {
   height: 10vh;
   width: 100%;
   background: #fbbb06;
-  margin-bottom: 7vh;
+  margin-bottom: 9vh;
 }
 
 .image-container {
@@ -141,10 +141,12 @@ input, select {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-bottom: 1vh;
 }
 
 .image-container img {
   width: 100px;
+  height: 100px;
   z-index: 1;
 }
 
