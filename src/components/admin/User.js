@@ -28,7 +28,7 @@ class User extends Component {
     }
 
     componentDidMount(){
-        console.log("here")
+        // console.log("here")
         this.getUser()
     }
 
@@ -39,11 +39,11 @@ class User extends Component {
 
     getUser = () => {
         let { id } = this.props.match.params
-        console.log(id)
+        // console.log(id)
 
         axios.get(`/api/appointment/${id}`)
             .then(res => {
-                console.log(res.data[0])
+                // console.log(res.data[0])
                 this.setState({
                     appointment: res.data[0]
                 })
@@ -55,47 +55,47 @@ class User extends Component {
     }
     
     correctStreetName = () => {
-        console.log(this.state.appointment)
+        // console.log(this.state.appointment)
         const {street, city, state, zip} = this.state.appointment
-        console.log(street.split(" "))
+        // console.log(street.split(" "))
         // Street is the only case where spaces are available replaced with '+'
         let updatedStreet = street.split(" ").join("+")
-        console.log(updatedStreet)
+        // console.log(updatedStreet)
         this.setState({
             streetAddress: `${updatedStreet},+${city},+${state}+${zip}`
         }) 
     }
 
     pickUp = () => {
-        console.log('Pick UP')
+        // console.log('Pick UP')
         let { appointment_id } = this.props.appointment
         axios.put(`/api/appointment/pick_up/${appointment_id}`)
             .then(res => {
-            console.log('Updating Pick Up');
+            // console.log('Updating Pick Up');
         })
             .catch(err => alert('Pick Up did not update'));
     };
 
     dropOff = () => {
         let { appointment_id } = this.props.appointment;
-        console.log('Drop Off', appointment_id)
+        // console.log('Drop Off', appointment_id)
         axios.put(`/api/appointment/drop_off/${appointment_id}`)
             .then(res => {
-            console.log('Updaing Drop Off');
+            // console.log('Updaing Drop Off');
         })
             .catch(err => alert('Drop Off did not update'));
     };
 
 
     render() {
-        console.log(this.state.appointment)
+        // console.log(this.state.appointment)
         const back = require('../../assets/back.png')
         const classes = makeStyles();
         const path = `http://maps.google.com/maps?q=${this.state.streetAddress}`
         const {street, city, state, zip, first_name, last_name, phone_number, appointment, make, model, trim, year, color, mileage, license_plate, pick_up} = this.state.appointment
         const address = `${this.state.appointment.street}, ${this.state.appointment.city}, ${this.state.appointment.state}, 
         ${this.state.appointment.zip}`
-        console.log(this.state.appointment)
+        // console.log(this.state.appointment)
         return (
             <div>
                 <div className="header-container">

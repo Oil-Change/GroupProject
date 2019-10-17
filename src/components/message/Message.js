@@ -30,7 +30,7 @@ class Message extends Component {
         })
         this.joinRoom()
         this.socket.on('message dispatched', data => {
-          console.log(data)
+          // console.log(data)
           this.updateMessages(data);
         })
         
@@ -106,7 +106,7 @@ class Message extends Component {
       getUser = () => {
         setTimeout(() => {
           const id = this.state.appointment.user_id
-          console.log(id)
+          // console.log(id)
         axios.get(`/api/user/${id}`)
         
         .then(response => {
@@ -124,7 +124,7 @@ class Message extends Component {
     }
 
     render() {
-      console.log(this.props)
+      // console.log(this.state.message)
       
       const back = require('../../assets/back.png')
         return (

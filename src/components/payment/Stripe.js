@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 import { updateAppointment } from '../../redux/reducer';
 
 class Stripe extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             amount: 6000,
             appointment: {},
@@ -24,26 +24,25 @@ class Stripe extends Component {
     }
 
     onToken = (token) => {
-        console.log(token)
+        // console.log(token)
         let { amount } = this.state
         amount /= 100
-        console.log(amount)
+        // console.log(amount)
         token.card = void 0;
         let price = amount;
-        console.log('Price: ', price)
+        // console.log('Price: ', price)
         let appointment = this.props.appointment;
         let car = this.props.car;
         let cid = car.id;
-        console.log('car: ', cid);
-        console.log('appointment: ', appointment)
+        // console.log('car: ', cid);
         axios.post('/api/appointment/create', { appointment, price, cid }).then(res => {
-            console.log('Updating Database')
-            console.log('res: ', res.data);
+            // console.log('Updating Database')
+            // console.log('res: ', res.data);
             this.props.updateAppointment(res.data);
             this.props.history.push('/instructions');
             axios.post('/api/payment', { token, amount: this.state.amount * 100 }).then(res => {
-                console.log('Updating stripe')
-                console.log(res);
+                // console.log('Updating stripe')
+                // console.log(res);
                 alert(`Congratulations you paid this ${amount}!`);
             });
         }).catch(err => alert('Unable to connect to DataBase'));
