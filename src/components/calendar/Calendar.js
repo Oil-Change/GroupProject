@@ -104,7 +104,7 @@ class Calendar extends Component {
                   format="MM/dd/yyyy"
                   margin="normal"
                   id="date-picker-inline"
-                  label="Date picker inline"
+                  label="Appointment Date"
                   value={this.state.selectedDate}
                   onChange={this.handleDateChange}
                   KeyboardButtonProps={{
