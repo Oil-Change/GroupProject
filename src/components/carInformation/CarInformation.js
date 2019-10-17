@@ -81,6 +81,10 @@ class CarInformation extends Component {
                 </div>
                 <div className="form-container">
                     <form id="car-form">
+                    {this.state.error ? 
+                            <div className="error-box">Some of the information is incorrect in the form</div> 
+                            : null
+                        }
                         <div className="form-section full-name">
                             <h2>Car Information</h2>
 

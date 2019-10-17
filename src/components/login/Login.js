@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { updatePhone } from '../../redux/reducer'
+import { updatePhone, updateAdmin } from '../../redux/reducer'
 import axios from 'axios';
 import PhoneLockedIcon from '@material-ui/icons/PhoneLocked';
 
@@ -18,6 +18,7 @@ import PhoneLockedIcon from '@material-ui/icons/PhoneLocked';
 
     updateRedux = (e) => {
         this.props.updatePhone(e.phone_number)
+        this.props.updateAdmin(e.is_admin)
     }
 
     back = (e) => {
@@ -135,4 +136,4 @@ function mapStateToProps(state) {
     return state
 }
 
-export default connect(mapStateToProps, {updatePhone})(Login)
+export default connect(mapStateToProps, {updatePhone, updateAdmin})(Login)

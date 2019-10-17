@@ -60,7 +60,7 @@ class Register extends Component {
             .then(response => {
                 console.log(response)
                 this.props.updateUser(response.data)
-                console.dir(this.props.user)
+                console.dir('user',this.props.user)
                 //push to store
                 this.props.history.push('/car')
             })
