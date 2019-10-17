@@ -64,11 +64,12 @@ const updatePickUp = async (req, res) => {
     // console.log('');
     const db = req.app.get('db');
     const { id } = req.params;
-    // console.log('id: ', id);
+    console.log('id: ', id);
     // console.log('');
     // console.log('pickUpTime: ', pickUpTime);
     // console.log('');
     const updatePickUp = await db.appointment.update_pick_up([id])
+    console.log("here",updatePickUp)
     // console.log('updatePickUp: ', updatePickUp);
     // console.log('');
     res.status(200).send(updatePickUp);

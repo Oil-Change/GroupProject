@@ -17,24 +17,29 @@ class UserInfo extends Component {
 
         this.state = { 
             invisible: false,
-            pickUp: false,
-            dropOff: false
-
+            dropOff: false,
+            pickUp: false
         }
     }
 
     componentDidMount() {
         console.log(this.props.userAppointment)
-        
+        this.setState({
+            dropOff:this.props.userAppointment.drop_off,
+            pickUp:this.props.userAppointment.pick_up
+        })
     }
 
     message = () => {
         let { appointment_id } = this.props.userAppointment
+        this.props.updateAppointment(this.props.userAppointment)
         this.props.history.push(`/messages/${appointment_id}`)
     }
 
     pickUp = () => {
         if(!this.state.pickUp){
+            this.props.updateAppointment(this.props.userAppointment)
+            console.log(this.props.userAppointment.appointment_id)
             let { appointment_id } = this.props.userAppointment
             this.props.history.push(`admin/user/pick_up/${appointment_id}`)
             this.setState({
@@ -44,18 +49,23 @@ class UserInfo extends Component {
     }
 
     dropOff = () => {
-        if(!this.state.dropOff){
+        console.log(this.props.userAppointment.drop_off)
+        if(!this.state.dropOff && this.state.pickUp){
             let { appointment_id } = this.props.userAppointment
+            this.props.updateAppointment(this.props.userAppointment)
             this.props.history.push(`admin/user/drop_off/${appointment_id}`)
             this.setState({
                 dropOff: true
             })
+        } else if (this.state.dropOff && this.state.pickUp) {
+        } else  {
+            alert("This vehicle needs to be picked up first")
         }
     }
 
     render() {
         const { first_name, last_name, year, make, model, color } = this.props.userAppointment
-
+        console.log(this.props.userAppointment.pick_up)
         return (
             <div className="user-form-container">
                 <div className="user-container">
@@ -69,13 +79,13 @@ class UserInfo extends Component {
                                 <MailOutlineIcon />
                             </Badge>
                         </button>
-                        <button className={
-                            this.state.dropOff ? "userBtn btn-done"
+                        <button className={this.props.userAppointment.pick_up ?        "userBtn btn-done"
                             :
                             "userBtn"
-                        } onClick={this.pickUp}><AssignmentReturnedOutlinedIcon/></button>
+                        }    
+                        onClick={this.pickUp}><AssignmentReturnedOutlinedIcon/></button>
                         <button className={
-                            this.state.dropOff ? "userBtn btn-done"
+                            this.props.userAppointment.drop_off ? "userBtn btn-done"
                             :
                             "userBtn"
                         } onClick={this.dropOff}><AssignmentTurnedInOutlinedIcon/></button>

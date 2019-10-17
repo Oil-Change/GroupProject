@@ -1,5 +1,5 @@
 .message-form-container{
-    height: 88vh;
+    height: 92vh;
     width: 100%;
     background: $primary-bg;
     display: flex;
@@ -85,10 +85,10 @@
     justify-content: space-around;
     align-items: center;
     width: 90%;
-    padding-top: 3%;
+    margin: 20px 0 20px 0;
     border-top: 1px solid gray;
 
-    input{
+    .chatInput {
         width: 60%;
         height: 18px;
         // margin: 20px 0 15px 0;
@@ -97,9 +97,10 @@
         color: rgb(211, 209, 209);
         border: 1px solid #777777;
         border-radius: 30px;
-        padding: 2%;
+        margin-bottom: 10px;
         font-family: $font-secondary;
     }
+
     button{
         width: 80px;
         height: 32.5px;

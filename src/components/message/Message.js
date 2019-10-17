@@ -46,80 +46,74 @@ class Message extends Component {
         this.socket.disconnect();
       }
 
-      // gettime = () => {
-      
-      //   console.log(time)
-      //   this.setState({
-      //       timestamp:time
-      //   })
-      // }
+    joinSuccess = (messages) => {
+      this.setState({
+        joined: true,
+        messages
+      })
+    }
 
-      joinSuccess = (messages) => {
-        this.setState({
-          joined: true,
-          messages
-        })
-      }
-      sendMessage = () => {
+    sendMessage = () => {
+      const date = new Date().getDate()
+      const month = new Date().getMonth() + 1
+      const hours = new Date().getHours()
+      const min = new Date().getMinutes()
+      const time = hours + ':' + min + ' ' + month + '/' + date
+      console.log(this.state.timestamp)
+      this.socket.emit('message sent', {
+        message: this.state.message,
+        roomId: this.state.roomId,
+        userName:this.state.userName,
+        isAdmin: this.state.isAdmin,
+        timestamp:time
+      })
+      this.setState({
+        message: ''
+      })
+    }
 
-        
-        const date = new Date().getDate()
-        const month = new Date().getMonth() + 1
-        const hours = new Date().getHours()
-        const min = new Date().getMinutes()
-        const time = hours + ':' + min + ' ' + month + '/' + date
-        console.log(this.state.timestamp)
-        this.socket.emit('message sent', {
-          message: this.state.message,
-          roomId: this.state.roomId,
-          userName:this.state.userName,
-          isAdmin: this.state.isAdmin,
-          timestamp:time
-        })
-        this.setState({
-          message: ''
-        })
-      }
     updateMessages = (messages) => {
       console.log(messages)
-        this.setState({
-          messages:messages
+      this.setState({
+        messages:messages
+      })
+    }
+
+    joinRoom = () => {
+        this.socket.emit('join room', {
+          roomId: this.props.match.params.id
         })
-      }
-      joinRoom = () => {
-          this.socket.emit('join room', {
-            roomId: this.props.match.params.id
+        
+    }
+    getAppt = () => {
+      const id= this.props.match.params.id
+      
+      axios.get(`/api/appointment/${id}`)
+      .then(response =>{
+          this.setState({
+              appointment:response.data[0]
           })
-         
-      }
-      getAppt = () => {
-        const id= this.props.match.params.id
-        
-        axios.get(`/api/appointment/${id}`)
-        .then(response =>{
-            this.setState({
-                appointment:response.data[0]
-            })
-        })
-      }
-      getUser = () => {
-        setTimeout(() => {
-          const id = this.state.appointment.user_id
-          console.log(id)
-        axios.get(`/api/user/${id}`)
-        
-        .then(response => {
-            this.setState({
-                user:response.data[0]
-            })
-        })
-        
-        }, 1000);
-          
-      }
-      back = (e) => {
-        e.preventDefault()
-        this.props.history.push('/admin')
+      })
+    }
+
+    getUser = () => {
+      setTimeout(() => {
+        const id = this.state.appointment.user_id
+        console.log(id)
+      axios.get(`/api/user/${id}`)
+      
+      .then(response => {
+          this.setState({
+              user:response.data[0]
+          })
+      })
+      
+      }, 1000);  
+    }
+    
+    back = (e) => {
+      e.preventDefault()
+      this.props.history.push('/admin')
     }
 
     render() {
@@ -172,10 +166,8 @@ class Message extends Component {
                   </div>
                   <div className="mes-bot">
                     {/* <h1>{this.props.user.first_name}</h1> */}
-                    <input className='chatInput' value={this.state.message} placeholder='Message'onChange={e => {
-                      this.setState({
-                        message: e.target.value
-                      })
+                    <input className='chatInput' value={this.state.message} placeholder='Message' onChange={e => {
+                      this.setState({message: e.target.value})
                     }} />
                     <button onClick={this.sendMessage}>Send</button>
                   </div>

@@ -14,6 +14,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 
 import appleMaps from '../../assets/apple-maps.jpg'
 
@@ -28,7 +29,9 @@ class User extends Component {
     }
 
     componentDidMount(){
+        console.log("match?", this.props.match.params.id)
         console.log("here")
+        console.log(this.props.appointment)
         this.getUser()
     }
 
@@ -68,10 +71,13 @@ class User extends Component {
 
     pickUp = () => {
         console.log('Pick UP')
-        let { appointment_id } = this.props.appointment
+        console.log(this.props.match.params)
+        let { appointment_id } = this.state.appointment
+        console.log(appointment_id)
         axios.put(`/api/appointment/pick_up/${appointment_id}`)
             .then(res => {
             console.log('Updating Pick Up');
+            this.props.history.push('/admin')
         })
             .catch(err => alert('Pick Up did not update'));
     };
@@ -82,6 +88,7 @@ class User extends Component {
         axios.put(`/api/appointment/drop_off/${appointment_id}`)
             .then(res => {
             console.log('Updaing Drop Off');
+            this.props.history.push('/admin')
         })
             .catch(err => alert('Drop Off did not update'));
     };
@@ -99,19 +106,22 @@ class User extends Component {
         return (
             <div>
                 <div className="header-container">
-                    <header>
-                        <div>
-                            <button className='header-spacer' onClick={this.back}>
-                                <img alt='none' src={back}></img>
-                            </button>
-                        </div>
-                        <div className='header-title'>
-                            <div className='circle-container'>
-                                <h1>User Information</h1>
+                <header>
+                    <div className='header-spacer'>
+                        <button className='header-btn' onClick={this.back}>
+                            <img alt='none' src={back}/>
+                        </button>
+                    </div>
+                    <div className='header-title'>
+                        <div className='circle-container'>
+                            <div className="circle-info">
+                                <AccountCircleIcon id='icon-color'/>
+                                <h1>User</h1>
                             </div>
                         </div>
-                        <div className='header-spacer'></div>
-                    </header>
+                    </div>
+                    <div className='header-spacer'></div>
+                </header>
                 </div>
                 <div className='info-container'>
                     <div className='adminUserInfo'>
@@ -163,11 +173,10 @@ class User extends Component {
                         </div>
 
                         <div className='buttonContainer'>
-                            {!pick_up
-                            ?
-                            (<button className='statusButton' onClick={this.pickUp} >Pick Up</button>)
-                            :
-                            (<button className='statusButton' onClick={this.dropOff}>Drop Off</button>)
+                            {
+                                !pick_up ?<button className='statusButton' onClick={this.pickUp}>Pick Up</button>
+                                :
+                                <button className='statusButton' onClick={this.dropOff}>Drop Off</button>
                             }
                         </div>
                         

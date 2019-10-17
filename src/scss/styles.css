@@ -315,6 +315,7 @@ input, select {
 }
 
 .header-container header .circle-container .circle-info h1 {
+  margin-left: 3px;
   font-size: 17px;
   font-family: "Lato", sans-serif;
   color: white;
@@ -706,10 +707,15 @@ input, select {
   margin: 3%;
 }
 
+.userBtn-container .btn-done {
+  background: #AAAAAA;
+  color: #646464;
+}
+
 .info-container {
   height: 90vh;
   width: 100%;
-  background: #fbbb06;
+  background: #dddddd;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -750,9 +756,9 @@ input, select {
 
 .info-container .statusButton:hover {
   cursor: pointer;
-  background: #777777;
+  background: #fbbb06;
   color: white;
-  border: 2px solid #777777;
+  border: 2px solid #fbbb06;
 }
 
 .info-container .statusButton {
@@ -776,7 +782,7 @@ input, select {
 }
 
 .message-form-container {
-  height: 88vh;
+  height: 92vh;
   width: 100%;
   background: #dddddd;
   display: -webkit-box;
@@ -906,11 +912,11 @@ input, select {
       -ms-flex-align: center;
           align-items: center;
   width: 90%;
-  padding-top: 3%;
+  margin: 20px 0 20px 0;
   border-top: 1px solid gray;
 }
 
-.mes-bot input {
+.mes-bot .chatInput {
   width: 60%;
   height: 18px;
   background: white;
@@ -918,7 +924,7 @@ input, select {
   color: #d3d1d1;
   border: 1px solid #777777;
   border-radius: 30px;
-  padding: 2%;
+  margin-bottom: 10px;
   font-family: "Karla", sans-serif;
 }
 
@@ -1052,7 +1058,7 @@ input, select {
 }
 
 .background-container .directions-step-container .verify .step-container .send-btn {
-  border-radius: 3%;
+  border-radius: 3px;
   background: #CCCCCC;
   padding-left: 10px;
   width: 30%;
