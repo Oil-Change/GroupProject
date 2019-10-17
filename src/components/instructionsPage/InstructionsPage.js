@@ -46,7 +46,7 @@ export class InstructionsPage extends Component {
                 </div>
                 <div id="lengthen-page" className="background-container">
                     <div className="directions-step-container">
-                        <div className="bot-section">
+                        <div className="bot-section" id="space-bot-section">
                             <div id="instructions-page" className="general-info-container">
                                 <div id="smaller-info" className="general-info">
                                     <div className="info-item">

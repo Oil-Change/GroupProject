@@ -3,44 +3,52 @@ import Stripe from './Stripe';
 import CreditCardIcon from '@material-ui/icons/CreditCard';
 import { connect } from 'react-redux'
 
+import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+
 class Payment extends Component {
     back = (e) => {
         e.preventDefault()
         this.props.history.push('/appointment')
     }
     render() {
-        console.log(this.props)
-        const back = require('../../assets/back.png')
         return (
-            <div>
+            <div id="instructions-page">
                 <div className="header-container">
                     <header>
-                        <div className='header-spacer'>
-                            <button className='header-btn' onClick={this.back}>
-                                <img alt='none' src={back}/>
-                            </button>
-                        </div>
+                        <div className="header-spacer"></div>
                         <div className='header-title'>
                             <div className='circle-container'>
                                 <div className="circle-info">
-                                    <CreditCardIcon id='icon-color'/>
-                                    <h1>Payment</h1>
+                                    <ShoppingCartOutlinedIcon id="icon-color"/>
+                                    <h1>Checkout</h1>
                                 </div>
                             </div>
                         </div>
                         <div className='header-spacer'></div>
                     </header>
                 </div>
-                <div className="pay-form-container">
-                    <div className="inv-container">
-                        <h1>Invoice</h1>
-                        <h2>Oil Change: $60.00</h2>
-                        <Stripe />
+                <div id="lengthen-page" className="background-container">
+                    <div className="directions-step-container">
+                        <div className="bot-section" id="space-bot-section">
+                            <div id="instructions-page" className="general-info-container">
+                                <div id="smaller-info" className="general-info">
+                                    <div className="info-item">
+                                        <CreditCardIcon className="yellowize" fontSize="large"/>
+                                    </div>
+                                    <div className="info-item">
+                                        <p>Your appointment has been book-marked! Make your way to payment to get your appointment made.</p>
+                                    </div>
+                                    <div className="checkout-btn">
+                                        <Stripe />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         )
-    };
+    }
 }
 
 function mapStateToProps(state) {

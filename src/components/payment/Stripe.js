@@ -41,9 +41,6 @@ class Stripe extends Component {
             this.props.updateAppointment(res.data);
             this.props.history.push('/instructions');
             axios.post('/api/payment', { token, amount: this.state.amount * 100 }).then(res => {
-                // console.log('Updating stripe')
-                // console.log(res);
-                alert(`Congratulations you paid this ${amount}!`);
             });
         }).catch(err => alert('Unable to connect to DataBase'));
     };

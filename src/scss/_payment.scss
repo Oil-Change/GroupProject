@@ -5,7 +5,7 @@
     background: $primary-bg;
     display: flex;
     justify-content: center;
-    padding-top: 15%;
+    padding-top: 2%;
 }
 .inv-container{
     background: white;
@@ -26,4 +26,16 @@
         color: $bg;
     }
     
+}
+
+.checkout-btn{
+    margin: 40px 0 10px 0;
+    width: 180px;
+    height: 40px;
+    border: 3px solid $bg;
+    border-radius: 3px;
+    color: $bg;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
